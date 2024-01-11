@@ -13,7 +13,7 @@ function App() {
       )}
       {currentArea === "floors" && (
         <header className="App-header">
-          <FloorsPage floorData={hotelData.hotel_data.floors} />
+          <FloorsPage hotelFloorData={hotelData[0].hotel_data.floors} />
         </header>
       )}
       {currentArea === "tasks" && (

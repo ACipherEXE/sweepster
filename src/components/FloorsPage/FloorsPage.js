@@ -1,15 +1,14 @@
 import React from "react";
 import "./FloorsPage.css";
+import FloorDropdown from "./FloorDropdown";
 
 function FloorsPage(props) {
-  var { floorData } = props;
-  console.log(floorData);
+  var { hotelFloorData } = props;
   return (
     <>
-      {Object.values(floorData).map((floor) => {
-        console.log(floor);
+      {hotelFloorData.map((floor) => {
+        return <FloorDropdown floorData={floor} />;
       })}
-      <div class="">{props.children}</div>
     </>
   );
 }
