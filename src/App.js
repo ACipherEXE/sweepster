@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import FloorsPage from "./components/FloorsPage/FloorsPage";
+import UserLogIn from "./components/UserLogIn";
+import hotelData from "./JSON/hotelExample.json";
 function App() {
+  var currentArea = "floors";
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {currentArea === "login" && (
+        <header className="App-header">
+          <UserLogIn />
+        </header>
+      )}
+      {currentArea === "floors" && (
+        <header className="App-header">
+          <FloorsPage floorData={hotelData.hotel_data.floors} />
+        </header>
+      )}
+      {currentArea === "tasks" && (
+        <header className="App-header">
+          <div>Hello world</div>
+        </header>
+      )}
+      {currentArea === "roles" && (
+        <header className="App-header">
+          <div>Hello world</div>
+        </header>
+      )}
     </div>
   );
 }

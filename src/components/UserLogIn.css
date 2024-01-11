@@ -1,0 +1,82 @@
+:root {
+  --image-size: 300px;
+}
+.default-text {
+  color: #ffffff;
+  font-size: 36px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 42px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.login-button {
+  cursor: pointer;
+  top: 388px;
+  left: 27px;
+  width: 321px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 37px;
+  box-shadow: 0px 4px 20px rgba(3, 3, 3, 0.1);
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin-bottom: 50px;
+}
+.apple-login-button {
+  cursor: pointer;
+  top: 483px;
+  left: 27px;
+  width: 151px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 1px solid #4f4f4f;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin-left: 10px;
+}
+.google-login-button {
+  cursor: pointer;
+  top: 483px;
+  left: 27px;
+  width: 151px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 1px solid #4f4f4f;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin-right: 10px;
+}
+.login-image {
+  width: var(--image-size); /* Use the variable for the width */
+  height: var(--image-size);
+  max-width: 100%; /* Ensure the image doesn't exceed the viewport width */
+  max-height: 100%;
+  border-radius: 8px;
+  background-image: url("https://images.unsplash.com/photo-1517840901100-8179e982acb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wyMDUzMDJ8MHwxfHNlYXJjaHwyfHxIb3RlbHxlbnwxfHx8fDE2OTY5NDc3NDV8MA&ixlib=rb-4.0.3&q=80&w=1080");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
