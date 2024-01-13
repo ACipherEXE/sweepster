@@ -1,8 +1,8 @@
 import React from "react";
 import "./FloorsPage.css";
-import { addFloorAndRoom } from "../../Tools/Utils";
+
 function FloorDropdown(props) {
-  var { floorData, pageHandler } = props;
+  var { floorData, setCurrentArea, setUserRequest } = props;
   // const [isFloorCardOpen, setIsFloorCardOpen] = useState(false);
 
   return (
@@ -25,8 +25,8 @@ function FloorDropdown(props) {
             <div
               className="room-button"
               onClick={() => {
-                addFloorAndRoom(floorData.floor, room.room);
-                pageHandler("room");
+                setCurrentArea("room");
+                setUserRequest({ floor: floorData.floor, room: room.room });
               }}
             >
               {room.room}

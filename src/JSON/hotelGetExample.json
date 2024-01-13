@@ -19,9 +19,9 @@
               {
                 "room": "002",
                 "tasks": [
-                  { "task": "Clean up area", "isDone": false },
-                  { "task": "Clean up trash", "isDone": false },
-                  { "task": "Clean up bed", "isDone": false }
+                  { "task": "Clean up area 2", "isDone": false },
+                  { "task": "Clean up trash2", "isDone": false },
+                  { "task": "Clean up bed 2", "isDone": false }
                 ]
               },
               {

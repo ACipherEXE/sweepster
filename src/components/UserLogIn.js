@@ -1,19 +1,18 @@
 import React from "react";
 import "./UserLogIn.css";
 
-function UserLogIn() {
-  function addQueryParam(url, paramName) {
-    const separator = url.includes("?") ? "&" : "?";
-    const updatedUrl = `${url}${separator}${encodeURIComponent(paramName)}}`;
-    return updatedUrl;
-  }
+function UserLogIn(props) {
+  var { setCurrentArea, setUserRequest } = props;
+
   return (
     <div>
       <div className="login-image" />
       <div className="default-text">Sweepster</div>
       <button
         className="login-button"
-        onClick={addQueryParam(window.location.href, "floors")}
+        onClick={() => {
+          setCurrentArea("floors");
+        }}
       >
         Sign in with Email
       </button>

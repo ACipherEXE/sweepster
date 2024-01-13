@@ -3,46 +3,59 @@ import "./App.css";
 import FloorsPage from "./components/FloorsPage/FloorsPage";
 import UserLogIn from "./components/UserLogIn";
 import hotelGetExample from "./JSON/hotelGetExample.json";
-import { fetchData } from "./Tools/Utils";
+import { fetchData, getSpecificRoomTasks } from "./Tools/Utils";
 import RoomPage from "./components/RoomPage/RoomPage";
+
 function App() {
   //Keep in dev unless wanting to test REST API
-  const enviroment = "dev";
-  const [currentArea, setCurrentArea] = useState("floors");
+  const enviroment = "prod";
+  const [currentArea, setCurrentArea] = useState("login");
+  const [isUserLogedIn, setIsUserLogedIn] = useState(true);
+  const [userRequest, setUserRequest] = useState(null);
   const [data, setData] = useState(null);
   useEffect(() => {
-    if (enviroment === "prod") {
-      fetchData()
-        .then((data) => {
-          //Avoid using api while test and building
-          setData(data);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    } else {
-      setData(hotelGetExample);
+    if (isUserLogedIn) {
+      if (enviroment === "prod") {
+        fetchData()
+          .then((data) => {
+            //Avoid using api while test and building
+            setData(data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      } else {
+        setData(hotelGetExample);
+      }
     }
-  }, []);
-  function pageHandler(pageWanted) {
-    if (pageWanted === "room") {
-      setCurrentArea("room");
-    }
-  }
-  //console.log(getTasks(data, "abc000", "ground", "001"));
+  }, [isUserLogedIn]);
+
   return (
     <div className="App">
       <header className="App-header">
-        {currentArea === "login" && <UserLogIn />}
-        {data !== null ? (
+        {currentArea === "login" && (
+          <UserLogIn
+            setCurrentArea={setCurrentArea}
+            setUserRequest={setUserRequest}
+          />
+        )}
+        {data !== null || !isUserLogedIn ? (
           <div>
             {currentArea === "floors" && (
               <FloorsPage
                 hotelFloorData={data.record[0].hotel_data.floors}
-                pageHandler={pageHandler}
+                setCurrentArea={setCurrentArea}
+                setUserRequest={setUserRequest}
               />
             )}
-            {currentArea === "room" && <RoomPage hotelRoomData={data} />}
+            {currentArea === "room" && (
+              <RoomPage
+                hotelRoomData={data}
+                userRequest={userRequest}
+                setCurrentArea={setCurrentArea}
+                setUserRequest={setUserRequest}
+              />
+            )}
             {currentArea === "tasks" && <div>Hello world</div>}
             {currentArea === "roles" && <div>Hello world</div>}
           </div>

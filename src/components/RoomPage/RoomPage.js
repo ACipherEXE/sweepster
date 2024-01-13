@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from "react";
 import "./RoomPage.css";
 import Roomcard from "./RoomCard";
-import { getTasks } from "../../Tools/Utils";
+import { getSpecificRoom, getSpecificRoomTasks } from "../../Tools/Utils";
 
 function RoomPage(props) {
-  var { hotelRoomData } = props;
+  var { hotelRoomData, userRequest, setCurrentArea, setUserRequest } = props;
   //   console.log(hotelRoomData);
   const [taskComplited, setTaskComplited] = useState(null);
   const [roomData, setRoomData] = useState(
-    getTasks(hotelRoomData, "abc000", "ground", "001")
+    getSpecificRoomTasks(
+      hotelRoomData,
+      "abc000",
+      userRequest.floor,
+      userRequest.room
+    )
   );
 
   useEffect(() => {
     if (taskComplited) {
-      const task = roomData.tasks.find((t) => t.task === taskComplited.task);
+      const task = roomData.find((t) => t.task === taskComplited.task);
 
       if (task) {
         task.isDone = !task.isDone;
@@ -26,7 +31,7 @@ function RoomPage(props) {
 
   return (
     <>
-      {roomData.tasks.map((task) => {
+      {roomData.map((task) => {
         return (
           <Roomcard
             hotelRoomTask={task.task}

@@ -3,11 +3,17 @@ import "./FloorsPage.css";
 import FloorDropdown from "./FloorDropdown";
 
 function FloorsPage(props) {
-  var { hotelFloorData, pageHandler } = props;
+  var { hotelFloorData, setCurrentArea, setUserRequest } = props;
   return (
     <>
       {hotelFloorData.map((floor) => {
-        return <FloorDropdown floorData={floor} pageHandler={pageHandler} />;
+        return (
+          <FloorDropdown
+            floorData={floor}
+            setCurrentArea={setCurrentArea}
+            setUserRequest={setUserRequest}
+          />
+        );
       })}
     </>
   );

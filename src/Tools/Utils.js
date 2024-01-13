@@ -61,7 +61,7 @@ export const fetchData = async () => {
   }
 };
 
-export function getTasks(hotelData, hotelNumber, floor, room) {
+export function getSpecificRoom(hotelData, hotelNumber, floor, room) {
   const hotel = hotelData.record.find((h) => h.Hotel_Number === hotelNumber);
 
   if (hotel) {
@@ -78,6 +78,62 @@ export function getTasks(hotelData, hotelNumber, floor, room) {
     } else {
       console.log(`Floor "${floor}" not found.`);
     }
+  } else {
+    console.log(`Hotel "${hotelNumber}" not found.`);
+  }
+
+  return null;
+}
+export function getSpecificRoomTasks(hotelData, hotelNumber, floor, room) {
+  const hotel = hotelData.record.find((h) => h.Hotel_Number === hotelNumber);
+
+  if (hotel) {
+    const targetFloor = hotel.hotel_data.floors.find((f) => f.floor === floor);
+
+    if (targetFloor) {
+      const targetRoom = targetFloor.rooms.find((r) => r.room === room);
+
+      if (targetRoom) {
+        return targetRoom.tasks;
+      } else {
+        console.log(`Room "${room}" not found on Floor "${floor}".`);
+      }
+    } else {
+      console.log(`Floor "${floor}" not found.`);
+    }
+  } else {
+    console.log(`Hotel "${hotelNumber}" not found.`);
+  }
+
+  return null;
+}
+export function getSpecificFloor(hotelData, hotelNumber, floor) {
+  const hotel = hotelData.record.find((h) => h.Hotel_Number === hotelNumber);
+
+  if (hotel) {
+    return hotel.hotel_data.floors.find((f) => f.floor === floor);
+  } else {
+    console.log(`Floor "${floor}" not found.`);
+  }
+
+  return null;
+}
+export function getfloors(hotelData, hotelNumber) {
+  const hotel = hotelData.record.find((h) => h.Hotel_Number === hotelNumber);
+
+  if (hotel.hotel_data.floors) {
+    return hotel.hotel_data.floors;
+  } else {
+    console.log(`This hotel does not have floors`);
+  }
+
+  return null;
+}
+export function getHotelData(hotelData, hotelNumber) {
+  const hotel = hotelData.record.find((h) => h.Hotel_Number === hotelNumber);
+
+  if (hotel) {
+    return hotel;
   } else {
     console.log(`Hotel "${hotelNumber}" not found.`);
   }
