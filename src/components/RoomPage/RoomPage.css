@@ -1,0 +1,60 @@
+.room-task-card {
+  top: 182px;
+  left: 28px;
+  width: 320px;
+  height: 58px;
+  background-color: #333333;
+  border-radius: 15px;
+  box-shadow: 0px 2px 10px rgba(3, 3, 3, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+
+.room-task-name {
+  color: #ffffff;
+  font-size: 16px;
+  font-family: "Inter";
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 40px;
+  height: 20px;
+  opacity: 1;
+  pointer-events: auto;
+  border-radius: 100px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.08);
+  background-color: rgba(127, 127, 127, 1);
+  border: 0;
+}
+
+.toggle {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  width: calc(50% - 6px);
+  height: calc(100% - 6px);
+  transform: translate(0%, -50%);
+  font-size: 14px;
+  transition: left 0.3s ease;
+  border-radius: 100px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}

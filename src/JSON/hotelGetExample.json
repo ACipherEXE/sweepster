@@ -1,0 +1,201 @@
+{
+  "record": [
+    {
+      "Hotel_Number": "abc000",
+      "Staff_List": ["abc000", "abc111", "abc222", "abc444"],
+      "hotel_data": {
+        "floors": [
+          {
+            "floor": "ground",
+            "rooms": [
+              {
+                "room": "001",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              },
+              {
+                "room": "002",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              },
+              {
+                "room": "003",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              }
+            ]
+          },
+          {
+            "floor": "1",
+            "rooms": [
+              {
+                "room": "101",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              },
+              {
+                "room": "102",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              },
+              {
+                "room": "103",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              }
+            ]
+          },
+          {
+            "floor": "2",
+            "rooms": [
+              {
+                "room": "201",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              },
+              {
+                "room": "202",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              },
+              {
+                "room": "203",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "Hotel_Number": "exp000",
+      "Staff_List": ["abc000", "abc111", "abc222", "abc444"],
+      "hotel_data": {
+        "floors": [
+          {
+            "floor": "ground",
+            "rooms": [
+              {
+                "room": "001",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              },
+              {
+                "room": "002",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              },
+              {
+                "room": "003",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              }
+            ]
+          },
+          {
+            "floor": "1",
+            "rooms": [
+              {
+                "room": "101",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              },
+              {
+                "room": "102",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              },
+              {
+                "room": "103",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              }
+            ]
+          },
+          {
+            "floor": "2",
+            "rooms": [
+              {
+                "room": "201",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              },
+              {
+                "room": "202",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              },
+              {
+                "room": "203",
+                "tasks": [
+                  { "task": "Clean up area", "isDone": false },
+                  { "task": "Clean up trash", "isDone": false },
+                  { "task": "Clean up bed", "isDone": false }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "id": "65a15f611f5677401f1bd031",
+    "private": true,
+    "createdAt": "2024-01-12T15:48:49.843Z",
+    "collectionId": "65a15e86dc74654018913fc2",
+    "name": "HotelList"
+  }
+}

@@ -9,17 +9,17 @@ function UserLogIn() {
   }
   return (
     <div>
-      <div class="login-image" />
-      <div class="default-text">Sweepster</div>
+      <div className="login-image" />
+      <div className="default-text">Sweepster</div>
       <button
-        class="login-button"
+        className="login-button"
         onClick={addQueryParam(window.location.href, "floors")}
       >
         Sign in with Email
       </button>
       <div>
-        <button class="google-login-button">Google</button>
-        <button class="apple-login-button">Apple ID</button>
+        <button className="google-login-button">Google</button>
+        <button className="apple-login-button">Apple ID</button>
       </div>
     </div>
   );
