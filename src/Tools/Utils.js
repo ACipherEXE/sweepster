@@ -84,17 +84,3 @@ export function getTasks(hotelData, hotelNumber, floor, room) {
 
   return null;
 }
-export function handlePopstate(event) {
-  // Check the URL and perform the desired effect based on query parameters
-  const queryParams = new URLSearchParams(window.location.search);
-  const paramValue = queryParams.get("floor");
-
-  // Perform your effect based on the query parameter value
-  if (paramValue === "someValue") {
-    // Do something
-    console.log("SAUSE");
-  } else {
-    // Do something else
-    console.log("yeet");
-  }
-}

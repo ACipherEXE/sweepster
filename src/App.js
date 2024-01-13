@@ -3,14 +3,13 @@ import "./App.css";
 import FloorsPage from "./components/FloorsPage/FloorsPage";
 import UserLogIn from "./components/UserLogIn";
 import hotelGetExample from "./JSON/hotelGetExample.json";
-import { fetchData, getTasks, handlePopstate } from "./Tools/Utils";
+import { fetchData } from "./Tools/Utils";
 import RoomPage from "./components/RoomPage/RoomPage";
 function App() {
   //Keep in dev unless wanting to test REST API
   const enviroment = "dev";
-  var currentArea = "floors";
+  const [currentArea, setCurrentArea] = useState("floors");
   const [data, setData] = useState(null);
-
   useEffect(() => {
     if (enviroment === "prod") {
       fetchData()
@@ -25,8 +24,11 @@ function App() {
       setData(hotelGetExample);
     }
   }, []);
-  window.addEventListener("popstate", handlePopstate);
-
+  function pageHandler(pageWanted) {
+    if (pageWanted === "room") {
+      setCurrentArea("room");
+    }
+  }
   //console.log(getTasks(data, "abc000", "ground", "001"));
   return (
     <div className="App">
@@ -35,13 +37,12 @@ function App() {
         {data !== null ? (
           <div>
             {currentArea === "floors" && (
-              <FloorsPage hotelFloorData={data.record[0].hotel_data.floors} />
-            )}
-            {currentArea === "room" && (
-              <RoomPage
-                hotelRoomData={data.record[0].hotel_data.floors[0].rooms[0]}
+              <FloorsPage
+                hotelFloorData={data.record[0].hotel_data.floors}
+                pageHandler={pageHandler}
               />
             )}
+            {currentArea === "room" && <RoomPage hotelRoomData={data} />}
             {currentArea === "tasks" && <div>Hello world</div>}
             {currentArea === "roles" && <div>Hello world</div>}
           </div>

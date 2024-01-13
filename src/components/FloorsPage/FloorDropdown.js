@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./FloorsPage.css";
 import { addFloorAndRoom } from "../../Tools/Utils";
 function FloorDropdown(props) {
-  var { floorData } = props;
-  const [isFloorCardOpen, setIsFloorCardOpen] = useState(false);
+  var { floorData, pageHandler } = props;
+  // const [isFloorCardOpen, setIsFloorCardOpen] = useState(false);
 
   return (
     <>
@@ -26,6 +26,7 @@ function FloorDropdown(props) {
               className="room-button"
               onClick={() => {
                 addFloorAndRoom(floorData.floor, room.room);
+                pageHandler("room");
               }}
             >
               {room.room}

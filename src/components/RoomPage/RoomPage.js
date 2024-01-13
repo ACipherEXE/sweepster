@@ -1,29 +1,28 @@
 import React, { useState, useEffect } from "react";
 import "./RoomPage.css";
 import Roomcard from "./RoomCard";
+import { getTasks } from "../../Tools/Utils";
 
 function RoomPage(props) {
   var { hotelRoomData } = props;
   //   console.log(hotelRoomData);
   const [taskComplited, setTaskComplited] = useState(null);
-  const [roomData, setRoomData] = useState(hotelRoomData);
+  const [roomData, setRoomData] = useState(
+    getTasks(hotelRoomData, "abc000", "ground", "001")
+  );
+
   useEffect(() => {
     if (taskComplited) {
-      toggleIsDone(taskComplited.task);
+      const task = roomData.tasks.find((t) => t.task === taskComplited.task);
+
+      if (task) {
+        task.isDone = !task.isDone;
+        setRoomData(roomData);
+      } else {
+        console.log(`Task "${taskComplited.task}" not found.`);
+      }
     }
   }, [taskComplited]);
-
-  // Function to toggle isDone for a specific task
-  function toggleIsDone(taskName) {
-    const task = roomData.tasks.find((t) => t.task === taskName);
-
-    if (task) {
-      task.isDone = !task.isDone;
-      setRoomData(roomData);
-    } else {
-      console.log(`Task "${taskName}" not found.`);
-    }
-  }
 
   return (
     <>
