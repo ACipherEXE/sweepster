@@ -22,7 +22,7 @@ function RoomPage(props) {
         console.log(`Task "${taskComplited.task}" not found.`);
       }
     }
-  }, [taskComplited]);
+  }, [taskComplited, roomData]);
 
   return (
     <>
