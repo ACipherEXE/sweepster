@@ -8,7 +8,7 @@ import RoomPage from "./components/RoomPage/RoomPage";
 
 function App() {
   //Keep in dev unless wanting to test REST API
-  const enviroment = "prod";
+  const enviroment = "dev";
   const [currentArea, setCurrentArea] = useState("login");
   // eslint-disable-next-line
   const [isUserLogedIn, setIsUserLogedIn] = useState(true);
