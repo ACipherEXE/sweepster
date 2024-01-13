@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./RoomPage.css";
 import Roomcard from "./RoomCard";
-import { getSpecificRoom, getSpecificRoomTasks } from "../../Tools/Utils";
+import { getSpecificRoomTasks } from "../../Tools/Utils";
 
 function RoomPage(props) {
+  // eslint-disable-next-line
   var { hotelRoomData, userRequest, setCurrentArea, setUserRequest } = props;
   //   console.log(hotelRoomData);
   const [taskComplited, setTaskComplited] = useState(null);

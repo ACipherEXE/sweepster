@@ -2,6 +2,7 @@ import React from "react";
 import "./UserLogIn.css";
 
 function UserLogIn(props) {
+  // eslint-disable-next-line
   var { setCurrentArea, setUserRequest } = props;
 
   return (

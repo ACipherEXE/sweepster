@@ -3,13 +3,14 @@ import "./App.css";
 import FloorsPage from "./components/FloorsPage/FloorsPage";
 import UserLogIn from "./components/UserLogIn";
 import hotelGetExample from "./JSON/hotelGetExample.json";
-import { fetchData, getSpecificRoomTasks } from "./Tools/Utils";
+import { fetchData } from "./Tools/Utils";
 import RoomPage from "./components/RoomPage/RoomPage";
 
 function App() {
   //Keep in dev unless wanting to test REST API
-  const enviroment = "prod";
+  const enviroment = "dev";
   const [currentArea, setCurrentArea] = useState("login");
+  // eslint-disable-next-line
   const [isUserLogedIn, setIsUserLogedIn] = useState(true);
   const [userRequest, setUserRequest] = useState(null);
   const [data, setData] = useState(null);
