@@ -1,0 +1,22 @@
+.header-area {
+  background-color: #282c34;
+  color: white;
+
+  top: 0;
+  /* You can also add other styling properties */
+  padding: 10px;
+}
+.header-container {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #282c34;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr; /* Three equal-width columns */
+  grid-gap: 20px; /* Gap between grid items */
+}
+
+.header-item {
+  padding: 20px;
+  text-align: center;
+}

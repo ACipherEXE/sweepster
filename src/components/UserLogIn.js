@@ -3,7 +3,7 @@ import "./UserLogIn.css";
 
 function UserLogIn(props) {
   // eslint-disable-next-line
-  var { setCurrentArea, setUserRequest } = props;
+  var { setCurrentArea, setUserRequest, setIsUserLogedIn } = props;
 
   return (
     <div>
@@ -13,6 +13,7 @@ function UserLogIn(props) {
         className="login-button"
         onClick={() => {
           setCurrentArea("floors");
+          setIsUserLogedIn(true);
         }}
       >
         Sign in with Email

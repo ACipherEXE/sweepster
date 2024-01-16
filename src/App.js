@@ -5,13 +5,14 @@ import UserLogIn from "./components/UserLogIn";
 import hotelGetExample from "./JSON/hotelGetExample.json";
 import { fetchData } from "./Tools/Utils";
 import RoomPage from "./components/RoomPage/RoomPage";
+import HeaderArea from "./components/HeaderArea/HeaderArea";
 
 function App() {
   //Keep in dev unless wanting to test REST API
   const enviroment = "dev";
   const [currentArea, setCurrentArea] = useState("login");
   // eslint-disable-next-line
-  const [isUserLogedIn, setIsUserLogedIn] = useState(true);
+  const [isUserLogedIn, setIsUserLogedIn] = useState(false);
   const [userRequest, setUserRequest] = useState(null);
   const [data, setData] = useState(null);
   useEffect(() => {
@@ -33,37 +34,49 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        {currentArea === "login" && (
+      {currentArea === "login" && (
+        <header className="App-header">
           <UserLogIn
             setCurrentArea={setCurrentArea}
+            setIsUserLogedIn={setIsUserLogedIn}
             setUserRequest={setUserRequest}
           />
-        )}
-        {data !== null || !isUserLogedIn ? (
+        </header>
+      )}
+      {isUserLogedIn &&
+        (data !== null ? (
           <div>
-            {currentArea === "floors" && (
-              <FloorsPage
-                hotelFloorData={data.record[0].hotel_data.floors}
-                setCurrentArea={setCurrentArea}
-                setUserRequest={setUserRequest}
-              />
-            )}
-            {currentArea === "room" && (
-              <RoomPage
-                hotelRoomData={data}
-                userRequest={userRequest}
-                setCurrentArea={setCurrentArea}
-                setUserRequest={setUserRequest}
-              />
-            )}
-            {currentArea === "tasks" && <div>Hello world</div>}
-            {currentArea === "roles" && <div>Hello world</div>}
+            <HeaderArea
+              currentArea={currentArea}
+              setCurrentArea={setCurrentArea}
+            />
+            <header className="App-header">
+              {currentArea === "floors" && (
+                <FloorsPage
+                  hotelFloorData={data.record[0].hotel_data.floors}
+                  setCurrentArea={setCurrentArea}
+                  setUserRequest={setUserRequest}
+                />
+              )}
+              {currentArea === "room" && (
+                <RoomPage
+                  hotelRoomData={data}
+                  userRequest={userRequest}
+                  setCurrentArea={setCurrentArea}
+                  setUserRequest={setUserRequest}
+                />
+              )}
+              {currentArea === "tasks" && <div>Hello world</div>}
+              {currentArea === "roles" && <div>Hello world</div>}
+            </header>
+            <HeaderArea
+              currentArea={currentArea}
+              setCurrentArea={setCurrentArea}
+            />
           </div>
         ) : (
           <div>now loading</div>
-        )}
-      </header>
+        ))}
     </div>
   );
 }
