@@ -8,7 +8,13 @@ function HeaderArea(props) {
     <div className="header-area">
       <div class="header-container">
         <div class="header-item">
-          <button onClick={() => {}}>||||</button>
+          <button
+            onClick={() => {
+              setCurrentArea("floors");
+            }}
+          >
+            ||||
+          </button>
         </div>
         <div class="header-item">
           <div>Current Area</div>

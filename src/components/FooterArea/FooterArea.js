@@ -7,7 +7,13 @@ function FooterArea(props) {
   return (
     <div class="footer-container">
       <div class="footer-item">
-        <button onClick={() => {}}>||||</button>
+        <button
+          onClick={() => {
+            setCurrentArea("floors");
+          }}
+        >
+          ||||
+        </button>
       </div>
       <div class="footer-item">
         <div>Current Area</div>
