@@ -1,10 +1,10 @@
-.header-area {
+.footer-area {
   background-color: #282c34;
   color: white;
   min-height: 12.5vh;
   top: 0;
 }
-.header-container {
+.footer-container {
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@
   grid-gap: 20px; /* Gap between grid items */
 }
 
-.header-item {
+.footer-item {
   padding: 20px;
   text-align: center;
 }

@@ -6,6 +6,7 @@ import hotelGetExample from "./JSON/hotelGetExample.json";
 import { fetchData } from "./Tools/Utils";
 import RoomPage from "./components/RoomPage/RoomPage";
 import HeaderArea from "./components/HeaderArea/HeaderArea";
+import FooterArea from "./components/FooterArea/FooterArea";
 
 function App() {
   //Keep in dev unless wanting to test REST API
@@ -35,7 +36,7 @@ function App() {
   return (
     <div className="App">
       {currentArea === "login" && (
-        <header className="App-header">
+        <header className="App-login">
           <UserLogIn
             setCurrentArea={setCurrentArea}
             setIsUserLogedIn={setIsUserLogedIn}
@@ -50,29 +51,30 @@ function App() {
               currentArea={currentArea}
               setCurrentArea={setCurrentArea}
             />
-            <header className="App-header">
-              {currentArea === "floors" && (
-                <FloorsPage
-                  hotelFloorData={data.record[0].hotel_data.floors}
-                  setCurrentArea={setCurrentArea}
-                  setUserRequest={setUserRequest}
-                />
-              )}
-              {currentArea === "room" && (
-                <RoomPage
-                  hotelRoomData={data}
-                  userRequest={userRequest}
-                  setCurrentArea={setCurrentArea}
-                  setUserRequest={setUserRequest}
-                />
-              )}
-              {currentArea === "tasks" && <div>Hello world</div>}
-              {currentArea === "roles" && <div>Hello world</div>}
-            </header>
-            <HeaderArea
-              currentArea={currentArea}
-              setCurrentArea={setCurrentArea}
-            />
+            <div className="main-area-container">
+              <header className="App-header">
+                {currentArea === "floors" && (
+                  <FloorsPage
+                    hotelFloorData={data.record[0].hotel_data.floors}
+                    setCurrentArea={setCurrentArea}
+                    setUserRequest={setUserRequest}
+                  />
+                )}
+                {currentArea === "room" && (
+                  <RoomPage
+                    hotelRoomData={data}
+                    userRequest={userRequest}
+                    setCurrentArea={setCurrentArea}
+                    setUserRequest={setUserRequest}
+                  />
+                )}
+                {currentArea === "tasks" && <div>Hello world</div>}
+                {currentArea === "roles" && <div>Hello world</div>}
+              </header>
+            </div>
+            <div className="footer-area">
+              <FooterArea />
+            </div>
           </div>
         ) : (
           <div>now loading</div>
