@@ -2,6 +2,7 @@ import React from "react";
 import "./FooterArea.css";
 
 function FooterArea(props) {
+  // eslint-disable-next-line
   var { currentArea, setCurrentArea } = props;
   return (
     <div class="footer-container">

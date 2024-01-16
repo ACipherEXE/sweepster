@@ -2,6 +2,7 @@ import React from "react";
 import "./HeaderArea.css";
 
 function HeaderArea(props) {
+  // eslint-disable-next-line
   var { currentArea, setCurrentArea } = props;
   return (
     <div className="header-area">
