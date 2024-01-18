@@ -8,11 +8,13 @@ function FloorsPage(props) {
     <>
       {hotelFloorData.map((floor) => {
         return (
-          <FloorDropdown
-            floorData={floor}
-            setCurrentArea={setCurrentArea}
-            setUserRequest={setUserRequest}
-          />
+          <div>
+            <FloorDropdown
+              floorData={floor}
+              setCurrentArea={setCurrentArea}
+              setUserRequest={setUserRequest}
+            />
+          </div>
         );
       })}
     </>

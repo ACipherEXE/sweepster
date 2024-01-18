@@ -73,7 +73,10 @@ function App() {
               </header>
             </div>
             <div className="footer-area">
-              <FooterArea />
+              <FooterArea
+                currentArea={currentArea}
+                setCurrentArea={setCurrentArea}
+              />
             </div>
           </div>
         ) : (

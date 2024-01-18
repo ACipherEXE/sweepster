@@ -1,5 +1,5 @@
 .footer-area {
-  background-color: #282c34;
+  background-color: #1a1a1a;
   color: white;
   min-height: 12.5vh;
   top: 0;
@@ -8,7 +8,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #282c34;
+  background-color: #1a1a1a;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr; /* Three equal-width columns */
   grid-gap: 20px; /* Gap between grid items */

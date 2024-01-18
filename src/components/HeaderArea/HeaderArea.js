@@ -6,8 +6,8 @@ function HeaderArea(props) {
   var { currentArea, setCurrentArea } = props;
   return (
     <div className="header-area">
-      <div class="header-container">
-        <div class="header-item">
+      <div className="header-container">
+        <div className="header-item">
           <button
             className="header-button"
             onClick={() => {
@@ -19,10 +19,10 @@ function HeaderArea(props) {
             </svg>
           </button>
         </div>
-        <div class="header-item">
+        <div className="header-item">
           <div>{currentArea ? currentArea : ""}</div>
         </div>
-        <div class="header-item">
+        <div className="header-item">
           <button>profile</button>
         </div>
       </div>
