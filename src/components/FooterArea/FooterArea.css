@@ -18,3 +18,42 @@
   padding: 20px;
   text-align: center;
 }
+
+.footer-home-button {
+  background-color: transparent;
+  border: 0;
+}
+
+.footer-home-icon {
+  color: #ffffff;
+  fill: #ffffff;
+  font-size: 16px;
+  top: 618px;
+  left: 70px;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+}
+
+.new-multi-task-button {
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  top: 607px;
+  left: 171px;
+  width: 33px;
+  height: 33px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 30px;
+  color: #ffffff;
+  background-color: #1e90ff;
+  outline: none;
+}
+.new-multi-task-button-icon {
+  color: #ffffff;
+  fill: #ffffff;
+  width: 14px;
+  height: 30px;
+  font-size: 14px;
+}

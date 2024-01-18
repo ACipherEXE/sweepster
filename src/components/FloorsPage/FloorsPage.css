@@ -1,3 +1,6 @@
+.floor-container {
+  background-color: #333333;
+}
 .floor-card {
   position: relative; /* Changed to relative */
   top: 0; /* Changed to 0, you can adjust as needed */
