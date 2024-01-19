@@ -50,5 +50,5 @@
 }
 
 .main-area-container {
-  overflow: scroll;
+  overflow: hidden;
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import "./FooterArea.css";
+import { PageType } from "../../Tools/Types";
 
 function FooterArea(props) {
   // eslint-disable-next-line
@@ -10,7 +11,7 @@ function FooterArea(props) {
         <button
           className="footer-home-button"
           onClick={() => {
-            setCurrentArea("floors");
+            setCurrentArea(PageType.floor);
           }}
         >
           <svg className="footer-home-icon" viewBox="0 0 576 512">

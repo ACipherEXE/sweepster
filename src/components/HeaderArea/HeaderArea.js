@@ -1,5 +1,6 @@
 import React from "react";
 import "./HeaderArea.css";
+import { PageType } from "../../Tools/Types";
 
 function HeaderArea(props) {
   // eslint-disable-next-line
@@ -11,7 +12,7 @@ function HeaderArea(props) {
           <button
             className="header-button"
             onClick={() => {
-              setCurrentArea("floors");
+              setCurrentArea(PageType.floor);
             }}
           >
             <svg className="header-icon" viewBox="0 0 448 512">

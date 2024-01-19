@@ -1,5 +1,6 @@
 import React from "react";
 import "./UserLogIn.css";
+import { PageType } from "../Tools/Types";
 
 function UserLogIn(props) {
   // eslint-disable-next-line
@@ -12,7 +13,7 @@ function UserLogIn(props) {
       <button
         className="login-button"
         onClick={() => {
-          setCurrentArea("floors");
+          setCurrentArea(PageType.floor);
           setIsUserLogedIn(true);
         }}
       >

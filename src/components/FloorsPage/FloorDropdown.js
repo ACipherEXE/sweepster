@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./FloorsPage.css";
+import { PageType } from "../../Tools/Types";
 
 function FloorDropdown(props) {
   var { floorData, setCurrentArea, setUserRequest } = props;
@@ -30,7 +31,7 @@ function FloorDropdown(props) {
                 <div
                   className="room-button"
                   onClick={() => {
-                    setCurrentArea("room");
+                    setCurrentArea(PageType.room);
                     setUserRequest({ floor: floorData.floor, room: room.room });
                   }}
                 >

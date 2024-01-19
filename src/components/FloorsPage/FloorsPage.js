@@ -1,7 +1,11 @@
 import React from "react";
 import "./FloorsPage.css";
 import FloorDropdown from "./FloorDropdown";
-
+/**
+ *
+ * @param {*} props
+ * @returns
+ */
 function FloorsPage(props) {
   var { hotelFloorData, setCurrentArea, setUserRequest } = props;
   return (

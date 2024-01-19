@@ -7,11 +7,11 @@ import { fetchData } from "./Tools/Utils";
 import RoomPage from "./components/RoomPage/RoomPage";
 import HeaderArea from "./components/HeaderArea/HeaderArea";
 import FooterArea from "./components/FooterArea/FooterArea";
-
+import { PageType } from "./Tools/Types";
 function App() {
   //Keep in dev unless wanting to test REST API
   const enviroment = "dev";
-  const [currentArea, setCurrentArea] = useState("login");
+  const [currentArea, setCurrentArea] = useState(PageType.login);
   // eslint-disable-next-line
   const [isUserLogedIn, setIsUserLogedIn] = useState(false);
   const [userRequest, setUserRequest] = useState(null);
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div className="App">
-      {currentArea === "login" && (
+      {currentArea === PageType.login && (
         <header className="App-login">
           <UserLogIn
             setCurrentArea={setCurrentArea}
@@ -53,14 +53,14 @@ function App() {
             />
             <div className="main-area-container">
               <header className="App-header">
-                {currentArea === "floors" && (
+                {currentArea === PageType.floor && (
                   <FloorsPage
                     hotelFloorData={data.record[0].hotel_data.floors}
                     setCurrentArea={setCurrentArea}
                     setUserRequest={setUserRequest}
                   />
                 )}
-                {currentArea === "room" && (
+                {currentArea === PageType.room && (
                   <RoomPage
                     hotelRoomData={data}
                     userRequest={userRequest}
