@@ -10,6 +10,7 @@ import { getfloors } from "../../Tools/Utils";
  */
 function FloorsPage(props) {
   var { hotelData, hotelNumber, setCurrentArea, setUserRequest } = props;
+  // eslint-disable-next-line
   const [hotelFloors, setHotelFloors] = useState(
     getfloors(hotelData, hotelNumber)
   );
