@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import FloorsPage from "./components/FloorsPage/FloorsPage";
 import UserLogIn from "./components/UserLogIn";
+// eslint-disable-next-line
 import hotelGetExample from "./JSON/hotelGetExample.json";
 import hotelExample from "./JSON/hotelExample.json";
 import { fetchData } from "./Tools/Utils";
@@ -9,9 +10,10 @@ import RoomPage from "./components/RoomPage/RoomPage";
 import HeaderArea from "./components/HeaderArea/HeaderArea";
 import FooterArea from "./components/FooterArea/FooterArea";
 import { PageType } from "./Tools/Types";
+import { fetchDataInRender } from "./Tools/DatabaseCalls";
 function App() {
   //Keep in dev unless wanting to test REST API
-  const enviroment = "dev";
+  const enviroment = "prod";
   const [currentArea, setCurrentArea] = useState(PageType.login);
   // eslint-disable-next-line
   const [isUserLogedIn, setIsUserLogedIn] = useState(false);
@@ -20,7 +22,7 @@ function App() {
   useEffect(() => {
     if (isUserLogedIn) {
       if (enviroment === "prod") {
-        fetchData()
+        fetchDataInRender()
           .then((data) => {
             //Avoid using api while test and building
             setData(data);
@@ -61,7 +63,7 @@ function App() {
                 {currentArea === PageType.floor && (
                   <FloorsPage
                     hotelData={data}
-                    hotelNumber={"abc000"}
+                    hotelNumber={"abc69"}
                     setCurrentArea={setCurrentArea}
                     setUserRequest={setUserRequest}
                   />
@@ -69,7 +71,7 @@ function App() {
                 {currentArea === PageType.room && (
                   <RoomPage
                     hotelData={data}
-                    hotelNumber={"abc000"}
+                    hotelNumber={"abc69"}
                     userRequest={userRequest}
                     setCurrentArea={setCurrentArea}
                     setUserRequest={setUserRequest}
