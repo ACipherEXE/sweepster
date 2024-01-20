@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./FloorsPage.css";
 import FloorDropdown from "./FloorDropdown";
+import { getfloors } from "../../Tools/Utils";
+
 /**
  *
  * @param {*} props
  * @returns
  */
 function FloorsPage(props) {
-  var { hotelFloorData, setCurrentArea, setUserRequest } = props;
+  var { hotelData, hotelNumber, setCurrentArea, setUserRequest } = props;
+  const [hotelFloors, setHotelFloors] = useState(
+    getfloors(hotelData, hotelNumber)
+  );
   return (
     <>
-      {hotelFloorData.map((floor) => {
+      {hotelFloors.map((floor) => {
         return (
           <div>
             <FloorDropdown

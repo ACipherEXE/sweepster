@@ -5,13 +5,14 @@ import { getSpecificRoomTasks } from "../../Tools/Utils";
 
 function RoomPage(props) {
   // eslint-disable-next-line
-  var { hotelRoomData, userRequest, setCurrentArea, setUserRequest } = props;
-  //   console.log(hotelRoomData);
+  var { hotelData, hotelNumber, userRequest, setCurrentArea, setUserRequest } =
+    props;
+
   const [taskComplited, setTaskComplited] = useState(null);
   const [roomData, setRoomData] = useState(
     getSpecificRoomTasks(
-      hotelRoomData,
-      "abc000",
+      hotelData,
+      hotelNumber,
       userRequest.floor,
       userRequest.room
     )

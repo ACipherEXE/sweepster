@@ -3,6 +3,7 @@ import "./App.css";
 import FloorsPage from "./components/FloorsPage/FloorsPage";
 import UserLogIn from "./components/UserLogIn";
 import hotelGetExample from "./JSON/hotelGetExample.json";
+import hotelExample from "./JSON/hotelExample.json";
 import { fetchData } from "./Tools/Utils";
 import RoomPage from "./components/RoomPage/RoomPage";
 import HeaderArea from "./components/HeaderArea/HeaderArea";
@@ -28,7 +29,7 @@ function App() {
             console.error("Error:", error);
           });
       } else {
-        setData(hotelGetExample);
+        setData(hotelExample);
       }
     }
   }, [isUserLogedIn]);
@@ -48,21 +49,27 @@ function App() {
         (data !== null ? (
           <div>
             <HeaderArea
-              currentArea={currentArea}
+              currentArea={
+                currentArea === PageType.room
+                  ? currentArea + " " + userRequest.room
+                  : currentArea
+              }
               setCurrentArea={setCurrentArea}
             />
             <div className="main-area-container">
               <header className="App-header">
                 {currentArea === PageType.floor && (
                   <FloorsPage
-                    hotelFloorData={data.record[0].hotel_data.floors}
+                    hotelData={data}
+                    hotelNumber={"abc000"}
                     setCurrentArea={setCurrentArea}
                     setUserRequest={setUserRequest}
                   />
                 )}
                 {currentArea === PageType.room && (
                   <RoomPage
-                    hotelRoomData={data}
+                    hotelData={data}
+                    hotelNumber={"abc000"}
                     userRequest={userRequest}
                     setCurrentArea={setCurrentArea}
                     setUserRequest={setUserRequest}

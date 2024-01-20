@@ -62,7 +62,7 @@ export const fetchData = async () => {
 };
 
 export function getSpecificRoom(hotelData, hotelNumber, floor, room) {
-  const hotel = hotelData.record.find((h) => h.Hotel_Number === hotelNumber);
+  const hotel = hotelData.find((h) => h.Hotel_Number === hotelNumber);
 
   if (hotel) {
     const targetFloor = hotel.hotel_data.floors.find((f) => f.floor === floor);
@@ -84,8 +84,10 @@ export function getSpecificRoom(hotelData, hotelNumber, floor, room) {
 
   return null;
 }
+
 export function getSpecificRoomTasks(hotelData, hotelNumber, floor, room) {
-  const hotel = hotelData.record.find((h) => h.Hotel_Number === hotelNumber);
+  console.log(hotelData);
+  const hotel = hotelData.find((h) => h.Hotel_Number === hotelNumber);
 
   if (hotel) {
     const targetFloor = hotel.hotel_data.floors.find((f) => f.floor === floor);
@@ -102,13 +104,13 @@ export function getSpecificRoomTasks(hotelData, hotelNumber, floor, room) {
       console.log(`Floor "${floor}" not found.`);
     }
   } else {
-    console.log(`Hotel "${hotelNumber}" not found.`);
+    console.log(`Hotel "${hotelNumber}" tasks not found.`);
   }
 
   return null;
 }
 export function getSpecificFloor(hotelData, hotelNumber, floor) {
-  const hotel = hotelData.record.find((h) => h.Hotel_Number === hotelNumber);
+  const hotel = hotelData.find((h) => h.Hotel_Number === hotelNumber);
 
   if (hotel) {
     return hotel.hotel_data.floors.find((f) => f.floor === floor);
@@ -119,18 +121,18 @@ export function getSpecificFloor(hotelData, hotelNumber, floor) {
   return null;
 }
 export function getfloors(hotelData, hotelNumber) {
-  const hotel = hotelData.record.find((h) => h.Hotel_Number === hotelNumber);
+  const hotel = hotelData.find((h) => h.Hotel_Number === hotelNumber);
 
   if (hotel.hotel_data.floors) {
     return hotel.hotel_data.floors;
   } else {
-    console.log(`This hotel does not have floors`);
+    console.log(`This hotel "${hotelNumber}" does not have floors`);
   }
 
   return null;
 }
 export function getHotelData(hotelData, hotelNumber) {
-  const hotel = hotelData.record.find((h) => h.Hotel_Number === hotelNumber);
+  const hotel = hotelData.find((h) => h.Hotel_Number === hotelNumber);
 
   if (hotel) {
     return hotel;

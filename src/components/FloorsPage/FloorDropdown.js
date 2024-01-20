@@ -5,7 +5,7 @@ import { PageType } from "../../Tools/Types";
 function FloorDropdown(props) {
   var { floorData, setCurrentArea, setUserRequest } = props;
   const [isFloorCardOpen, setIsFloorCardOpen] = useState(false);
-
+  console.log(floorData);
   return (
     <>
       <div className="floor-container">
@@ -29,7 +29,11 @@ function FloorDropdown(props) {
             {floorData.rooms.map((room) => {
               return (
                 <div
-                  className="room-button"
+                  className={
+                    room.tasks.some((task) => task.isDone === false)
+                      ? "room-button-warning"
+                      : "room-button"
+                  }
                   onClick={() => {
                     setCurrentArea(PageType.room);
                     setUserRequest({ floor: floorData.floor, room: room.room });
