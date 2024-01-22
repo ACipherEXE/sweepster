@@ -10,11 +10,7 @@
           "rooms": [
             {
               "room": "001",
-              "tasks": [
-                { "task": "Clean up area", "isDone": false },
-                { "task": "Clean up trash", "isDone": false },
-                { "task": "Clean up bed", "isDone": false }
-              ]
+              "tasks": []
             },
             {
               "room": "002",

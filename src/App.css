@@ -25,6 +25,18 @@
   color: white;
 }
 
+.loading-header {
+  background-color: #1a1a1a;
+  min-height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
 .App-login {
   background-color: #282c34;
   min-height: 100vh;

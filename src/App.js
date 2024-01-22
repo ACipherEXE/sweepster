@@ -89,7 +89,9 @@ function App() {
             </div>
           </div>
         ) : (
-          <div>now loading</div>
+          <header className="loading-header">
+            <div>now loading</div>
+          </header>
         ))}
     </div>
   );
