@@ -5,7 +5,6 @@ import UserLogIn from "./components/UserLogIn";
 // eslint-disable-next-line
 import hotelGetExample from "./JSON/hotelGetExample.json";
 import hotelExample from "./JSON/hotelExample.json";
-import { fetchData } from "./Tools/Utils";
 import RoomPage from "./components/RoomPage/RoomPage";
 import HeaderArea from "./components/HeaderArea/HeaderArea";
 import FooterArea from "./components/FooterArea/FooterArea";
@@ -19,6 +18,26 @@ function App() {
   const [isUserLogedIn, setIsUserLogedIn] = useState(false);
   const [userRequest, setUserRequest] = useState(null);
   const [data, setData] = useState(null);
+  // eslint-disable-next-line
+  const [hotelNumber, setHotelNumber] = useState("abc69");
+
+  function getLatestData() {
+    if (isUserLogedIn) {
+      if (enviroment === "prod") {
+        console.log("TEST");
+        fetchDataInRender()
+          .then((data) => {
+            //Avoid using api while test and building
+            setData(data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      } else {
+        setData(hotelExample);
+      }
+    }
+  }
   useEffect(() => {
     if (isUserLogedIn) {
       if (enviroment === "prod") {
@@ -34,7 +53,8 @@ function App() {
         setData(hotelExample);
       }
     }
-  }, [isUserLogedIn]);
+  }, [isUserLogedIn, enviroment]);
+  setInterval(getLatestData, 1 * 60 * 1000);
 
   return (
     <div className="App">
@@ -63,7 +83,7 @@ function App() {
                 {currentArea === PageType.floor && (
                   <FloorsPage
                     hotelData={data}
-                    hotelNumber={"abc69"}
+                    hotelNumber={hotelNumber}
                     setCurrentArea={setCurrentArea}
                     setUserRequest={setUserRequest}
                   />
@@ -71,7 +91,7 @@ function App() {
                 {currentArea === PageType.room && (
                   <RoomPage
                     hotelData={data}
-                    hotelNumber={"abc69"}
+                    hotelNumber={hotelNumber}
                     userRequest={userRequest}
                     setCurrentArea={setCurrentArea}
                     setUserRequest={setUserRequest}
