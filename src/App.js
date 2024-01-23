@@ -19,26 +19,9 @@ function App() {
   // eslint-disable-next-line
   const [hotelNumber, setHotelNumber] = useState("abc69");
 
-  function getLatestData() {
-    if (isUserLogedIn) {
-      if (enviroment === "prod") {
-        console.log("TEST");
-        fetchDataInRender()
-          .then((data) => {
-            //Avoid using api while test and building
-            setData(data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      } else {
-        setData(hotelExample);
-      }
-    }
-  }
   useEffect(() => {
     if (isUserLogedIn) {
-      if (enviroment === "prod") {
+      if (enviroment === "dev") {
         fetchDataInRender()
           .then((data) => {
             //Avoid using api while test and building
@@ -52,7 +35,6 @@ function App() {
       }
     }
   }, [isUserLogedIn, enviroment]);
-  setInterval(getLatestData, 1 * 60 * 1000);
 
   return (
     <div className="App">
