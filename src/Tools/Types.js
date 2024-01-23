@@ -4,3 +4,7 @@ export const PageType = {
   room: "Room",
   roles: "Roles",
 };
+export const ApiType = {
+  prod: "https://sweepster-api.onrender.com",
+  local: "http://localhost:8181",
+};
