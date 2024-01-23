@@ -10,9 +10,8 @@ import { getfloors } from "../../Tools/Utils";
  */
 function FloorsPage(props) {
   var { hotelData, hotelNumber, setCurrentArea, setUserRequest } = props;
-  const [hotelFloors, setHotelFloors] = useState(
-    getfloors(hotelData, hotelNumber)
-  );
+  const [hotelFloors, setHotelFloors] = useState(null);
+  setHotelFloors(getfloors(hotelData, hotelNumber));
   return (
     <>
       {hotelFloors.map((floor) => {
