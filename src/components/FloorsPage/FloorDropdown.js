@@ -5,7 +5,7 @@ import { PageType } from "../../Tools/Types";
 function FloorDropdown(props) {
   var { floorData, setCurrentArea, setUserRequest } = props;
   const [isFloorCardOpen, setIsFloorCardOpen] = useState(false);
-  console.log(floorData);
+
   return (
     <>
       <div className="floor-container">

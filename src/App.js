@@ -5,23 +5,27 @@ import UserLogIn from "./components/UserLogIn";
 // eslint-disable-next-line
 import hotelGetExample from "./JSON/hotelGetExample.json";
 import hotelExample from "./JSON/hotelExample.json";
-import { fetchData } from "./Tools/Utils";
 import RoomPage from "./components/RoomPage/RoomPage";
 import HeaderArea from "./components/HeaderArea/HeaderArea";
 import FooterArea from "./components/FooterArea/FooterArea";
 import { PageType } from "./Tools/Types";
+import { fetchDataInRender } from "./Tools/DatabaseCalls";
 function App() {
   //Keep in dev unless wanting to test REST API
-  const enviroment = "dev";
+  const enviroment = "prod";
   const [currentArea, setCurrentArea] = useState(PageType.login);
   // eslint-disable-next-line
   const [isUserLogedIn, setIsUserLogedIn] = useState(false);
   const [userRequest, setUserRequest] = useState(null);
   const [data, setData] = useState(null);
-  useEffect(() => {
+  // eslint-disable-next-line
+  const [hotelNumber, setHotelNumber] = useState("abc69");
+
+  function getLatestData() {
     if (isUserLogedIn) {
       if (enviroment === "prod") {
-        fetchData()
+        console.log("TEST");
+        fetchDataInRender()
           .then((data) => {
             //Avoid using api while test and building
             setData(data);
@@ -33,7 +37,24 @@ function App() {
         setData(hotelExample);
       }
     }
-  }, [isUserLogedIn]);
+  }
+  useEffect(() => {
+    if (isUserLogedIn) {
+      if (enviroment === "prod") {
+        fetchDataInRender()
+          .then((data) => {
+            //Avoid using api while test and building
+            setData(data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      } else {
+        setData(hotelExample);
+      }
+    }
+  }, [isUserLogedIn, enviroment]);
+  setInterval(getLatestData, 1 * 60 * 1000);
 
   return (
     <div className="App">
@@ -62,7 +83,7 @@ function App() {
                 {currentArea === PageType.floor && (
                   <FloorsPage
                     hotelData={data}
-                    hotelNumber={"abc000"}
+                    hotelNumber={hotelNumber}
                     setCurrentArea={setCurrentArea}
                     setUserRequest={setUserRequest}
                   />
@@ -70,7 +91,7 @@ function App() {
                 {currentArea === PageType.room && (
                   <RoomPage
                     hotelData={data}
-                    hotelNumber={"abc000"}
+                    hotelNumber={hotelNumber}
                     userRequest={userRequest}
                     setCurrentArea={setCurrentArea}
                     setUserRequest={setUserRequest}
@@ -88,7 +109,9 @@ function App() {
             </div>
           </div>
         ) : (
-          <div>now loading</div>
+          <header className="loading-header">
+            <div>now loading</div>
+          </header>
         ))}
     </div>
   );
