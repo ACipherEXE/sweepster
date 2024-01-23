@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     if (isUserLogedIn) {
-      if (enviroment === "dev") {
+      if (enviroment === "prod") {
         fetchDataInRender()
           .then((data) => {
             //Avoid using api while test and building
