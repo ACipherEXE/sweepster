@@ -1,12 +1,11 @@
 .editor-tool-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  gap: 35px;
   margin-bottom: 15px;
 }
 
 .editor-tool-item {
-  border: 1px solid #ccc;
   padding: 5px;
 }
 .editor-all-button {

@@ -11,7 +11,7 @@ import { fetchDataInRender } from "./Tools/DatabaseCalls";
 import EditorTool from "./components/EditorTool/EditorTool";
 function App() {
   //Keep in dev unless wanting to test REST API
-  const enviroment = "dev";
+  const enviroment = "prod";
   const [currentArea, setCurrentArea] = useState(PageType.login);
   // eslint-disable-next-line
   const [isUserLogedIn, setIsUserLogedIn] = useState(false);
