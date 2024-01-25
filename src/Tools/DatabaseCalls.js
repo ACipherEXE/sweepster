@@ -1,8 +1,10 @@
 import { getHotelData } from "../Tools/Utils";
 import { ApiType } from "./Types";
-var apiType = ApiType.prod;
+var apiType = ApiType.local;
 export const fetchDataInRender = async () => {
-  console.warn("You are in PROD");
+  console.warn(
+    apiType === ApiType.prod ? "You are in PROD" : "You are in LOCAL"
+  );
   var myHeaders = new Headers();
   myHeaders.append("x-master-key", "your_master_key");
 
