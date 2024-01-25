@@ -86,7 +86,6 @@ export function getSpecificRoom(hotelData, hotelNumber, floor, room) {
 }
 
 export function getSpecificRoomTasks(hotelData, hotelNumber, floor, room) {
-  console.log(hotelData);
   const hotel = hotelData.find((h) => h.Hotel_Number === hotelNumber);
 
   if (hotel) {
