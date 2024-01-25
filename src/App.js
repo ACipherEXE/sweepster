@@ -10,6 +10,7 @@ import HeaderArea from "./components/HeaderArea/HeaderArea";
 import FooterArea from "./components/FooterArea/FooterArea";
 import { PageType } from "./Tools/Types";
 import { fetchDataInRender } from "./Tools/DatabaseCalls";
+import EditorTool from "./components/EditorTool/EditorTool";
 function App() {
   //Keep in dev unless wanting to test REST API
   const enviroment = "prod";
@@ -62,6 +63,7 @@ function App() {
             />
             <div className="main-area-container">
               <header className="App-header">
+                <EditorTool />
                 {currentArea === PageType.floor && (
                   <FloorsPage
                     hotelData={data}

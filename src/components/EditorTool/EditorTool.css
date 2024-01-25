@@ -1,0 +1,65 @@
+.editor-tool-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+  margin-bottom: 15px;
+}
+
+.editor-tool-item {
+  padding: 5px;
+}
+.editor-all-button {
+  cursor: pointer;
+  top: 138px;
+  left: 24px;
+  width: 69px;
+  height: 32px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 37px;
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+}
+.editor-edit-button {
+  cursor: pointer;
+  top: 138px;
+  left: 102px;
+  width: 69px;
+  height: 32px;
+  padding: 0px 8px;
+  margin-left: 10px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 37px;
+  background-color: #7f7f7f;
+  color: #000000;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+}
+.editor-reset-button {
+  cursor: pointer;
+  top: 138px;
+  left: 221px;
+  width: 134px;
+  height: 32px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 37px;
+  background-color: #bc62ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+}

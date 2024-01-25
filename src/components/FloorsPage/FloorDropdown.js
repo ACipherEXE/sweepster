@@ -1,14 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./FloorsPage.css";
 import { PageType } from "../../Tools/Types";
-
+/**
+ *
+ * @param {JSON} floorData - Pass the one element of the whole floors structure.
+ * @param {string} setCurrentArea - Where you want to send the user after they click a room.
+ * @param {JSON} setUserRequest - Pass here a JSON of the room the user pressed on. EX: { floor: 1, room: 101 }
+ * @returns
+ */
 function FloorDropdown(props) {
   var { floorData, setCurrentArea, setUserRequest } = props;
   const [isFloorCardOpen, setIsFloorCardOpen] = useState(false);
+  console.log(JSON.stringify(floorData));
+  const [IsThereATask] = useState(hasTask(floorData));
 
+  //THis function checks if there are tasks to do in this floor.
+  function hasTask(floorData) {
+    for (const room of floorData.rooms) {
+      if (room.tasks && room.tasks.some((task) => !task.isDone)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  // Triggers if there is a change in the floorData.
+  useEffect(() => {
+    if (floorData) {
+      hasTask(floorData);
+    }
+  }, [floorData]);
   return (
     <>
-      <div className="floor-container">
+      <div
+        className={
+          IsThereATask ? "floor-container-has-task" : "floor-container"
+        }
+      >
         <div
           className="floor-card"
           onClick={() => setIsFloorCardOpen(!isFloorCardOpen)}
