@@ -11,7 +11,6 @@ import { PageType } from "../../Tools/Types";
 function FloorDropdown(props) {
   var { floorData, setCurrentArea, setUserRequest } = props;
   const [isFloorCardOpen, setIsFloorCardOpen] = useState(false);
-  console.log(JSON.stringify(floorData));
   const [IsThereATask] = useState(hasTask(floorData));
 
   //THis function checks if there are tasks to do in this floor.
