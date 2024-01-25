@@ -19,10 +19,6 @@ function UserLogIn(props) {
       >
         Sign in with Email
       </button>
-      <div>
-        <button className="google-login-button">Google</button>
-        <button className="apple-login-button">Apple ID</button>
-      </div>
     </div>
   );
 }

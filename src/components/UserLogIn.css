@@ -31,44 +31,7 @@
   outline: none;
   margin-bottom: 50px;
 }
-.apple-login-button {
-  cursor: pointer;
-  top: 483px;
-  left: 27px;
-  width: 151px;
-  height: 48px;
-  padding: 0px 8px;
-  border: 1px solid #4f4f4f;
-  box-sizing: border-box;
-  border-radius: 25px;
-  background-color: #1a1a1a;
-  color: #ffffff;
-  font-size: 14px;
-  font-family: "Inter";
-  font-weight: 700;
-  line-height: 16px;
-  outline: none;
-  margin-left: 10px;
-}
-.google-login-button {
-  cursor: pointer;
-  top: 483px;
-  left: 27px;
-  width: 151px;
-  height: 48px;
-  padding: 0px 8px;
-  border: 1px solid #4f4f4f;
-  box-sizing: border-box;
-  border-radius: 25px;
-  background-color: #1a1a1a;
-  color: #ffffff;
-  font-size: 14px;
-  font-family: "Inter";
-  font-weight: 700;
-  line-height: 16px;
-  outline: none;
-  margin-right: 10px;
-}
+
 .login-image {
   width: var(--image-size); /* Use the variable for the width */
   height: var(--image-size);
