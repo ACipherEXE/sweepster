@@ -5,7 +5,10 @@ import { getfloors } from "../../Tools/Utils";
 
 /**
  *
- * @param {*} props
+ * @param {JSON} hotelData - Pass the whole JSON from the server
+ * @param {String} hotelNumber - Pass the hotelNumber the user is working at
+ * @param {string} setCurrentArea - Where you want to send the user after they click a room.
+ * @param {JSON} setUserRequest - Pass here a JSON of the room the user pressed on. EX: { floor: 1, room: 101 }
  * @returns
  */
 function FloorsPage(props) {
@@ -14,6 +17,7 @@ function FloorsPage(props) {
   const [hotelFloors, setHotelFloors] = useState(
     getfloors(hotelData, hotelNumber)
   );
+
   return (
     <>
       {hotelFloors.map((floor) => {
