@@ -17,6 +17,9 @@ function App() {
   const [currentArea, setCurrentArea] = useState(PageType.login);
   // eslint-disable-next-line
   const [isUserLogedIn, setIsUserLogedIn] = useState(false);
+  // Used to tell components that they should be in edit mode
+  const [editMode, setEditMode] = useState(false);
+  // User request is set in the floors component
   const [userRequest, setUserRequest] = useState(null);
   const [data, setData] = useState(null);
   // eslint-disable-next-line
@@ -63,7 +66,12 @@ function App() {
             />
             <div className="main-area-container">
               <header className="App-header">
-                <EditorTool />
+                <EditorTool
+                  currentArea={currentArea}
+                  editMode={editMode}
+                  hotelNumber={hotelNumber}
+                  setEditMode={setEditMode}
+                />
                 {currentArea === PageType.floor && (
                   <FloorsPage
                     hotelData={data}
@@ -77,6 +85,7 @@ function App() {
                     hotelData={data}
                     hotelNumber={hotelNumber}
                     userRequest={userRequest}
+                    editMode={editMode}
                     setCurrentArea={setCurrentArea}
                     setUserRequest={setUserRequest}
                   />
