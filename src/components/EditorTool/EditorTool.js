@@ -38,7 +38,8 @@ function EditorTool(props) {
               )}
             </div>
             {/**
-             * TODO: Make this change whe we are in the  user management page
+             * TODO: Make this change when we are in the  user management page
+             * TODO: Implement visible and invisible logo.
              */}
             {editMode ? (
               <div className="hotel-id-container">
@@ -49,7 +50,6 @@ function EditorTool(props) {
                   <div className="editor-hotel-id">
                     {isHotelNumberVisible ? hotelNumber : "Hotel ID"}
                   </div>
-                  <div className="editor-hotel-id-icon"></div>
                 </div>
               </div>
             ) : (
