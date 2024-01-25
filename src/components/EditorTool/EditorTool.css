@@ -1,10 +1,18 @@
 .editor-tool-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 35px;
+  gap: 30px;
   margin-bottom: 15px;
 }
-
+.hotel-id-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 15px;
+}
+.hotel-id-item {
+  padding: 5px;
+}
 .editor-tool-item {
   padding: 5px;
 }
@@ -62,4 +70,31 @@
   font-weight: 700;
   line-height: 16px;
   outline: none;
+}
+.editor-edit-button-active {
+  cursor: pointer;
+  top: 138px;
+  left: 100px;
+  width: 76px;
+  height: 32px;
+  padding: 0px 8px;
+  margin-left: 10px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 37px;
+  background-color: #4cd964;
+  color: #000000;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+}
+.editor-hotel-id {
+  color: #ffffff;
+  font-size: 16px;
+  font-family: "Inter";
+  font-weight: 600;
+  line-height: 19px;
+  text-align: center;
 }
