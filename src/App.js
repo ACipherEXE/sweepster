@@ -10,34 +10,21 @@ import HeaderArea from "./components/HeaderArea/HeaderArea";
 import FooterArea from "./components/FooterArea/FooterArea";
 import { PageType } from "./Tools/Types";
 import { fetchDataInRender } from "./Tools/DatabaseCalls";
+import EditorTool from "./components/EditorTool/EditorTool";
 function App() {
   //Keep in dev unless wanting to test REST API
   const enviroment = "prod";
   const [currentArea, setCurrentArea] = useState(PageType.login);
   // eslint-disable-next-line
   const [isUserLogedIn, setIsUserLogedIn] = useState(false);
+  // Used to tell components that they should be in edit mode
+  const [editMode, setEditMode] = useState(false);
+  // User request is set in the floors component
   const [userRequest, setUserRequest] = useState(null);
   const [data, setData] = useState(null);
   // eslint-disable-next-line
   const [hotelNumber, setHotelNumber] = useState("abc69");
 
-  function getLatestData() {
-    if (isUserLogedIn) {
-      if (enviroment === "prod") {
-        console.log("TEST");
-        fetchDataInRender()
-          .then((data) => {
-            //Avoid using api while test and building
-            setData(data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      } else {
-        setData(hotelExample);
-      }
-    }
-  }
   useEffect(() => {
     if (isUserLogedIn) {
       if (enviroment === "prod") {
@@ -54,7 +41,6 @@ function App() {
       }
     }
   }, [isUserLogedIn, enviroment]);
-  setInterval(getLatestData, 1 * 60 * 1000);
 
   return (
     <div className="App">
@@ -80,6 +66,12 @@ function App() {
             />
             <div className="main-area-container">
               <header className="App-header">
+                <EditorTool
+                  currentArea={currentArea}
+                  editMode={editMode}
+                  hotelNumber={hotelNumber}
+                  setEditMode={setEditMode}
+                />
                 {currentArea === PageType.floor && (
                   <FloorsPage
                     hotelData={data}
@@ -93,6 +85,7 @@ function App() {
                     hotelData={data}
                     hotelNumber={hotelNumber}
                     userRequest={userRequest}
+                    editMode={editMode}
                     setCurrentArea={setCurrentArea}
                     setUserRequest={setUserRequest}
                   />

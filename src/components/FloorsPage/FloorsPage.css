@@ -3,6 +3,15 @@
   border-radius: 15px;
   box-shadow: 0px 2px 10px rgba(3, 3, 3, 0.2);
 }
+.floor-container-has-task {
+  background-color: #333333;
+  border-radius: 15px;
+  box-shadow: 0px 2px 10px rgba(3, 3, 3, 0.2);
+  border-color: red;
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: 10px;
+}
 .floor-card {
   position: relative; /* Changed to relative */
   top: 0; /* Changed to 0, you can adjust as needed */
