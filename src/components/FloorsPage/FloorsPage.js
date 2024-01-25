@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./FloorsPage.css";
 import FloorDropdown from "./FloorDropdown";
 import { getfloors } from "../../Tools/Utils";
