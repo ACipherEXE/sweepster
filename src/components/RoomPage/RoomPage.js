@@ -12,6 +12,8 @@ function RoomPage(props) {
     editMode,
     setCurrentArea,
     setUserRequest,
+    setData,
+    setHasFetchedData,
   } = props;
 
   const [taskUpdated, setTaskUpdated] = useState(null);
@@ -38,16 +40,26 @@ function RoomPage(props) {
     }
     // eslint-disable-next-line
   }, [taskUpdated]);
-
+  // Its bloated but works :(
   useEffect(() => {
     if (taskEraser) {
       const taskList = roomData.filter((task) => task.task !== taskEraser.task);
-      const taskIndex = roomData.findIndex((t) => t.task === taskEraser.task);
+      const floorIndex = hotelData.hotel_data.floors.findIndex(
+        (floor) => floor.floor === userRequest.floor
+      );
+      const roomIndex = hotelData.hotel_data.floors[floorIndex].rooms.findIndex(
+        (room) => room.room === userRequest.room
+      );
+
+      hotelData.hotel_data.floors[floorIndex].rooms[roomIndex].tasks = taskList;
+      console.log(hotelData);
+      setData(hotelData);
       if (taskList) {
-        console.log(hotelData.hotel_data);
-        // updateHotelData(hotelData, hotelNumber).catch((error) => {
-        //   console.error("Error:", error);
-        // });
+        updateHotelData(hotelData, hotelNumber)
+          .then(setRoomData(taskList))
+          .catch((error) => {
+            console.error("Error:", error);
+          });
       } else {
         console.log(`Task "${taskUpdated.task}" not found.`);
       }
@@ -57,7 +69,7 @@ function RoomPage(props) {
 
   return (
     <>
-      {roomData.map((task) => {
+      {roomData?.map((task) => {
         return (
           <Roomcard
             hotelRoomTask={task.task}

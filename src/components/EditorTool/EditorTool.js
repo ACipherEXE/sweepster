@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./EditorTool.css";
 import { PageType } from "../../Tools/Types";
 /**
@@ -11,6 +11,12 @@ import { PageType } from "../../Tools/Types";
 function EditorTool(props) {
   const { currentArea, editMode, hotelNumber, setEditMode } = props;
   const [isHotelNumberVisible, setIsHotelNumberVisible] = useState(false);
+  useEffect(() => {
+    if (currentArea) {
+      setEditMode(false);
+    }
+    // eslint-disable-next-line
+  }, [currentArea]);
   return (
     <div>
       {/**

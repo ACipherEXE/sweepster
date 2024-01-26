@@ -26,6 +26,8 @@ function App() {
   const [data, setData] = useState(null);
   // eslint-disable-next-line
   const [hotelNumber, setHotelNumber] = useState("c3a7");
+  // To handle when changes happen
+  const [hasFetchedData, setHasFetchedData] = useState(false);
 
   useEffect(() => {
     if (isUserLogedIn) {
@@ -91,6 +93,7 @@ function App() {
                     editMode={editMode}
                     setCurrentArea={setCurrentArea}
                     setUserRequest={setUserRequest}
+                    setData={setData}
                   />
                 )}
                 {currentArea === "tasks" && <div>Hello world</div>}

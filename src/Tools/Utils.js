@@ -58,12 +58,12 @@ export function getSpecificRoom(hotelData, floor, room) {
 
 export function getSpecificRoomTasks(hotelData, floor, room) {
   if (hotelData) {
-    const targetFloor = hotelData.hotel_data.floors.find(
+    const targetFloor = hotelData?.hotel_data?.floors?.find(
       (f) => f.floor === floor
     );
 
     if (targetFloor) {
-      const targetRoom = targetFloor.rooms.find((r) => r.room === room);
+      const targetRoom = targetFloor.rooms?.find((r) => r.room === room);
 
       if (targetRoom) {
         return targetRoom.tasks;
@@ -81,7 +81,7 @@ export function getSpecificRoomTasks(hotelData, floor, room) {
 }
 export function getSpecificFloor(hotelData, floor) {
   if (hotelData) {
-    return hotelData.hotel_data.floors.find((f) => f.floor === floor);
+    return hotelData?.hotel_data?.floors?.find((f) => f.floor === floor);
   } else {
     console.log(`Floor "${floor}" not found.`);
   }
@@ -90,7 +90,7 @@ export function getSpecificFloor(hotelData, floor) {
 }
 export function getfloors(hotelData) {
   if (hotelData) {
-    return hotelData.hotel_data.floors;
+    return hotelData?.hotel_data?.floors;
   } else {
     console.log(`This hotel does not have floors`);
   }
