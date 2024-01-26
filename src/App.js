@@ -13,7 +13,7 @@ import { fetchDataInRender } from "./Tools/DatabaseCalls";
 import EditorTool from "./components/EditorTool/EditorTool";
 function App() {
   //Keep in dev unless wanting to test REST API
-  const enviroment = "dev";
+  const enviroment = "prod";
   // Current area the user is at. This is normally set in components.
   const [currentArea, setCurrentArea] = useState(PageType.login);
   // eslint-disable-next-line
@@ -25,14 +25,15 @@ function App() {
   const [userRequest, setUserRequest] = useState(null);
   const [data, setData] = useState(null);
   // eslint-disable-next-line
-  const [hotelNumber, setHotelNumber] = useState("abc69");
+  const [hotelNumber, setHotelNumber] = useState("c3a7");
 
   useEffect(() => {
     if (isUserLogedIn) {
-      if (enviroment === "prod") {
-        fetchDataInRender()
+      if (enviroment === "prod" && hotelNumber) {
+        fetchDataInRender(hotelNumber)
           .then((data) => {
             //Avoid using api while test and building
+            console.log("UPDATE");
             setData(data);
           })
           .catch((error) => {

@@ -58,3 +58,12 @@
   height: 1px;
   pointer-events: none;
 }
+.room-card-remove-button {
+  color: #ff3b30;
+  fill: #ff3b30;
+  font-size: 29px;
+  top: 196px;
+  left: 294px;
+  width: 29px;
+  height: 30px;
+}

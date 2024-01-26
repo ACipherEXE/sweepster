@@ -1,7 +1,7 @@
 import { getHotelData } from "../Tools/Utils";
 import { ApiType } from "./Types";
 var apiType = ApiType.local;
-export const fetchDataInRender = async () => {
+export const fetchDataInRender = async (hotelNumber) => {
   console.warn(
     apiType === ApiType.prod ? "You are in PROD" : "You are in LOCAL"
   );
@@ -15,7 +15,10 @@ export const fetchDataInRender = async () => {
   };
 
   try {
-    const response = await fetch(`${apiType}/api/hotels`, requestOptions);
+    const response = await fetch(
+      `${apiType}/api/hotels/${hotelNumber}`,
+      requestOptions
+    );
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -31,7 +34,9 @@ export const fetchDataInRender = async () => {
 
 export const updateHotelData = async (hotelData, hotelNumber) => {
   var currentHotelData = getHotelData(hotelData, hotelNumber);
-  console.warn("You are in PROD");
+  console.warn(
+    apiType === ApiType.prod ? "You are in PROD" : "You are in LOCAL"
+  );
   var myHeaders = new Headers();
   myHeaders.append("x-master-key", "your_master_key");
   myHeaders.append("Content-Type", "application/json");
@@ -51,7 +56,6 @@ export const updateHotelData = async (hotelData, hotelNumber) => {
         }
         return response.text();
       })
-      .then((result) => console.log(result))
       .catch((error) => console.error("Error:", error));
   } catch (error) {
     console.error("Error:", error);

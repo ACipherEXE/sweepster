@@ -5,41 +5,55 @@ import { getSpecificRoomTasks } from "../../Tools/Utils";
 import { updateHotelData } from "../../Tools/DatabaseCalls";
 function RoomPage(props) {
   // eslint-disable-next-line
-  var { hotelData, hotelNumber, userRequest, setCurrentArea, setUserRequest } =
-    props;
+  var {
+    hotelData,
+    hotelNumber,
+    userRequest,
+    editMode,
+    setCurrentArea,
+    setUserRequest,
+  } = props;
 
-  const [taskComplited, setTaskComplited] = useState(null);
+  const [taskUpdated, setTaskUpdated] = useState(null);
+  const [taskEraser, setTaskEraser] = useState(null);
   const [roomData, setRoomData] = useState(
-    getSpecificRoomTasks(
-      hotelData,
-      hotelNumber,
-      userRequest.floor,
-      userRequest.room
-    )
+    getSpecificRoomTasks(hotelData, userRequest.floor, userRequest.room)
   );
-
+  // note: this use effect is cursed
   useEffect(() => {
-    if (taskComplited) {
-      const task = roomData.find((t) => t.task === taskComplited.task);
+    if (taskUpdated) {
+      const task = roomData.find((t) => t.task === taskUpdated.task);
 
       if (task) {
         task.isDone = !task.isDone;
+
         setRoomData(roomData);
-        console.log(hotelData);
-        updateHotelData(hotelData, hotelNumber)
-          .then((data) => {
-            //Avoid using api while test and building
-            console.log(data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
+        console.log(roomData);
+        updateHotelData(hotelData, hotelNumber).catch((error) => {
+          console.error("Error:", error);
+        });
       } else {
-        console.log(`Task "${taskComplited.task}" not found.`);
+        console.log(`Task "${taskUpdated.task}" not found.`);
       }
     }
     // eslint-disable-next-line
-  }, [taskComplited, roomData]);
+  }, [taskUpdated]);
+
+  useEffect(() => {
+    if (taskEraser) {
+      const taskList = roomData.filter((task) => task.task !== taskEraser.task);
+      const taskIndex = roomData.findIndex((t) => t.task === taskEraser.task);
+      if (taskList) {
+        console.log(hotelData.hotel_data);
+        // updateHotelData(hotelData, hotelNumber).catch((error) => {
+        //   console.error("Error:", error);
+        // });
+      } else {
+        console.log(`Task "${taskUpdated.task}" not found.`);
+      }
+    }
+    // eslint-disable-next-line
+  }, [taskEraser]);
 
   return (
     <>
@@ -48,7 +62,9 @@ function RoomPage(props) {
           <Roomcard
             hotelRoomTask={task.task}
             taskState={task.isDone}
-            setTaskComplited={setTaskComplited}
+            editMode={editMode}
+            setTaskUpdated={setTaskUpdated}
+            setTaskEraser={setTaskEraser}
           />
         );
       })}

@@ -1,71 +1,42 @@
-/**
- * Here is where we bring functions that will be used around the app
- */
-/**
- * Used to put a single variable to pushstate
- * @param {*} variable
- * @param {*} value
- */
-export function addQueryParam(variable, value) {
-  const params = new URLSearchParams(window.location.search);
-  if (!params.has(variable)) {
-    params.append(variable, value);
-    window.history.pushState({ [variable]: value }, "", `?${params}`);
-  }
-}
+// export const fetchData = async () => {
+//   console.warn("You are in PROD");
+//   var myHeaders = new Headers();
+//   myHeaders.append(
+//     "X-Master-Key",
+//     "$2a$10$7gwEQXoNUtq1xYVezuzlGu52yskhaM8Z4VPAc8H7ZYkp2uecTgmiy"
+//   );
+//   myHeaders.append(
+//     "X-Access-Key",
+//     "$2a$10$dIXfCIH69HlYoMR0CRgaNuCexeafEoLT4xN7ZEdGpQo6/Pl3QHu8i"
+//   );
+//   var requestOptions = {
+//     method: "GET",
+//     headers: myHeaders,
+//     redirect: "follow",
+//   };
+//   try {
+//     console.warn("You are in PROD");
+//     // Fetch data from an API (replace 'apiEndpoint' with your actual API endpoint)
+//     const response = await fetch(
+//       "https://api.jsonbin.io/v3/b/65a15f611f5677401f1bd031",
+//       requestOptions
+//     )
+//       .then((result) => {
+//         return result;
+//       })
+//       .catch((error) => console.log("error", error));
+//     const result = await response.json();
+//     return result;
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//   }
+// };
 
-export function addFloorAndRoom(floor, room) {
-  const params = new URLSearchParams(window.location.search);
-  if (
-    !params.has("floor") ||
-    params.get("floor") !== floor ||
-    !params.has("room") ||
-    params.get("room") !== room
-  ) {
-    params.append("floor", floor);
-    params.append("room", room);
-    window.history.pushState({ floor: floor, room: room }, "", `?${params}`);
-  }
-}
-export const fetchData = async () => {
-  console.warn("You are in PROD");
-  var myHeaders = new Headers();
-  myHeaders.append(
-    "X-Master-Key",
-    "$2a$10$7gwEQXoNUtq1xYVezuzlGu52yskhaM8Z4VPAc8H7ZYkp2uecTgmiy"
-  );
-  myHeaders.append(
-    "X-Access-Key",
-    "$2a$10$dIXfCIH69HlYoMR0CRgaNuCexeafEoLT4xN7ZEdGpQo6/Pl3QHu8i"
-  );
-  var requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow",
-  };
-  try {
-    console.warn("You are in PROD");
-    // Fetch data from an API (replace 'apiEndpoint' with your actual API endpoint)
-    const response = await fetch(
-      "https://api.jsonbin.io/v3/b/65a15f611f5677401f1bd031",
-      requestOptions
-    )
-      .then((result) => {
-        return result;
-      })
-      .catch((error) => console.log("error", error));
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-};
-
-export function getSpecificRoom(hotelData, hotelNumber, floor, room) {
-  const hotel = hotelData.find((h) => h.Hotel_Number === hotelNumber);
-
-  if (hotel) {
-    const targetFloor = hotel.hotel_data.floors.find((f) => f.floor === floor);
+export function getSpecificRoom(hotelData, floor, room) {
+  if (hotelData) {
+    const targetFloor = hotelData.hotel_data.floors.find(
+      (f) => f.floor === floor
+    );
 
     if (targetFloor) {
       const targetRoom = targetFloor.rooms.find((r) => r.room === room);
@@ -79,17 +50,17 @@ export function getSpecificRoom(hotelData, hotelNumber, floor, room) {
       console.log(`Floor "${floor}" not found.`);
     }
   } else {
-    console.log(`Hotel "${hotelNumber}" not found.`);
+    console.log(`Hotel  not found.`);
   }
 
   return null;
 }
 
-export function getSpecificRoomTasks(hotelData, hotelNumber, floor, room) {
-  const hotel = hotelData.find((h) => h.Hotel_Number === hotelNumber);
-
-  if (hotel) {
-    const targetFloor = hotel.hotel_data.floors.find((f) => f.floor === floor);
+export function getSpecificRoomTasks(hotelData, floor, room) {
+  if (hotelData) {
+    const targetFloor = hotelData.hotel_data.floors.find(
+      (f) => f.floor === floor
+    );
 
     if (targetFloor) {
       const targetRoom = targetFloor.rooms.find((r) => r.room === room);
@@ -103,40 +74,34 @@ export function getSpecificRoomTasks(hotelData, hotelNumber, floor, room) {
       console.log(`Floor "${floor}" not found.`);
     }
   } else {
-    console.log(`Hotel "${hotelNumber}" tasks not found.`);
+    console.log(`Hotel  tasks not found.`);
   }
 
   return null;
 }
-export function getSpecificFloor(hotelData, hotelNumber, floor) {
-  const hotel = hotelData.find((h) => h.Hotel_Number === hotelNumber);
-
-  if (hotel) {
-    return hotel.hotel_data.floors.find((f) => f.floor === floor);
+export function getSpecificFloor(hotelData, floor) {
+  if (hotelData) {
+    return hotelData.hotel_data.floors.find((f) => f.floor === floor);
   } else {
     console.log(`Floor "${floor}" not found.`);
   }
 
   return null;
 }
-export function getfloors(hotelData, hotelNumber) {
-  const hotel = hotelData.find((h) => h.Hotel_Number === hotelNumber);
-
-  if (hotel.hotel_data.floors) {
-    return hotel.hotel_data.floors;
+export function getfloors(hotelData) {
+  if (hotelData) {
+    return hotelData.hotel_data.floors;
   } else {
-    console.log(`This hotel "${hotelNumber}" does not have floors`);
+    console.log(`This hotel does not have floors`);
   }
 
   return null;
 }
-export function getHotelData(hotelData, hotelNumber) {
-  const hotel = hotelData.find((h) => h.Hotel_Number === hotelNumber);
-
-  if (hotel) {
-    return hotel;
+export function getHotelData(hotelData) {
+  if (hotelData) {
+    return hotelData;
   } else {
-    console.log(`Hotel "${hotelNumber}" not found.`);
+    console.log(`Hotel data was not found.`);
   }
 
   return null;

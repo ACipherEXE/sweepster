@@ -37,27 +37,46 @@ const styles = {
 };
 
 function Roomcard(props) {
-  var { hotelRoomTask, setTaskComplited, taskState } = props;
+  var { hotelRoomTask, taskState, editMode, setTaskUpdated, setTaskEraser } =
+    props;
   const [isToggled, setIsToggled] = useState(taskState);
-
-  const onClick = () => {
+  /**
+   * Function that handles the task data that has been changed by user. Normally false to true or the other way.
+   */
+  const taskHandler = () => {
     setIsToggled(!isToggled);
-    setTaskComplited({ task: hotelRoomTask, isDone: !isToggled });
+    setTaskUpdated({ task: hotelRoomTask, isDone: !isToggled });
+  };
+  /**
+   * Function that removes tasks from the room
+   */
+  const taskEraser = () => {
+    setTaskEraser({ task: hotelRoomTask });
   };
 
   return (
     <>
       <div className="room-task-card">
         <div className="room-task-name">{hotelRoomTask}</div>
-        <div style={styles.Container} onClick={onClick}>
-          <div
-            style={{
-              ...styles.Toggle,
-              left: isToggled ? "calc(50% + 3px)" : "3px",
-            }}
-          />
-          <input type="checkbox" style={styles.Input} />
-        </div>
+        {editMode ? (
+          <div className="room-card-remove-button" onClick={taskEraser}>
+            <svg style={styles.Icon} viewBox="0 0 24 24">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z"></path>
+            </svg>
+          </div>
+        ) : (
+          <div style={styles.Container} onClick={taskHandler}>
+            <div
+              style={{
+                ...styles.Toggle,
+                left: isToggled ? "calc(50% + 3px)" : "3px",
+              }}
+            />
+
+            <input type="checkbox" style={styles.Input} />
+          </div>
+        )}
       </div>
     </>
   );
