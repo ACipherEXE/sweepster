@@ -25,7 +25,7 @@ function App() {
   const [userRequest, setUserRequest] = useState(null);
   const [data, setData] = useState(null);
   // eslint-disable-next-line
-  const [hotelNumber, setHotelNumber] = useState("c3a7");
+  const [hotelNumber, setHotelNumber] = useState("c3a6");
   // To handle when changes happen
   const [hasFetchedData, setHasFetchedData] = useState(false);
 

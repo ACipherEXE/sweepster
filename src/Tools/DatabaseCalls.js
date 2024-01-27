@@ -1,4 +1,3 @@
-import { getHotelData } from "../Tools/Utils";
 import { ApiType } from "./Types";
 var apiType = ApiType.local;
 export const fetchDataInRender = async (hotelNumber) => {
@@ -31,9 +30,11 @@ export const fetchDataInRender = async (hotelNumber) => {
     throw error; // You can choose to handle or rethrow the error as needed
   }
 };
-
-export const updateHotelData = async (hotelData, hotelNumber) => {
-  var currentHotelData = getHotelData(hotelData, hotelNumber);
+/**
+ * Sends the new json to the API
+ * @param {JSON} hotelData = The updated Hotel Data you want to push.
+ */
+export const updateHotelData = async (hotelData) => {
   console.warn(
     apiType === ApiType.prod ? "You are in PROD" : "You are in LOCAL"
   );
@@ -44,17 +45,17 @@ export const updateHotelData = async (hotelData, hotelNumber) => {
   var requestOptions = {
     method: "PUT",
     headers: myHeaders,
-    body: JSON.stringify(currentHotelData),
+    body: JSON.stringify(hotelData),
     redirect: "follow",
   };
 
   try {
-    fetch(`${apiType}/api/hotels/${currentHotelData.id}`, requestOptions)
+    fetch(`${apiType}/api/hotels/${hotelData.id}`, requestOptions)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        return response.text();
+        return response;
       })
       .catch((error) => console.error("Error:", error));
   } catch (error) {

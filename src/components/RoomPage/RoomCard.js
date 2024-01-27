@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./RoomPage.css";
 const styles = {
   Container: {
@@ -45,7 +45,7 @@ function Roomcard(props) {
    */
   const taskHandler = () => {
     setIsToggled(!isToggled);
-    setTaskUpdated({ task: hotelRoomTask, isDone: !isToggled });
+    setTaskUpdated({ task: hotelRoomTask, isDone: !taskState, was: taskState });
   };
   /**
    * Function that removes tasks from the room
@@ -70,7 +70,7 @@ function Roomcard(props) {
             <div
               style={{
                 ...styles.Toggle,
-                left: isToggled ? "calc(50% + 3px)" : "3px",
+                left: taskState ? "calc(50% + 3px)" : "3px",
               }}
             />
 
