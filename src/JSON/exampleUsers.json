@@ -1,6 +1,7 @@
 [
     {
       "user_id": "583c3ac3f38e84297c002546",
+      "pass": "Re$3tMe1",
       "staff_id": "abc000",
       "email": "test@test.com",
       "name": "test@test.com",
@@ -12,6 +13,7 @@
     },
     {
       "user_id": "583c5484cb79a5fe593425a9",
+      "pass": "Re$3tMe2",
       "staff_id": "abc111",
       "email": "test1@test.com",
       "name": "test1@test.com",
@@ -23,6 +25,7 @@
     },
     {
       "user_id": "583c57672c7686377d2f66c9",
+      "pass": "Re$3tMe3",
       "staff_id": "abc222",
       "email": "aaa@aaa.com",
       "name": "aaa@aaa.com",
@@ -34,6 +37,7 @@
     },
     {
       "user_id": "5840b954da0529cd293d76fe",
+      "pass": "Re$3tMe4",
       "staff_id": "abc444",
       "email": "a@a.com",
       "name": "a@a.com",
