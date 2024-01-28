@@ -1,70 +1,41 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Welcome to Sweepster!
 
-## Available Scripts
+Sweepster is a web app that helps you manage your hotel cleaning operations with ease. Whether you need to assign tasks, track progress, or monitor quality, Sweepster has you covered. Sweepster lets you create customized cleaning checklists for each room that uniquely caters to your organizational needs. Sweepster is compatible with any device so you won't have to waste time worrying about device and asset lifecycle! Sweepster is the ultimate hotel cleaning solution for the hospitality industry. Try it for free today!
 
-In the project directory, you can run:
+## For Cleaners, Managers & App Administrators
+
+To login to the app, please paste the following link into any browser on any device: [Sweepster Production](https://kind-sea-071b02210.4.azurestaticapps.net/)
+
+## For App Administrators & Developers
+
+To run the application locally and to edit code/configuration, the following sets of software packages must be downloaded on a Windows 10/11 x86 based PC:
+
+### `Visual Studio Code`
+### `Node.js`
+### `Postman`
+### `Github Desktop`
+
+[One Click Zip Archive](https://mailuc-my.sharepoint.com/:u:/g/personal/hedgesaj_mail_uc_edu/EboceIZ0XoZDlgMgA2fsh3EBO-cnV3njxNxRq3DYWzIe8w?e=JVpU19)
+
+### Additional Configuration
+For VS Code, there are a few recommended plugins to make the coding/development process streamlined. To install them, simply select the "Extensions" button on the left most toolbar and search for the following:
+
+### `npm Intellisense`
+### `Prettier`
+
+Once the recommended plugins are installed, select "Clone Git Repository" on the VS Code splash screen.
+
+The following URL will then have to be pasted in order to pull down code. 
+
+[PROD Environment](https://github.com/ACipherEXE/sweepster)
+
+*Note, if you do not have access to the GitHub repository, please reach out to [Christopher Negron](mailto:negroncj@mail.uc.edu)*.
+
+After the repository has been cloned locally, open the VS Code terminal then type the following commands:
+
+### `npm install`
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Then, the app will deploy at [localhost:3000](http://localhost:3000) on your machines default browser.
