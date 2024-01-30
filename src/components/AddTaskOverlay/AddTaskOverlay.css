@@ -13,6 +13,7 @@
   font-weight: bold;
 }
 .add-task-box {
+  z-index: 0;
   top: 183px;
   left: 42px;
   width: 291px;
@@ -32,4 +33,53 @@
   flex-direction: column; /* Set the flex-direction to column */
   justify-content: center;
   align-items: center;
+}
+.add-task-button {
+  cursor: pointer;
+  top: 404px;
+  left: 136px;
+  width: 105px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+}
+.add-task-input {
+  top: 296px;
+  left: 83px;
+  width: 209px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.add-task-input::placeholder {
+  text-align: center;
+  color: #ffffff;
+}
+.add-task-question {
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  line-height: 16px;
+  text-align: center;
 }
