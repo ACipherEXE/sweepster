@@ -1,0 +1,164 @@
+{
+  "id": "c3a7",
+  "Hotel_Number": "abc69",
+  "Staff_List": ["abc000", "abc111", "abc222", "abc444"],
+  "hotel_data": {
+    "floors": [
+      {
+        "floor": "ground",
+        "rooms": [
+          {
+            "room": "001",
+            "tasks": []
+          },
+          {
+            "room": "002",
+            "tasks": [
+              {
+                "task": "Clean up area",
+                "isDone": false
+              },
+              {
+                "task": "Clean up trash",
+                "isDone": false
+              },
+              {
+                "task": "Clean up bed",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "room": "003",
+            "tasks": [
+              {
+                "task": "Clean up area",
+                "isDone": true
+              },
+              {
+                "task": "Clean up trash",
+                "isDone": true
+              },
+              {
+                "task": "Clean up bed",
+                "isDone": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "floor": "1",
+        "rooms": [
+          {
+            "room": "101",
+            "tasks": [
+              {
+                "task": "Clean up area",
+                "isDone": false
+              },
+              {
+                "task": "Clean up trash",
+                "isDone": false
+              },
+              {
+                "task": "Clean up bed",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "room": "102",
+            "tasks": [
+              {
+                "task": "Clean up area",
+                "isDone": false
+              },
+              {
+                "task": "Clean up trash",
+                "isDone": false
+              },
+              {
+                "task": "Clean up bed",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "room": "103",
+            "tasks": [
+              {
+                "task": "Clean up area",
+                "isDone": false
+              },
+              {
+                "task": "Clean up trash",
+                "isDone": false
+              },
+              {
+                "task": "Clean up bed",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "floor": "2",
+        "rooms": [
+          {
+            "room": "201",
+            "tasks": [
+              {
+                "task": "Clean up area",
+                "isDone": false
+              },
+              {
+                "task": "Clean up trash",
+                "isDone": false
+              },
+              {
+                "task": "Clean up bed",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "room": "202",
+            "tasks": [
+              {
+                "task": "Clean up area",
+                "isDone": false
+              },
+              {
+                "task": "Clean up trash",
+                "isDone": false
+              },
+              {
+                "task": "Clean up bed",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "room": "203",
+            "tasks": [
+              {
+                "task": "Clean up area",
+                "isDone": false
+              },
+              {
+                "task": "Clean up trash",
+                "isDone": false
+              },
+              {
+                "task": "Clean up bed",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
