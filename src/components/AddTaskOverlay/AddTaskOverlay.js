@@ -1,8 +1,8 @@
 import React from "react";
 import "./AddTaskOverlay.css";
-import { PageType } from "../../Tools/Types";
 
 function AddTaskOverlay(props) {
+  // eslint-disable-next-line
   var { currentArea, setCurrentArea, setIsVisible } = props;
   return (
     <div className="add-task-overlay">
