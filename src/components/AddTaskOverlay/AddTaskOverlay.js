@@ -3,6 +3,7 @@ import "./AddTaskOverlay.css";
 import { PageType } from "../../Tools/Types";
 import { fetchDataInRender, updateHotelData } from "../../Tools/DatabaseCalls";
 import { getSpecificRoomTasks } from "../../Tools/Utils";
+
 function AddTaskOverlay(props) {
   var {
     currentArea,
@@ -12,11 +13,15 @@ function AddTaskOverlay(props) {
     setIsVisible,
     setData,
   } = props;
+
   const [inputValue, setInputValue] = useState("");
+
   const [errorMessage, setErrorMessage] = useState("");
+
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
+
   function addNewTask() {
     if (inputValue) {
       fetchDataInRender(hotelNumber)
@@ -63,6 +68,7 @@ function AddTaskOverlay(props) {
       setErrorMessage("Type a task in the box");
     }
   }
+
   return (
     <div className="add-task-overlay">
       <div className="add-task-box">
@@ -76,9 +82,7 @@ function AddTaskOverlay(props) {
           value={inputValue}
           onChange={handleInputChange}
         />
-        {errorMessage && (
-          <div className="add-task-question">{errorMessage}</div>
-        )}
+        {errorMessage && <div className="add-task-error">{errorMessage}</div>}
         <button
           className="add-task-button"
           onClick={() => {

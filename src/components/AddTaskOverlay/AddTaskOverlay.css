@@ -51,6 +51,7 @@
   font-weight: 700;
   line-height: 16px;
   outline: none;
+  margin: 20px;
 }
 .add-task-input {
   top: 296px;
@@ -68,8 +69,7 @@
   font-weight: 700;
   line-height: 16px;
   outline: none;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 20px;
   text-align: center;
 }
 .add-task-input::placeholder {
@@ -82,4 +82,7 @@
   font-family: "Inter";
   line-height: 16px;
   text-align: center;
+}
+.add-task-error {
+  color: red;
 }
