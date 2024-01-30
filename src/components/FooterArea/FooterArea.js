@@ -5,8 +5,10 @@ import AddTaskOverlay from "../AddTaskOverlay/AddTaskOverlay";
 
 function FooterArea(props) {
   // eslint-disable-next-line
-  var { currentArea, setCurrentArea } = props;
+  var { currentArea, hotelNumber, setCurrentArea, userRequest, setData } =
+    props;
   const [isVisible, setIsVisible] = useState(false);
+
   return (
     <div className="footer-container">
       <div className="footer-item">
@@ -34,7 +36,12 @@ function FooterArea(props) {
             </button>
             {isVisible && (
               <div>
-                <AddTaskOverlay setIsVisible={setIsVisible} />
+                <AddTaskOverlay
+                  hotelNumber={hotelNumber}
+                  userRequest={userRequest}
+                  setIsVisible={setIsVisible}
+                  setData={setData}
+                />
               </div>
             )}
           </div>

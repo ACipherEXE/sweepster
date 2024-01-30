@@ -126,24 +126,12 @@ function RoomPage(props) {
     }
     // eslint-disable-next-line
   }, [taskEraser]);
-  function dataDisplay(roomData) {
-    return roomData.map((task) => {
-      return (
-        <Roomcard
-          hotelRoomTask={task.task}
-          taskState={task.isDone}
-          editMode={editMode}
-          setTaskUpdated={setTaskUpdated}
-          setTaskEraser={setTaskEraser}
-        />
-      );
-    });
-  }
   useEffect(() => {
-    if (roomData) {
-      console.log("Re-render");
-    }
-  }, [roomData]);
+    setRoomData(
+      getSpecificRoomTasks(hotelData, userRequest.floor, userRequest.room)
+    );
+  }, [hotelData]);
+
   return (
     <>
       {roomData.map((task) => {
