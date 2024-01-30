@@ -30,7 +30,7 @@
   line-height: 16px;
   outline: none;
   display: flex;
-  flex-direction: column; /* Set the flex-direction to column */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
