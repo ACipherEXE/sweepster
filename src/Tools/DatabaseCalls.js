@@ -1,7 +1,6 @@
-import { getHotelData } from "../Tools/Utils";
 import { ApiType } from "./Types";
-var apiType = ApiType.prod;
-export const fetchDataInRender = async () => {
+var apiType = ApiType.local;
+export const fetchDataInRender = async (hotelNumber) => {
   console.warn(
     apiType === ApiType.prod ? "You are in PROD" : "You are in LOCAL"
   );
@@ -15,7 +14,10 @@ export const fetchDataInRender = async () => {
   };
 
   try {
-    const response = await fetch(`${apiType}/api/hotels`, requestOptions);
+    const response = await fetch(
+      `${apiType}/api/hotels/${hotelNumber}`,
+      requestOptions
+    );
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -28,10 +30,14 @@ export const fetchDataInRender = async () => {
     throw error; // You can choose to handle or rethrow the error as needed
   }
 };
-
-export const updateHotelData = async (hotelData, hotelNumber) => {
-  var currentHotelData = getHotelData(hotelData, hotelNumber);
-  console.warn("You are in PROD");
+/**
+ * Sends the new json to the API
+ * @param {JSON} hotelData = The updated Hotel Data you want to push.
+ */
+export const updateHotelData = async (hotelData) => {
+  console.warn(
+    apiType === ApiType.prod ? "You are in PROD" : "You are in LOCAL"
+  );
   var myHeaders = new Headers();
   myHeaders.append("x-master-key", "your_master_key");
   myHeaders.append("Content-Type", "application/json");
@@ -39,19 +45,18 @@ export const updateHotelData = async (hotelData, hotelNumber) => {
   var requestOptions = {
     method: "PUT",
     headers: myHeaders,
-    body: JSON.stringify(currentHotelData),
+    body: JSON.stringify(hotelData),
     redirect: "follow",
   };
 
   try {
-    fetch(`${apiType}/api/hotels/${currentHotelData.id}`, requestOptions)
+    fetch(`${apiType}/api/hotels/${hotelData.id}`, requestOptions)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        return response.text();
+        return response;
       })
-      .then((result) => console.log(result))
       .catch((error) => console.error("Error:", error));
   } catch (error) {
     console.error("Error:", error);
