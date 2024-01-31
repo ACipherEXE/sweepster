@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./EditorTool.css";
 import { PageType } from "../../Tools/Types";
+import { fetchDataInRender, updateHotelData } from "../../Tools/DatabaseCalls";
+import { getSpecificRoomTasks } from "../../Tools/Utils";
 /**
  * Component that handles the edit mode trigger on the app.
  * @param {String} currentArea - current area the user is at
@@ -9,7 +11,14 @@ import { PageType } from "../../Tools/Types";
  * @returns
  */
 function EditorTool(props) {
-  const { currentArea, editMode, hotelNumber, setEditMode } = props;
+  const {
+    currentArea,
+    editMode,
+    hotelNumber,
+    userRequest,
+    setEditMode,
+    setData,
+  } = props;
   const [isHotelNumberVisible, setIsHotelNumberVisible] = useState(false);
   useEffect(() => {
     if (currentArea) {
@@ -17,6 +26,44 @@ function EditorTool(props) {
     }
     // eslint-disable-next-line
   }, [currentArea]);
+
+  function resetAllTasks() {
+    fetchDataInRender(hotelNumber)
+      .then((pulledData) => {
+        var listOfLatestTasks = getSpecificRoomTasks(
+          pulledData,
+          userRequest.floor,
+          userRequest.room
+        );
+        console.log(JSON.stringify(listOfLatestTasks));
+        let updatedTasks = listOfLatestTasks.map((task) => ({
+          ...task,
+          isDone: false,
+        }));
+        console.log(JSON.stringify(updatedTasks));
+        const floorIndex = pulledData.hotel_data.floors.findIndex(
+          (floor) => floor.floor === userRequest.floor
+        );
+        /**Find the room */
+        const roomIndex = pulledData.hotel_data.floors[
+          floorIndex
+        ].rooms.findIndex((room) => room.room === userRequest.room);
+        /**Put the new task list in the correct room and floor */
+        pulledData.hotel_data.floors[floorIndex].rooms[roomIndex].tasks =
+          updatedTasks;
+        // Set it as new data in the app
+        setData(pulledData);
+
+        // Update data in the API
+        updateHotelData(pulledData, hotelNumber).catch((error) => {
+          console.error("Error:", error);
+        });
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
   return (
     <div>
       {/**
@@ -60,7 +107,10 @@ function EditorTool(props) {
             ) : (
               <div>
                 <div class="editor-tool-item">
-                  <button className="editor-reset-button">
+                  <button
+                    className="editor-reset-button"
+                    onClick={() => resetAllTasks()}
+                  >
                     Reset All Tasks
                   </button>
                 </div>

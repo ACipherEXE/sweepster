@@ -77,7 +77,9 @@ function App() {
                   currentArea={currentArea}
                   editMode={editMode}
                   hotelNumber={hotelNumber}
+                  userRequest={userRequest}
                   setEditMode={setEditMode}
+                  setData={setData}
                 />
                 {currentArea === PageType.floor && (
                   <FloorsPage
