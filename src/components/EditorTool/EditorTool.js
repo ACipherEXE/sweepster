@@ -26,20 +26,19 @@ function EditorTool(props) {
         <div>
           <div class="editor-tool-container">
             <div class="editor-tool-item">
-              <button className="editor-all-button">All</button>
               {editMode ? (
                 <button
                   className="editor-edit-button-active"
                   onClick={() => setEditMode(!editMode)}
                 >
-                  End Edit
+                  <div className="editor-edit-button-active-text">End Edit</div>
                 </button>
               ) : (
                 <button
                   className="editor-edit-button"
                   onClick={() => setEditMode(!editMode)}
                 >
-                  Edit
+                  <div className="editor-edit-button-active-text">Edit</div>
                 </button>
               )}
             </div>
@@ -47,7 +46,7 @@ function EditorTool(props) {
              * TODO: Make this change when we are in the  user management page
              * TODO: Implement visible and invisible logo.
              */}
-            {editMode ? (
+            {currentArea === "User Edit" ? (
               <div className="hotel-id-container">
                 <div
                   className="editor-tool-item"

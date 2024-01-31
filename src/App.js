@@ -105,6 +105,7 @@ function App() {
                 hotelNumber={hotelNumber}
                 currentArea={currentArea}
                 userRequest={userRequest}
+                editMode={editMode}
                 setCurrentArea={setCurrentArea}
                 setData={setData}
               />
