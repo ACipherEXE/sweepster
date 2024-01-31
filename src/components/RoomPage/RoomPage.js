@@ -10,9 +10,12 @@ function RoomPage(props) {
     hotelNumber,
     userRequest,
     editMode,
+    // eslint-disable-next-line
     setCurrentArea,
+    // eslint-disable-next-line
     setUserRequest,
     setData,
+    // eslint-disable-next-line
     setHasFetchedData,
   } = props;
 

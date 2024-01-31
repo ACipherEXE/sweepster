@@ -27,6 +27,7 @@ function App() {
   // eslint-disable-next-line
   const [hotelNumber, setHotelNumber] = useState("c3a6");
   // To handle when changes happen
+  // eslint-disable-next-line
   const [hasFetchedData, setHasFetchedData] = useState(false);
 
   useEffect(() => {
@@ -45,6 +46,7 @@ function App() {
         setData(hotelExample);
       }
     }
+    // eslint-disable-next-line
   }, [isUserLogedIn, enviroment]);
 
   return (
