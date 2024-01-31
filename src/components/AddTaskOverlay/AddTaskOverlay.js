@@ -73,8 +73,19 @@ function AddTaskOverlay(props) {
   }
 
   return (
-    <div className="add-task-overlay">
-      <div className="add-task-box">
+    <div
+      className="add-task-overlay"
+      onClick={() => {
+        setIsVisible(false);
+      }}
+    >
+      <div
+        className="add-task-box"
+        onClick={(e) => {
+          // Stop the event propagation here
+          e.stopPropagation();
+        }}
+      >
         <div className="add-task-question">
           What task you would like to add?
         </div>

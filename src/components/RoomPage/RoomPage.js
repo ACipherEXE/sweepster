@@ -3,6 +3,8 @@ import "./RoomPage.css";
 import Roomcard from "./RoomCard";
 import { getSpecificRoomTasks } from "../../Tools/Utils";
 import { updateHotelData, fetchDataInRender } from "../../Tools/DatabaseCalls";
+import RemoveOverlay from "../RemoveOverlay/RemoveOverlay";
+
 function RoomPage(props) {
   // eslint-disable-next-line
   var {
@@ -21,9 +23,11 @@ function RoomPage(props) {
 
   const [taskUpdated, setTaskUpdated] = useState(null);
   const [taskEraser, setTaskEraser] = useState(null);
+  const [overlayData, setOverlayData] = useState(null);
   const [roomData, setRoomData] = useState(
     getSpecificRoomTasks(hotelData, userRequest.floor, userRequest.room)
   );
+  const [isVisible, setIsVisible] = useState(false);
 
   // note: this use effect is cursed
   useEffect(() => {
@@ -140,13 +144,26 @@ function RoomPage(props) {
     <>
       {roomData.map((task) => {
         return (
-          <Roomcard
-            hotelRoomTask={task.task}
-            taskState={task.isDone}
-            editMode={editMode}
-            setTaskUpdated={setTaskUpdated}
-            setTaskEraser={setTaskEraser}
-          />
+          <div>
+            <Roomcard
+              hotelRoomTask={task.task}
+              taskState={task.isDone}
+              editMode={editMode}
+              setTaskUpdated={setTaskUpdated}
+              setTaskEraser={setTaskEraser}
+              setOverlayData={setOverlayData}
+              setIsVisible={setIsVisible}
+            />
+            {isVisible && (
+              <div>
+                <RemoveOverlay
+                  overlayData={overlayData}
+                  setIsVisible={setIsVisible}
+                  setTaskEraser={setTaskEraser}
+                />
+              </div>
+            )}
+          </div>
         );
       })}
     </>

@@ -37,8 +37,14 @@ const styles = {
 };
 
 function Roomcard(props) {
-  var { hotelRoomTask, taskState, editMode, setTaskUpdated, setTaskEraser } =
-    props;
+  var {
+    hotelRoomTask,
+    taskState,
+    editMode,
+    setTaskUpdated,
+    setIsVisible,
+    setOverlayData,
+  } = props;
   const [isToggled, setIsToggled] = useState(taskState);
   /**
    * Function that handles the task data that has been changed by user. Normally false to true or the other way.
@@ -51,7 +57,9 @@ function Roomcard(props) {
    * Function that removes tasks from the room
    */
   const taskEraser = () => {
-    setTaskEraser({ task: hotelRoomTask });
+    // setTaskEraser({ task: hotelRoomTask });
+    setOverlayData({ task: hotelRoomTask });
+    setIsVisible(true);
   };
 
   return (
