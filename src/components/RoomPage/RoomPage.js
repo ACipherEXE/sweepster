@@ -133,6 +133,7 @@ function RoomPage(props) {
     setRoomData(
       getSpecificRoomTasks(hotelData, userRequest.floor, userRequest.room)
     );
+    // eslint-disable-next-line
   }, [hotelData]);
 
   return (

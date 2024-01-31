@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import "./AddTaskOverlay.css";
+// eslint-disable-next-line
 import { PageType } from "../../Tools/Types";
 import { fetchDataInRender, updateHotelData } from "../../Tools/DatabaseCalls";
 import { getSpecificRoomTasks } from "../../Tools/Utils";
 
 function AddTaskOverlay(props) {
   var {
+    // eslint-disable-next-line
     currentArea,
     userRequest,
     hotelNumber,
+    // eslint-disable-next-line
     setCurrentArea,
     setIsVisible,
     setData,
