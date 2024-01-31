@@ -5,8 +5,16 @@ import AddTaskOverlay from "../AddTaskOverlay/AddTaskOverlay";
 
 function FooterArea(props) {
   // eslint-disable-next-line
-  var { currentArea, setCurrentArea } = props;
+  var {
+    currentArea,
+    hotelNumber,
+    setCurrentArea,
+    userRequest,
+    editMode,
+    setData,
+  } = props;
   const [isVisible, setIsVisible] = useState(false);
+
   return (
     <div className="footer-container">
       <div className="footer-item">
@@ -24,17 +32,30 @@ function FooterArea(props) {
       <div className="footer-item">
         {currentArea === PageType.room ? (
           <div>
-            <button
-              className="new-multi-task-button"
-              onClick={() => setIsVisible(true)}
-            >
-              <svg className="new-multi-task-button-icon" viewBox="0 0 448 512">
-                <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
-              </svg>
-            </button>
+            {editMode ? (
+              <button
+                className="new-multi-task-button"
+                onClick={() => setIsVisible(true)}
+              >
+                <svg
+                  className="new-multi-task-button-icon"
+                  viewBox="0 0 448 512"
+                >
+                  <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+                </svg>
+              </button>
+            ) : (
+              <div></div>
+            )}
+
             {isVisible && (
               <div>
-                <AddTaskOverlay setIsVisible={setIsVisible} />
+                <AddTaskOverlay
+                  hotelNumber={hotelNumber}
+                  userRequest={userRequest}
+                  setIsVisible={setIsVisible}
+                  setData={setData}
+                />
               </div>
             )}
           </div>

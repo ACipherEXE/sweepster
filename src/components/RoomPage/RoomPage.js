@@ -129,12 +129,12 @@ function RoomPage(props) {
     }
     // eslint-disable-next-line
   }, [taskEraser]);
-
   useEffect(() => {
-    if (roomData) {
-      console.log("Re-render");
-    }
-  }, [roomData]);
+    setRoomData(
+      getSpecificRoomTasks(hotelData, userRequest.floor, userRequest.room)
+    );
+    // eslint-disable-next-line
+  }, [hotelData]);
 
   return (
     <>

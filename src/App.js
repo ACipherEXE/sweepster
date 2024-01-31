@@ -104,8 +104,12 @@ function App() {
             </div>
             <div className="footer-area">
               <FooterArea
+                hotelNumber={hotelNumber}
                 currentArea={currentArea}
+                userRequest={userRequest}
+                editMode={editMode}
                 setCurrentArea={setCurrentArea}
+                setData={setData}
               />
             </div>
           </div>
