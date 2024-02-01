@@ -107,6 +107,24 @@ w .grid-item {
   line-height: 16px;
   outline: none;
 }
+.user-card-button-warning {
+  cursor: pointer;
+  top: 231px;
+  left: 80px;
+  width: 209px;
+  height: 28px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: red;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+}
 .user-card-buttons-container {
   display: flex;
   flex-wrap: wrap; /* Allow buttons to wrap to the next line if the width is not enough */

@@ -27,10 +27,10 @@ function UserCard() {
       </div>
       {isOpen && (
         <div class="user-card-buttons-container">
-          <button className="user-card-button"> ello world</button>
-          <button className="user-card-button"> ello world</button>
-          <button className="user-card-button"> ello world</button>
-          <button className="user-card-button"> ello world</button>
+          <button className="user-card-button">User</button>
+          <button className="user-card-button">Manager</button>
+          <button className="user-card-button">Admin</button>
+          <button className="user-card-button-warning">Delete</button>
         </div>
       )}
     </div>
