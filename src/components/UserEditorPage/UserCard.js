@@ -13,16 +13,26 @@ function UserCard() {
   };
   const editMode = false;
   return (
-    <div className="user-card-container">
+    <div className="user-card-container" onClick={toggleDropdown}>
       <div class="grid-item">
-        <div className="user-card-name ">Cipher Negron</div>
+        <div className="user-card-name">Cipher Negron</div>
       </div>
-      {!editMode ? (
+
+      <div>
         <div class="grid-item">
           <div className="user-card-permissions-non-edit-mode">Manager</div>
         </div>
-      ) : (
-        <div class="grid-item">
+      </div>
+      {isOpen && (
+        <div class="user-card-buttons-container">
+          <button className="user-card-button"> ello world</button>
+          <button className="user-card-button"> ello world</button>
+          <button className="user-card-button"> ello world</button>
+          <button className="user-card-button"> ello world</button>
+        </div>
+      )}
+
+      {/* <div class="grid-item-dropdown">
           <div className={`dropdown ${isOpen ? "active" : ""}`}>
             <span
               className="user-card-permissions-chosen"
@@ -46,10 +56,15 @@ function UserCard() {
               >
                 <div className="user-card-permissions">Admin</div>
               </div>
+              <div
+                className="dropdown-item"
+                onClick={() => selectItem("Admin")}
+              >
+                <div className="user-card-permissions-delete">Delete</div>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        </div> */}
     </div>
   );
 }
