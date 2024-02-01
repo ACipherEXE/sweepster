@@ -11,6 +11,7 @@ import FooterArea from "./components/FooterArea/FooterArea";
 import { PageType } from "./Tools/Types";
 import { fetchDataInRender } from "./Tools/DatabaseCalls";
 import EditorTool from "./components/EditorTool/EditorTool";
+import UserEditorPage from "./components/UserEditorPage/UserEditorPage";
 function App() {
   //Keep in dev unless wanting to test REST API
   const enviroment = "prod";
@@ -100,8 +101,7 @@ function App() {
                     setData={setData}
                   />
                 )}
-                {currentArea === "tasks" && <div>Hello world</div>}
-                {currentArea === "roles" && <div>Hello world</div>}
+                {currentArea === PageType.userEditor && <UserEditorPage />}
               </header>
             </div>
             <div className="footer-area">

@@ -65,7 +65,9 @@ function FooterArea(props) {
       </div>
 
       <div className="footer-item">
-        <button>User Editor</button>
+        <button onClick={() => setCurrentArea(PageType.userEditor)}>
+          User Editor
+        </button>
       </div>
     </div>
   );
