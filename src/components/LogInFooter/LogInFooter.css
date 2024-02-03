@@ -1,0 +1,47 @@
+.log-in-footer-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 100px;
+  margin-bottom: 15px;
+  background-color: #1a1a1a;
+  position: absolute;
+  bottom: 0;
+  align-items: center;
+}
+.login-back-step-button {
+  cursor: pointer;
+  top: 599px;
+  left: 20px;
+  width: 105px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+}
+
+.login-next-step-button {
+  cursor: pointer;
+  top: 599px;
+  left: 250px;
+  width: 105px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+}

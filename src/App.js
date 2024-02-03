@@ -4,6 +4,7 @@ import FloorsPage from "./components/FloorsPage/FloorsPage";
 import UserLogIn from "./components/UserLogIn";
 // eslint-disable-next-line
 import hotelGetExample from "./JSON/hotelGetExample.json";
+import usersExample from "./JSON/exampleUsers.json";
 import hotelExample from "./JSON/hotelExample.json";
 import RoomPage from "./components/RoomPage/RoomPage";
 import HeaderArea from "./components/HeaderArea/HeaderArea";
@@ -26,7 +27,7 @@ function App() {
   const [userRequest, setUserRequest] = useState(null);
   const [data, setData] = useState(null);
   // eslint-disable-next-line
-  const [hotelNumber, setHotelNumber] = useState("c3a6");
+  const [hotelNumber, setHotelNumber] = useState("c3a7");
   // To handle when changes happen
   // eslint-disable-next-line
   const [hasFetchedData, setHasFetchedData] = useState(false);
@@ -63,7 +64,7 @@ function App() {
       )}
       {isUserLogedIn &&
         (data !== null ? (
-          <div>
+          <div className="base">
             <HeaderArea
               currentArea={
                 currentArea === PageType.room
@@ -72,16 +73,16 @@ function App() {
               }
               setCurrentArea={setCurrentArea}
             />
+            <EditorTool
+              currentArea={currentArea}
+              editMode={editMode}
+              hotelNumber={hotelNumber}
+              userRequest={userRequest}
+              setEditMode={setEditMode}
+              setData={setData}
+            />
             <div className="main-area-container">
               <header className="App-header">
-                <EditorTool
-                  currentArea={currentArea}
-                  editMode={editMode}
-                  hotelNumber={hotelNumber}
-                  userRequest={userRequest}
-                  setEditMode={setEditMode}
-                  setData={setData}
-                />
                 {currentArea === PageType.floor && (
                   <FloorsPage
                     hotelData={data}
@@ -101,7 +102,13 @@ function App() {
                     setData={setData}
                   />
                 )}
-                {currentArea === PageType.userEditor && <UserEditorPage />}
+
+                {currentArea === PageType.userEditor && (
+                  <UserEditorPage
+                    userData={data.Staff_List}
+                    editMode={editMode}
+                  />
+                )}
               </header>
             </div>
             <div className="footer-area">

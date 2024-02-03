@@ -2,7 +2,55 @@
   {
     "id": "c3a7",
     "Hotel_Number": "abc69",
-    "Staff_List": ["abc000", "abc111", "abc222", "abc444"],
+    "Staff_List": [
+      {
+        "user_id": "583c3ac3f38e84297c002546",
+        "staff_id": "abc000",
+        "email": "test@test.com",
+        "given_name": "UCTest",
+        "first_name": "UCTest",
+        "last_name": "UCTest",
+        "nickname": "test",
+        "logins_count": 15,
+        "Hotel_Number": "Thisisatest",
+        "permission": "user"
+      },
+      {
+        "user_id": "583c5484cb79a5fe593425a9",
+        "staff_id": "abc111",
+        "email": "test1@test.com",
+        "first_name": "Chris",
+        "last_name": "Negron",
+        "given_name": "UCTest1",
+        "nickname": "test1",
+        "logins_count": 1,
+        "Hotel_Number": "exp000",
+        "permission": "user"
+      },
+      {
+        "user_id": "583c57672c7686377d2f66c9",
+        "staff_id": "abc222",
+        "email": "aaa@aaa.com",
+        "first_name": "aaa",
+        "last_name": "aaa",
+        "given_name": "John",
+        "nickname": "aaa",
+        "logins_count": 2,
+        "Hotel_Number": "abc69",
+        "permission": "admin"
+      },
+      {
+        "user_id": "5840b954da0529cd293d76fe",
+        "staff_id": "abc444",
+        "email": "a@a.com",
+        "first_name": "Jane",
+        "last_name": "a",
+        "given_name": "Jane",
+        "nickname": "a",
+        "Hotel_Number": "abc69",
+        "permission": "manager"
+      }
+    ],
     "hotel_data": {
       "floors": [
         {
