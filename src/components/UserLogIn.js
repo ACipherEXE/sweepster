@@ -47,7 +47,7 @@ function UserLogIn(props) {
           />
         </>
       )}
-      <LogInFooter />
+      {loginStep !== "login" && <LogInFooter />}
     </div>
   );
 }
