@@ -2,8 +2,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 100px;
-  margin-bottom: 15px;
-  background-color: #1a1a1a;
+  background-color: hsl(0, 0%, 10%);
   position: absolute;
   bottom: 0;
   align-items: center;

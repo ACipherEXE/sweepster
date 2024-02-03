@@ -5,7 +5,7 @@ import LogInFooter from "./LogInFooter/LogInFooter";
 function UserLogIn(props) {
   // eslint-disable-next-line
   var { setCurrentArea, setUserRequest, setIsUserLogedIn } = props;
-  const [loginStep, setLoginStep] = useState("login");
+  const [loginStep, setLoginStep] = useState("sign-up-password");
   const [inputValue, setInputValue] = useState("");
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -28,14 +28,14 @@ function UserLogIn(props) {
           <button
             className="sign-up-button"
             onClick={() => {
-              setLoginStep("sign-up");
+              setLoginStep("sign-up-username");
             }}
           >
-            Sign in with Email
+            Create a account
           </button>
         </>
       )}
-      {loginStep === "sign-up" && (
+      {loginStep === "sign-up-username" && (
         <>
           <div>What is your email?</div>
           <input
@@ -47,7 +47,28 @@ function UserLogIn(props) {
           />
         </>
       )}
-      {loginStep !== "login" && <LogInFooter />}
+      {loginStep === "sign-up-password" && (
+        <>
+          <div>Create a password</div>
+          <input
+            className="email-input"
+            type="text"
+            placeholder="Type here..."
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+          <input
+            className="email-input"
+            type="text"
+            placeholder="Confirm Password"
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+        </>
+      )}
+      {loginStep !== "login" && (
+        <LogInFooter loginStep={loginStep} setLoginStep={setLoginStep} />
+      )}
     </div>
   );
 }
