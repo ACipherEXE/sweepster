@@ -1,0 +1,18 @@
+.task-box {
+  display: flex;
+  top: 376px;
+  left: 70px;
+  width: 235px;
+  height: 200px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+}

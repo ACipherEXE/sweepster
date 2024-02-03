@@ -1,14 +1,22 @@
 :root {
   --image-size: 200px;
 }
+.user-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
 .default-text {
   color: #ffffff;
   font-size: 36px;
   font-family: "Inter";
   font-weight: 700;
   line-height: 42px;
-  margin-bottom: 50px;
-  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .login-button {
@@ -80,4 +88,89 @@
   outline: none;
   margin: 20px;
   text-align: center;
+}
+.password-input {
+  top: 296px;
+  left: 83px;
+  width: 209px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #4f4f4f;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin: 10px;
+  text-align: center;
+}
+.password-confirm-input {
+  top: 296px;
+  left: 83px;
+  width: 209px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #4f4f4f;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin: 10px;
+  text-align: center;
+}
+.create-workspace-button {
+  top: 296px;
+  left: 83px;
+  width: 209px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin: 10px;
+  text-align: center;
+}
+
+.join-workspace-button {
+  top: 296px;
+  left: 83px;
+  width: 209px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin: 10px;
+  text-align: center;
+}
+.text {
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  line-height: 16px;
+  text-align: center;
+  width: 220px;
 }
