@@ -14,8 +14,10 @@ import EditorTool from "./components/EditorTool/EditorTool";
 function App() {
   //Keep in dev unless wanting to test REST API
   const enviroment = "prod";
+  // Current area the user is at. This is normally set in components.
   const [currentArea, setCurrentArea] = useState(PageType.login);
   // eslint-disable-next-line
+  // Safety check if user is signed in. Will be used in the UserLogIn Componmment in the future.
   const [isUserLogedIn, setIsUserLogedIn] = useState(false);
   // Used to tell components that they should be in edit mode
   const [editMode, setEditMode] = useState(false);
@@ -23,14 +25,18 @@ function App() {
   const [userRequest, setUserRequest] = useState(null);
   const [data, setData] = useState(null);
   // eslint-disable-next-line
-  const [hotelNumber, setHotelNumber] = useState("abc69");
+  const [hotelNumber, setHotelNumber] = useState("c3a6");
+  // To handle when changes happen
+  // eslint-disable-next-line
+  const [hasFetchedData, setHasFetchedData] = useState(false);
 
   useEffect(() => {
     if (isUserLogedIn) {
-      if (enviroment === "prod") {
-        fetchDataInRender()
+      if (enviroment === "prod" && hotelNumber) {
+        fetchDataInRender(hotelNumber)
           .then((data) => {
             //Avoid using api while test and building
+            console.log("UPDATE");
             setData(data);
           })
           .catch((error) => {
@@ -40,6 +46,7 @@ function App() {
         setData(hotelExample);
       }
     }
+    // eslint-disable-next-line
   }, [isUserLogedIn, enviroment]);
 
   return (
@@ -70,7 +77,9 @@ function App() {
                   currentArea={currentArea}
                   editMode={editMode}
                   hotelNumber={hotelNumber}
+                  userRequest={userRequest}
                   setEditMode={setEditMode}
+                  setData={setData}
                 />
                 {currentArea === PageType.floor && (
                   <FloorsPage
@@ -88,6 +97,7 @@ function App() {
                     editMode={editMode}
                     setCurrentArea={setCurrentArea}
                     setUserRequest={setUserRequest}
+                    setData={setData}
                   />
                 )}
                 {currentArea === "tasks" && <div>Hello world</div>}
@@ -96,8 +106,12 @@ function App() {
             </div>
             <div className="footer-area">
               <FooterArea
+                hotelNumber={hotelNumber}
                 currentArea={currentArea}
+                userRequest={userRequest}
+                editMode={editMode}
                 setCurrentArea={setCurrentArea}
+                setData={setData}
               />
             </div>
           </div>

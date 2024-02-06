@@ -1,7 +1,7 @@
 .editor-tool-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  gap: 80px;
   margin-bottom: 15px;
 }
 .hotel-id-container {
@@ -15,25 +15,9 @@
 }
 .editor-tool-item {
   padding: 5px;
+  display: flex;
 }
-.editor-all-button {
-  cursor: pointer;
-  top: 138px;
-  left: 24px;
-  width: 69px;
-  height: 32px;
-  padding: 0px 8px;
-  border: 0;
-  box-sizing: border-box;
-  border-radius: 37px;
-  background-color: #1e90ff;
-  color: #ffffff;
-  font-size: 14px;
-  font-family: "Inter";
-  font-weight: 700;
-  line-height: 16px;
-  outline: none;
-}
+
 .editor-edit-button {
   cursor: pointer;
   top: 138px;

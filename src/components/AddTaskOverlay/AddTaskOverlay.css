@@ -1,0 +1,88 @@
+.add-task-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+.add-task-box {
+  z-index: 0;
+  top: 183px;
+  left: 42px;
+  width: 291px;
+  height: 334px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #333333;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.add-task-button {
+  cursor: pointer;
+  top: 404px;
+  left: 136px;
+  width: 245px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: red;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin: 20px;
+}
+.add-task-input {
+  top: 296px;
+  left: 83px;
+  width: 209px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin: 20px;
+  text-align: center;
+}
+.add-task-input::placeholder {
+  text-align: center;
+  color: #ffffff;
+}
+.add-task-question {
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  line-height: 16px;
+  text-align: center;
+}
+.add-task-error {
+  color: red;
+}
