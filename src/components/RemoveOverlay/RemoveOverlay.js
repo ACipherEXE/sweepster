@@ -25,7 +25,7 @@ function RemoveOverlay(props) {
         }}
       >
         <button
-          className="add-task-button"
+          className="remove-task-button"
           onClick={() => {
             setIsVisible(false);
           }}

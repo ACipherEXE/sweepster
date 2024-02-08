@@ -38,7 +38,7 @@
 }
 
 .App-login {
-  background-color: #282c34;
+  background-color: hsl(0, 0%, 10%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;

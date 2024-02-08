@@ -1,10 +1,93 @@
 import React from "react";
 import "./LogInFooter.css";
-function LogInFooter() {
+import { PageType } from "../../Tools/Types";
+import { postUserData } from "../../Tools/DatabaseCalls";
+function LogInFooter(props) {
+  var {
+    loginStep,
+    confirmPassword,
+    passwordInput,
+    emailInput,
+    setLoginStep,
+    setCurrentArea,
+    setIsUserLogedIn,
+    setErrorStatus,
+  } = props;
+
+  function goAStepFront() {
+    if (loginStep === "sign-up-username") {
+      if (emailInput === "" || emailInput === null) {
+        console.log("You must pass a email");
+        setErrorStatus("Password must match");
+      } else {
+        setLoginStep("sign-up-password");
+      }
+    }
+    if (loginStep === "sign-up-password") {
+      if (
+        passwordInput !== confirmPassword ||
+        passwordInput === null ||
+        confirmPassword === null ||
+        passwordInput === "" ||
+        confirmPassword === ""
+      ) {
+        console.log("Password must match");
+        setErrorStatus("Password must match");
+      } else {
+        console.log({
+          email: emailInput,
+          userName: "PlaceHolder",
+          pass: passwordInput,
+          hotelID: null,
+        });
+        postUserData({
+          email: emailInput,
+          userName: "PlaceHolder",
+          pass: passwordInput,
+          hotelID: null,
+        });
+        setLoginStep("workspace-options");
+      }
+    }
+    if (loginStep === "workspace-join") {
+      setCurrentArea(PageType.floor);
+      setIsUserLogedIn(true);
+    }
+  }
+  function goAStepBack() {
+    if (loginStep === "sign-up-username") {
+      setLoginStep("login");
+    }
+    if (loginStep === "sign-up-password") {
+      setLoginStep("sign-up-username");
+    }
+    if (loginStep === "workspace-join") {
+      setLoginStep("workspace-options");
+    }
+  }
   return (
     <div className="log-in-footer-container">
-      <button className="login-back-step-button">Back</button>
-      <button className="login-next-step-button">Next</button>
+      <button
+        className="login-back-step-button"
+        onClick={() => {
+          goAStepBack();
+        }}
+      >
+        Back
+      </button>
+      <button className="new-multi-task-button-login">
+        <svg className="new-multi-task-button-icon" viewBox="0 0 448 512">
+          <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+        </svg>
+      </button>
+      <button
+        className="login-next-step-button"
+        onClick={() => {
+          goAStepFront();
+        }}
+      >
+        Next
+      </button>
     </div>
   );
 }

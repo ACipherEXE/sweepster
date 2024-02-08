@@ -3,13 +3,28 @@ import "./UserLogIn.css";
 import { PageType } from "../Tools/Types";
 import LogInFooter from "./LogInFooter/LogInFooter";
 import NewWorkspacePage from "./NewWorkspacePage/NewWorkspacePage";
+
 function UserLogIn(props) {
   // eslint-disable-next-line
   var { setCurrentArea, setUserRequest, setIsUserLogedIn } = props;
-  const [loginStep, setLoginStep] = useState("workspace-create");
+  const [loginStep, setLoginStep] = useState("login");
   const [inputValue, setInputValue] = useState("");
+  const [emailInput, setEmailInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorStatus, setErrorStatus] = useState(null);
+
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
+  };
+  const handleEmailChange = (e) => {
+    setEmailInput(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPasswordInput(e.target.value);
+  };
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
   };
   return (
     <div className="user-login-container">
@@ -43,8 +58,8 @@ function UserLogIn(props) {
             className="email-input"
             type="text"
             placeholder="Type here..."
-            value={inputValue}
-            onChange={handleInputChange}
+            value={emailInput}
+            onChange={handleEmailChange}
           />
         </>
       )}
@@ -55,15 +70,15 @@ function UserLogIn(props) {
             className="password-input"
             type="text"
             placeholder="Type here..."
-            value={inputValue}
-            onChange={handleInputChange}
+            value={passwordInput}
+            onChange={handlePasswordChange}
           />
           <input
             className="password-confirm-input"
             type="text"
             placeholder="Confirm Password"
-            value={inputValue}
-            onChange={handleInputChange}
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
           />
         </>
       )}
@@ -75,8 +90,7 @@ function UserLogIn(props) {
           <button
             className="create-workspace-button"
             onClick={() => {
-              // setCurrentArea(PageType.floor);
-              // setIsUserLogedIn(true);
+              setLoginStep("workspace-create");
             }}
           >
             Create New Workspace
@@ -84,8 +98,7 @@ function UserLogIn(props) {
           <button
             className="join-workspace-button"
             onClick={() => {
-              // setCurrentArea(PageType.floor);
-              // setIsUserLogedIn(true);
+              setLoginStep("workspace-join");
             }}
           >
             Join Exsisting Workspace
@@ -113,8 +126,17 @@ function UserLogIn(props) {
         </>
       )}
 
-      {loginStep !== "login" && (
-        <LogInFooter loginStep={loginStep} setLoginStep={setLoginStep} />
+      {loginStep !== "login" && loginStep !== "workspace-options" && (
+        <LogInFooter
+          loginStep={loginStep}
+          passwordInput={passwordInput}
+          confirmPassword={confirmPassword}
+          emailInput={emailInput}
+          setLoginStep={setLoginStep}
+          setCurrentArea={setCurrentArea}
+          setIsUserLogedIn={setIsUserLogedIn}
+          setErrorStatus={setErrorStatus}
+        />
       )}
     </div>
   );
