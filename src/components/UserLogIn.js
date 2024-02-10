@@ -6,13 +6,15 @@ import NewWorkspacePage from "./NewWorkspacePage/NewWorkspacePage";
 
 function UserLogIn(props) {
   // eslint-disable-next-line
-  var { setCurrentArea, setUserRequest, setIsUserLogedIn } = props;
+  var { setCurrentArea, setUserRequest, setIsUserLogedIn, setHotelNumber } =
+    props;
   const [loginStep, setLoginStep] = useState("login");
   const [inputValue, setInputValue] = useState("");
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorStatus, setErrorStatus] = useState(null);
+  const [userData, setUserData] = useState(null);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -132,10 +134,13 @@ function UserLogIn(props) {
           passwordInput={passwordInput}
           confirmPassword={confirmPassword}
           emailInput={emailInput}
+          inputValue={inputValue}
+          userData={userData}
           setLoginStep={setLoginStep}
           setCurrentArea={setCurrentArea}
           setIsUserLogedIn={setIsUserLogedIn}
           setErrorStatus={setErrorStatus}
+          setUserData={setUserData}
         />
       )}
     </div>

@@ -59,6 +59,7 @@ function App() {
             setCurrentArea={setCurrentArea}
             setIsUserLogedIn={setIsUserLogedIn}
             setUserRequest={setUserRequest}
+            setHotelNumber={setHotelNumber}
           />
         </header>
       )}

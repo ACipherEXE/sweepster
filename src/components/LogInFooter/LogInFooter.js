@@ -1,17 +1,24 @@
 import React from "react";
 import "./LogInFooter.css";
 import { PageType } from "../../Tools/Types";
-import { postUserData } from "../../Tools/DatabaseCalls";
+import {
+  fetchDataInRender,
+  postUserData,
+  updateUserData,
+} from "../../Tools/DatabaseCalls";
 function LogInFooter(props) {
   var {
     loginStep,
     confirmPassword,
     passwordInput,
     emailInput,
+    userData,
+    inputValue,
     setLoginStep,
     setCurrentArea,
     setIsUserLogedIn,
     setErrorStatus,
+    setUserData,
   } = props;
 
   function goAStepFront() {
@@ -20,6 +27,7 @@ function LogInFooter(props) {
         console.log("You must pass a email");
         setErrorStatus("Password must match");
       } else {
+        setErrorStatus(null);
         setLoginStep("sign-up-password");
       }
     }
@@ -34,24 +42,33 @@ function LogInFooter(props) {
         console.log("Password must match");
         setErrorStatus("Password must match");
       } else {
-        console.log({
-          email: emailInput,
-          userName: "PlaceHolder",
-          pass: passwordInput,
-          hotelID: null,
-        });
+        setErrorStatus(null);
         postUserData({
           email: emailInput,
           userName: "PlaceHolder",
           pass: passwordInput,
           hotelID: null,
+        }).then((response) => {
+          console.log(response);
+          setUserData(response);
         });
         setLoginStep("workspace-options");
       }
     }
     if (loginStep === "workspace-join") {
-      setCurrentArea(PageType.floor);
-      setIsUserLogedIn(true);
+      userData.hotelID = inputValue;
+      console.log(userData);
+      fetchDataInRender(userData.hotelID)
+        .then(
+          updateUserData(userData).then((data) => {
+            // setCurrentArea(PageType.floor);
+            // setIsUserLogedIn(true);
+          })
+        )
+        .catch((error) => {
+          setErrorStatus("No hotel under that ID");
+          console.error("Error:", error);
+        });
     }
   }
   function goAStepBack() {

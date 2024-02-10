@@ -27,7 +27,7 @@ export const fetchDataInRender = async (hotelNumber) => {
     return result;
   } catch (error) {
     console.log("error", error);
-    throw error; // You can choose to handle or rethrow the error as needed
+    return error; // You can choose to handle or rethrow the error as needed
   }
 };
 /**
@@ -111,7 +111,36 @@ export const postUserData = async (userData) => {
   };
 
   try {
-    fetch(`${apiType}/api/users/`, requestOptions)
+    const response = await fetch(`${apiType}/api/users/`, requestOptions);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+};
+
+export const updateUserData = async (userData) => {
+  console.warn(
+    apiType === ApiType.prod ? "You are in PROD" : "You are in LOCAL"
+  );
+  var myHeaders = new Headers();
+  myHeaders.append("x-master-key", "your_master_key");
+  myHeaders.append("Content-Type", "application/json");
+
+  var requestOptions = {
+    method: "PUT",
+    headers: myHeaders,
+    body: JSON.stringify(userData),
+    redirect: "follow",
+  };
+
+  try {
+    fetch(`${apiType}/api/users/${userData.id}`, requestOptions)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
