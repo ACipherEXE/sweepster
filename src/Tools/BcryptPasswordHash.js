@@ -4,4 +4,4 @@ const password = "test";
 const salt = bcrypt.genSaltSync(10);
 const hash = bcrypt.hashSync(password, salt);
 console.log(hash);
-//View debug console to get hashed password.
+//View debug console to get hashed password
