@@ -140,14 +140,15 @@ export const updateUserData = async (userData) => {
   };
 
   try {
-    fetch(`${apiType}/api/users/${userData.id}`, requestOptions)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response;
-      })
-      .catch((error) => console.error("Error:", error));
+    const response = await fetch(
+      `${apiType}/api/users/${userData.id}`,
+      requestOptions
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const result = await response.json();
+    return result;
   } catch (error) {
     console.error("Error:", error);
     throw error;

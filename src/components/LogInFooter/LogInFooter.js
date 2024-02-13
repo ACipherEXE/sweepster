@@ -19,6 +19,7 @@ function LogInFooter(props) {
     setIsUserLogedIn,
     setErrorStatus,
     setUserData,
+    setHotelNumber,
   } = props;
 
   function goAStepFront() {
@@ -57,15 +58,29 @@ function LogInFooter(props) {
     }
     if (loginStep === "workspace-join") {
       userData.hotelID = inputValue;
-      console.log(userData);
+
       fetchDataInRender(userData.hotelID)
-        .then(
-          updateUserData(userData).then((data) => {
-            // setCurrentArea(PageType.floor);
-            // setIsUserLogedIn(true);
-          })
-        )
+        .then((data) => {
+          if (data) {
+            console.log(userData);
+            updateUserData(userData)
+              .then((data) => {
+                console.log(data);
+                if (data) {
+                  console.log(data);
+                  setCurrentArea(PageType.floor);
+                  setIsUserLogedIn(true);
+                  setHotelNumber(data.hotelID);
+                }
+              })
+              .catch((error) => {
+                setErrorStatus("No hotel under that ID");
+                console.error("Error:", error);
+              });
+          }
+        })
         .catch((error) => {
+          console.log("No hotel under that ID");
           setErrorStatus("No hotel under that ID");
           console.error("Error:", error);
         });

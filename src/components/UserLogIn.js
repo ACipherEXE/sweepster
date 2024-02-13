@@ -141,6 +141,7 @@ function UserLogIn(props) {
           setIsUserLogedIn={setIsUserLogedIn}
           setErrorStatus={setErrorStatus}
           setUserData={setUserData}
+          setHotelNumber={setHotelNumber}
         />
       )}
     </div>
