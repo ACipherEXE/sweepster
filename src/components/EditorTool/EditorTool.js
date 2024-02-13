@@ -69,56 +69,54 @@ function EditorTool(props) {
       {/**
        * Expand here the rooms you want this component to appear
        */}
-      {currentArea === PageType.room && (
-        <div>
-          <div class="editor-tool-container">
-            <div class="editor-tool-item">
-              {editMode ? (
-                <button
-                  className="editor-edit-button-active"
-                  onClick={() => setEditMode(!editMode)}
-                >
-                  <div className="editor-edit-button-active-text">End Edit</div>
-                </button>
-              ) : (
-                <button
-                  className="editor-edit-button"
-                  onClick={() => setEditMode(!editMode)}
-                >
-                  <div className="editor-edit-button-active-text">Edit</div>
-                </button>
-              )}
-            </div>
-            {/**
-             * TODO: Make this change when we are in the  user management page
-             * TODO: Implement visible and invisible logo.
-             */}
-            {currentArea === "User Edit" ? (
-              <div className="hotel-id-container">
-                <div
-                  className="editor-tool-item"
-                  onClick={() => setIsHotelNumberVisible(!isHotelNumberVisible)}
-                >
-                  <div className="editor-hotel-id">
-                    {isHotelNumberVisible ? hotelNumber : "Hotel ID"}
-                  </div>
-                </div>
-              </div>
+      <div className="editor-tool-center-container">
+        <div class="editor-tool-container">
+          <div class="editor-tool-item">
+            {editMode ? (
+              <button
+                className="editor-edit-button-active"
+                onClick={() => setEditMode(!editMode)}
+              >
+                <div className="editor-edit-button-active-text">End Edit</div>
+              </button>
             ) : (
-              <div>
-                <div class="editor-tool-item">
-                  <button
-                    className="editor-reset-button"
-                    onClick={() => resetAllTasks()}
-                  >
-                    Reset All Tasks
-                  </button>
-                </div>
-              </div>
+              <button
+                className="editor-edit-button"
+                onClick={() => setEditMode(!editMode)}
+              >
+                <div className="editor-edit-button-active-text">Edit</div>
+              </button>
             )}
           </div>
+          {/**
+           * TODO: Make this change when we are in the  user management page
+           * TODO: Implement visible and invisible logo.
+           */}
+          {currentArea === PageType.userEditor ? (
+            <div className="hotel-id-container">
+              <div
+                className="editor-tool-item"
+                onClick={() => setIsHotelNumberVisible(!isHotelNumberVisible)}
+              >
+                <div className="editor-hotel-id">
+                  {isHotelNumberVisible ? hotelNumber : "Hotel ID"}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div class="editor-tool-item">
+                <button
+                  className="editor-reset-button"
+                  onClick={() => resetAllTasks()}
+                >
+                  Reset All Tasks
+                </button>
+              </div>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

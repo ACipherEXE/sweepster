@@ -1,8 +1,14 @@
 .editor-tool-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 80px;
+  gap: 70px;
   margin-bottom: 15px;
+  background-color: #1a1a1a;
+}
+.editor-tool-center-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .hotel-id-container {
   display: grid;
@@ -81,6 +87,7 @@
   font-weight: 600;
   line-height: 19px;
   text-align: center;
+  white-space: nowrap;
 }
 .editor-hotel-id-icon {
   color: #ffffff;
