@@ -1,5 +1,5 @@
 import { ApiType } from "./Types";
-var apiType = ApiType.local;
+var apiType = ApiType.prod;
 export const fetchDataInRender = async (hotelNumber) => {
   console.warn(
     apiType === ApiType.prod ? "You are in PROD" : "You are in LOCAL"
