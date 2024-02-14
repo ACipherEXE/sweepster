@@ -4,6 +4,7 @@ import FloorsPage from "./components/FloorsPage/FloorsPage";
 import UserLogIn from "./components/UserLogIn";
 // eslint-disable-next-line
 import hotelGetExample from "./JSON/hotelGetExample.json";
+// eslint-disable-next-line
 import usersExample from "./JSON/exampleUsers.json";
 import hotelExample from "./JSON/hotelExample.json";
 import RoomPage from "./components/RoomPage/RoomPage";

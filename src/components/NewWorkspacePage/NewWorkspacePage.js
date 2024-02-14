@@ -3,7 +3,9 @@ import "./NewWorkspacePage.css";
 import TaskAddBox from "../TaskAddBox/TaskAddBox";
 
 function NewWorkspacePage(props) {
+  // eslint-disable-next-line
   const [createStep, setCreateStep] = useState("tasks-for-all-rooms");
+  // eslint-disable-next-line
   const [hasInputNumberOfRooms, setHasInputNumberOfRooms] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const handleInputChange = (e) => {
