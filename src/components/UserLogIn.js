@@ -13,6 +13,7 @@ function UserLogIn(props) {
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  // eslint-disable-next-line
   const [errorStatus, setErrorStatus] = useState(null);
   const [userData, setUserData] = useState(null);
 

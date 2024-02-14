@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 function UserCard(props) {
   var { firstName, lastName, permission, editMode } = props;
   const [isOpen, setIsOpen] = useState(false);
+  // eslint-disable-next-line
   const [selectedItem, setSelectedItem] = useState(null);
   const toggleDropdown = () => {
     if (editMode) {
       setIsOpen(!isOpen);
     }
   };
-
+  // eslint-disable-next-line
   const selectItem = (item) => {
     setSelectedItem(item);
     toggleDropdown();
