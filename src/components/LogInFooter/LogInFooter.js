@@ -62,12 +62,9 @@ function LogInFooter(props) {
       fetchDataInRender(userData.hotelID)
         .then((data) => {
           if (data) {
-            console.log(userData);
             updateUserData(userData)
               .then((data) => {
-                console.log(data);
                 if (data) {
-                  console.log(data);
                   setCurrentArea(PageType.floor);
                   setIsUserLogedIn(true);
                   setHotelNumber(data.hotelID);

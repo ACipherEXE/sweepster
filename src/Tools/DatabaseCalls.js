@@ -27,7 +27,7 @@ export const fetchDataInRender = async (hotelNumber) => {
     return result;
   } catch (error) {
     console.log("error", error);
-    return error; // You can choose to handle or rethrow the error as needed
+    // You can choose to handle or rethrow the error as needed
   }
 };
 /**
