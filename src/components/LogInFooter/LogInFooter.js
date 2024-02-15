@@ -82,6 +82,19 @@ function LogInFooter(props) {
           console.error("Error:", error);
         });
     }
+    if (loginStep === "number-of-floors") {
+      setErrorStatus(null);
+      setLoginStep("number-of-rooms");
+    }
+    if (loginStep === "number-of-rooms") {
+      setErrorStatus(null);
+      setLoginStep("tasks-for-all-rooms");
+    }
+    if (loginStep === "tasks-for-all-rooms") {
+      console.log(
+        "This is wher we will genrate the hotel with the amount to floors and room with tasks inside them."
+      );
+    }
   }
   function goAStepBack() {
     if (loginStep === "sign-up-username") {
@@ -92,6 +105,16 @@ function LogInFooter(props) {
     }
     if (loginStep === "workspace-join") {
       setLoginStep("workspace-options");
+    }
+    if (loginStep === "number-of-floors") {
+      setLoginStep("workspace-options");
+    }
+    if (loginStep === "number-of-rooms") {
+      setErrorStatus(null);
+      setLoginStep("number-of-floors");
+    }
+    if (loginStep === "tasks-for-all-rooms") {
+      setLoginStep("number-of-rooms");
     }
   }
   return (

@@ -125,26 +125,41 @@ function UserLogIn(props) {
 
       {loginStep === "workspace-create" && (
         <>
-          <NewWorkspacePage />
+          <NewWorkspacePage
+            loginStep={loginStep}
+            passwordInput={passwordInput}
+            confirmPassword={confirmPassword}
+            emailInput={emailInput}
+            inputValue={inputValue}
+            userData={userData}
+            setLoginStep={setLoginStep}
+            setCurrentArea={setCurrentArea}
+            setIsUserLogedIn={setIsUserLogedIn}
+            setErrorStatus={setErrorStatus}
+            setUserData={setUserData}
+            setHotelNumber={setHotelNumber}
+          />
         </>
       )}
 
-      {loginStep !== "login" && loginStep !== "workspace-options" && (
-        <LogInFooter
-          loginStep={loginStep}
-          passwordInput={passwordInput}
-          confirmPassword={confirmPassword}
-          emailInput={emailInput}
-          inputValue={inputValue}
-          userData={userData}
-          setLoginStep={setLoginStep}
-          setCurrentArea={setCurrentArea}
-          setIsUserLogedIn={setIsUserLogedIn}
-          setErrorStatus={setErrorStatus}
-          setUserData={setUserData}
-          setHotelNumber={setHotelNumber}
-        />
-      )}
+      {loginStep !== "login" &&
+        loginStep !== "workspace-options" &&
+        loginStep !== "workspace-create" && (
+          <LogInFooter
+            loginStep={loginStep}
+            passwordInput={passwordInput}
+            confirmPassword={confirmPassword}
+            emailInput={emailInput}
+            inputValue={inputValue}
+            userData={userData}
+            setLoginStep={setLoginStep}
+            setCurrentArea={setCurrentArea}
+            setIsUserLogedIn={setIsUserLogedIn}
+            setErrorStatus={setErrorStatus}
+            setUserData={setUserData}
+            setHotelNumber={setHotelNumber}
+          />
+        )}
     </div>
   );
 }
