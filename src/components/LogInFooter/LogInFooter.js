@@ -5,6 +5,7 @@ import {
   fetchDataInRender,
   postUserData,
   updateUserData,
+  createHotelData,
 } from "../../Tools/DatabaseCalls";
 import AddTaskOverlay from "../AddTaskOverlay/AddTaskOverlay";
 function LogInFooter(props) {
@@ -16,6 +17,8 @@ function LogInFooter(props) {
     userData,
     inputValue,
     listOfTasks,
+    numberOfRooms,
+    numberOfFloors,
     setListOfTasks,
     setLoginStep,
     setCurrentArea,
@@ -30,7 +33,34 @@ function LogInFooter(props) {
   useEffect(() => {
     console.log("SCEAAAAA");
   }, [listOfTasks]);
+  function generateHotelJson(numFloors, roomsPerFloor, tasksList) {
+    let hotelData = {
+      Staff_List: [],
+      hotel_data: {
+        floors: [],
+      },
+    };
 
+    for (let i = 1; i <= numFloors; i++) {
+      let floor = {
+        floor: i === 1 ? "ground" : i.toString(),
+        rooms: [],
+      };
+
+      for (let j = 1; j <= roomsPerFloor; j++) {
+        let room = {
+          room: (i === 1 ? "0" : i.toString()) + j.toString().padStart(2, "0"),
+          tasks: tasksList,
+        };
+
+        floor.rooms.push(room);
+      }
+
+      hotelData.hotel_data.floors.push(floor);
+    }
+
+    return hotelData;
+  }
   function goAStepFront() {
     console.log(loginStep);
     if (loginStep === "sign-up-username") {
@@ -101,9 +131,27 @@ function LogInFooter(props) {
       setLoginStep("tasks-for-all-rooms");
     }
     if (loginStep === "tasks-for-all-rooms") {
-      console.log(
-        "This is wher we will genrate the hotel with the amount to floors and room with tasks inside them."
-      );
+      createHotelData(
+        generateHotelJson(numberOfFloors, numberOfRooms, listOfTasks)
+      ).then((data) => {
+        console.log(data);
+        if (data) {
+          userData.hotelID = data.id;
+
+          updateUserData(userData)
+            .then((data) => {
+              if (data) {
+                setCurrentArea(PageType.floor);
+                setIsUserLogedIn(true);
+                setHotelNumber(data.hotelID);
+              }
+            })
+            .catch((error) => {
+              setErrorStatus("No hotel under that ID");
+              console.error("Error:", error);
+            });
+        }
+      });
     }
   }
   function goAStepBack() {
@@ -127,7 +175,7 @@ function LogInFooter(props) {
     if (loginStep === "tasks-for-all-rooms") {
       setLoginStep("number-of-rooms");
     }
-    if (loginStep === "workspace-create") {
+    if (loginStep === "number-of-floors") {
       setLoginStep("workspace-options");
     }
   }

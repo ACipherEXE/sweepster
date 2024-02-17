@@ -45,9 +45,6 @@ function UserLogIn(props) {
     setConfirmPassword(e.target.value);
   };
 
-  useEffect(() => {
-    console.log("UPDATE");
-  }, [listOfTasks]);
   return (
     <div className="user-login-container">
       <div className="login-image" />
