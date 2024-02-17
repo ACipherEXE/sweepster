@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./UserLogIn.css";
 import { PageType } from "../Tools/Types";
 import LogInFooter from "./LogInFooter/LogInFooter";
 import NewWorkspacePage from "./NewWorkspacePage/NewWorkspacePage";
 import TaskAddBox from "./TaskAddBox/TaskAddBox";
+import TaskAddBoxCard from "./TaskAddBox/TaskAddBoxCard";
 function UserLogIn(props) {
   // eslint-disable-next-line
   var { setCurrentArea, setUserRequest, setIsUserLogedIn, setHotelNumber } =
@@ -20,14 +21,17 @@ function UserLogIn(props) {
   const [createStep, setCreateStep] = useState("number-of-floors");
   // eslint-disable-next-line
   const [hasInputNumberOfRooms, setHasInputNumberOfRooms] = useState(false);
-  const [listOfTasks, setListOfTasks] = useState({});
+  const [listOfTasks, setListOfTasks] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [roomValue, setRoomValue] = useState("");
   const roomInputChange = (e) => {
-    setRoomValue(e.target.value);
+    const newValue = e.target.value.replace(/\D/g, "");
+    setRoomValue(newValue);
   };
   const [floorInput, setFloorInput] = useState("");
   const floorInputChange = (e) => {
-    setFloorInput(e.target.value);
+    const newValue = e.target.value.replace(/\D/g, "");
+    setFloorInput(newValue);
   };
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -41,6 +45,10 @@ function UserLogIn(props) {
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
   };
+
+  useEffect(() => {
+    setTasks(listOfTasks);
+  }, [listOfTasks]);
   return (
     <div className="user-login-container">
       <div className="login-image" />
@@ -184,7 +192,11 @@ function UserLogIn(props) {
           <div className="text">
             What tasks would you like to add to all rooms?
           </div>
-          <TaskAddBox listOfTasks={listOfTasks} />
+          <div className="task-box">
+            {tasks.map((task, index) => (
+              <TaskAddBoxCard key={index} taskName={task.task} />
+            ))}
+          </div>
         </>
       )}
       {loginStep !== "login" && loginStep !== "workspace-options" && (
