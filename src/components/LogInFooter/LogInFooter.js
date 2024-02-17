@@ -24,12 +24,13 @@ function LogInFooter(props) {
     setUserData,
     setHotelNumber,
   } = props;
-  const [data, setData] = useState([]);
-  const [isVisible, setIsVisible] = useState(false);
 
+  const [isVisible, setIsVisible] = useState(false);
+  const [data, setData] = useState([]);
   useEffect(() => {
-    setListOfTasks(data);
-  }, [data]);
+    console.log("SCEAAAAA");
+  }, [listOfTasks]);
+
   function goAStepFront() {
     console.log(loginStep);
     if (loginStep === "sign-up-username") {
@@ -153,8 +154,8 @@ function LogInFooter(props) {
           <AddTaskOverlay
             variant={true}
             setIsVisible={setIsVisible}
-            data={data}
-            setData={setData}
+            listOfTasks={listOfTasks}
+            setListOfTasks={setListOfTasks}
           />
         </div>
       )}

@@ -14,9 +14,11 @@ function AddTaskOverlay(props) {
     data,
     // eslint-disable-next-line
     setCurrentArea,
+    listOfTasks,
     setIsVisible,
     setData,
     variant = false,
+    setListOfTasks,
   } = props;
 
   const [inputValue, setInputValue] = useState("");
@@ -29,14 +31,13 @@ function AddTaskOverlay(props) {
 
   function addNewTask() {
     if (variant) {
-      console.log("SCREAM");
-      const task = data.find((t) => t.task === inputValue);
+      const task = listOfTasks?.find((t) => t.task === inputValue);
 
       // To avoid making mutiple tasks of the same name
       if (!task) {
-        data.push({ task: inputValue, isDone: false });
-        setData(data);
-        console.log(data);
+        // listOfTasks?.push({ task: inputValue, isDone: false });
+        setListOfTasks([...listOfTasks, { task: inputValue, isDone: false }]);
+        console.log(listOfTasks);
       }
       // Remove overlay
       setIsVisible(false);

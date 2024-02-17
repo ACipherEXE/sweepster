@@ -17,12 +17,11 @@ function UserLogIn(props) {
   // eslint-disable-next-line
   const [errorStatus, setErrorStatus] = useState(null);
   const [userData, setUserData] = useState(null);
-  // eslint-disable-next-line
-  const [createStep, setCreateStep] = useState("number-of-floors");
+
   // eslint-disable-next-line
   const [hasInputNumberOfRooms, setHasInputNumberOfRooms] = useState(false);
   const [listOfTasks, setListOfTasks] = useState([]);
-  const [tasks, setTasks] = useState([]);
+
   const [roomValue, setRoomValue] = useState("");
   const roomInputChange = (e) => {
     const newValue = e.target.value.replace(/\D/g, "");
@@ -47,7 +46,7 @@ function UserLogIn(props) {
   };
 
   useEffect(() => {
-    setTasks(listOfTasks);
+    console.log("UPDATE");
   }, [listOfTasks]);
   return (
     <div className="user-login-container">
@@ -193,8 +192,8 @@ function UserLogIn(props) {
             What tasks would you like to add to all rooms?
           </div>
           <div className="task-box">
-            {listOfTasks.map((task, index) => (
-              <TaskAddBoxCard key={index} taskName={task.task} />
+            {listOfTasks?.map((task) => (
+              <TaskAddBoxCard taskName={task.task} />
             ))}
           </div>
         </>
