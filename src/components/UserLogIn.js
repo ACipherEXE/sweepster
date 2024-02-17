@@ -193,7 +193,7 @@ function UserLogIn(props) {
             What tasks would you like to add to all rooms?
           </div>
           <div className="task-box">
-            {tasks.map((task, index) => (
+            {listOfTasks.map((task, index) => (
               <TaskAddBoxCard key={index} taskName={task.task} />
             ))}
           </div>
