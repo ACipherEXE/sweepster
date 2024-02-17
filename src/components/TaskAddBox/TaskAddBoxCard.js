@@ -34,7 +34,8 @@ const styles = {
     pointerEvents: "none",
   },
 };
-function TaskAddBoxCard() {
+function TaskAddBoxCard(props) {
+  var { taskName } = props;
   const [isChecked, setIsChecked] = React.useState(false);
 
   const onClick = () => {
@@ -44,7 +45,7 @@ function TaskAddBoxCard() {
     <>
       <div className="TaskAddBoxCard-container" onClick={onClick}>
         <div className="task-card-grid">
-          <div className="task-card-item">test</div>
+          <div className="task-card-item">{taskName}</div>
           <div className="task-card-radio">
             <div style={styles.Container}>
               <div

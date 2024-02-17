@@ -8,7 +8,7 @@ function TaskAddBox(props) {
     <>
       <div className="task-box">
         {listOfTasks.map((task, index) => {
-          return <TaskAddBoxCard key={index} />;
+          return <TaskAddBoxCard key={index} taskName={task.task} />;
         })}
       </div>
     </>
