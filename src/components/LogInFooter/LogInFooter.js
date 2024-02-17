@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./LogInFooter.css";
 import { PageType } from "../../Tools/Types";
 import {
@@ -6,6 +6,7 @@ import {
   postUserData,
   updateUserData,
 } from "../../Tools/DatabaseCalls";
+import AddTaskOverlay from "../AddTaskOverlay/AddTaskOverlay";
 function LogInFooter(props) {
   var {
     loginStep,
@@ -14,6 +15,8 @@ function LogInFooter(props) {
     emailInput,
     userData,
     inputValue,
+    listOfTasks,
+    setListOfTasks,
     setLoginStep,
     setCurrentArea,
     setIsUserLogedIn,
@@ -21,8 +24,14 @@ function LogInFooter(props) {
     setUserData,
     setHotelNumber,
   } = props;
+  const [data, setData] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
 
+  useEffect(() => {
+    setListOfTasks(data);
+  }, [data]);
   function goAStepFront() {
+    console.log(loginStep);
     if (loginStep === "sign-up-username") {
       if (emailInput === "" || emailInput === null) {
         console.log("You must pass a email");
@@ -82,7 +91,7 @@ function LogInFooter(props) {
           console.error("Error:", error);
         });
     }
-    if (loginStep === "number-of-floors") {
+    if (loginStep === "workspace-create") {
       setErrorStatus(null);
       setLoginStep("number-of-rooms");
     }
@@ -97,6 +106,7 @@ function LogInFooter(props) {
     }
   }
   function goAStepBack() {
+    console.log(loginStep);
     if (loginStep === "sign-up-username") {
       setLoginStep("login");
     }
@@ -116,6 +126,9 @@ function LogInFooter(props) {
     if (loginStep === "tasks-for-all-rooms") {
       setLoginStep("number-of-rooms");
     }
+    if (loginStep === "workspace-create") {
+      setLoginStep("workspace-options");
+    }
   }
   return (
     <div className="log-in-footer-container">
@@ -127,11 +140,24 @@ function LogInFooter(props) {
       >
         Back
       </button>
-      <button className="new-multi-task-button-login">
+      <button
+        className="new-multi-task-button-login"
+        onClick={() => setIsVisible(true)}
+      >
         <svg className="new-multi-task-button-icon" viewBox="0 0 448 512">
           <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
         </svg>
       </button>
+      {isVisible && (
+        <div>
+          <AddTaskOverlay
+            variant={true}
+            setIsVisible={setIsVisible}
+            data={data}
+            setData={setData}
+          />
+        </div>
+      )}
       <button
         className="login-next-step-button"
         onClick={() => {

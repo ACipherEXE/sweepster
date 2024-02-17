@@ -30,43 +30,6 @@ function NewWorkspacePage(props) {
     setFloorInput(e.target.value);
   };
 
-  function generateHotelJson(numFloors, roomsPerFloor, tasksList) {
-    let hotelData = {
-      id: "c3a8",
-      Hotel_Number: "Thisisatest",
-      Staff_List: [],
-      hotel_data: {
-        floors: [],
-      },
-    };
-
-    for (let i = 1; i <= numFloors; i++) {
-      let floor = {
-        floor: i === 1 ? "ground" : i.toString(),
-        rooms: [],
-      };
-
-      for (let j = 1; j <= roomsPerFloor; j++) {
-        let room = {
-          room: (i === 1 ? "0" : i.toString()) + j.toString().padStart(2, "0"),
-          tasks: tasksList,
-        };
-
-        floor.rooms.push(room);
-      }
-
-      hotelData.hotel_data.floors.push(floor);
-    }
-
-    return hotelData;
-  }
-  console.log(
-    generateHotelJson(5, 5, [
-      { task: "task", isDone: false },
-      { task: "sample", isDone: false },
-      { task: "Charzard", isDone: false },
-    ])
-  );
   return (
     <div>
       {createStep === "number-of-floors" && (
@@ -112,6 +75,8 @@ function NewWorkspacePage(props) {
         emailInput={emailInput}
         inputValue={inputValue}
         userData={userData}
+        numberOfFloors={floorInput}
+        numberOfRooms={roomValue}
         setLoginStep={setCreateStep}
         setCurrentArea={setCurrentArea}
         setIsUserLogedIn={setIsUserLogedIn}

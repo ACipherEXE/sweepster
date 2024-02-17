@@ -3,7 +3,7 @@ import "./UserLogIn.css";
 import { PageType } from "../Tools/Types";
 import LogInFooter from "./LogInFooter/LogInFooter";
 import NewWorkspacePage from "./NewWorkspacePage/NewWorkspacePage";
-
+import TaskAddBox from "./TaskAddBox/TaskAddBox";
 function UserLogIn(props) {
   // eslint-disable-next-line
   var { setCurrentArea, setUserRequest, setIsUserLogedIn, setHotelNumber } =
@@ -16,7 +16,19 @@ function UserLogIn(props) {
   // eslint-disable-next-line
   const [errorStatus, setErrorStatus] = useState(null);
   const [userData, setUserData] = useState(null);
-
+  // eslint-disable-next-line
+  const [createStep, setCreateStep] = useState("number-of-floors");
+  // eslint-disable-next-line
+  const [hasInputNumberOfRooms, setHasInputNumberOfRooms] = useState(false);
+  const [listOfTasks, setListOfTasks] = useState({});
+  const [roomValue, setRoomValue] = useState("");
+  const roomInputChange = (e) => {
+    setRoomValue(e.target.value);
+  };
+  const [floorInput, setFloorInput] = useState("");
+  const floorInputChange = (e) => {
+    setFloorInput(e.target.value);
+  };
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
@@ -125,41 +137,76 @@ function UserLogIn(props) {
 
       {loginStep === "workspace-create" && (
         <>
-          <NewWorkspacePage
-            loginStep={loginStep}
-            passwordInput={passwordInput}
-            confirmPassword={confirmPassword}
-            emailInput={emailInput}
-            inputValue={inputValue}
-            userData={userData}
-            setLoginStep={setLoginStep}
-            setCurrentArea={setCurrentArea}
-            setIsUserLogedIn={setIsUserLogedIn}
-            setErrorStatus={setErrorStatus}
-            setUserData={setUserData}
-            setHotelNumber={setHotelNumber}
+          <>
+            <div className="text">
+              How many floors require schedueled cleaning?
+            </div>
+            <input
+              className="password-input"
+              type="text"
+              placeholder="Enter Number"
+              value={floorInput}
+              onChange={floorInputChange}
+            />
+          </>
+        </>
+      )}
+      {loginStep === "number-of-floors" && (
+        <>
+          <div className="text">
+            How many floors require schedueled cleaning?
+          </div>
+          <input
+            className="password-input"
+            type="text"
+            placeholder="Enter Number"
+            value={floorInput}
+            onChange={floorInputChange}
           />
         </>
       )}
-
-      {loginStep !== "login" &&
-        loginStep !== "workspace-options" &&
-        loginStep !== "workspace-create" && (
-          <LogInFooter
-            loginStep={loginStep}
-            passwordInput={passwordInput}
-            confirmPassword={confirmPassword}
-            emailInput={emailInput}
-            inputValue={inputValue}
-            userData={userData}
-            setLoginStep={setLoginStep}
-            setCurrentArea={setCurrentArea}
-            setIsUserLogedIn={setIsUserLogedIn}
-            setErrorStatus={setErrorStatus}
-            setUserData={setUserData}
-            setHotelNumber={setHotelNumber}
-          />
-        )}
+      {loginStep === "number-of-rooms" && (
+        <>
+          <>
+            <div className="text">How many rooms are on eatch floor</div>
+            <input
+              className="password-input"
+              type="text"
+              placeholder="Enter Number"
+              value={roomValue}
+              onChange={roomInputChange}
+            />
+          </>
+        </>
+      )}
+      {loginStep === "tasks-for-all-rooms" && (
+        <>
+          <div className="text">
+            What tasks would you like to add to all rooms?
+          </div>
+          <TaskAddBox listOfTasks={listOfTasks} />
+        </>
+      )}
+      {loginStep !== "login" && loginStep !== "workspace-options" && (
+        <LogInFooter
+          loginStep={loginStep}
+          passwordInput={passwordInput}
+          confirmPassword={confirmPassword}
+          emailInput={emailInput}
+          inputValue={inputValue}
+          userData={userData}
+          numberOfFloors={floorInput}
+          numberOfRooms={roomValue}
+          listOfTasks={listOfTasks}
+          setListOfTasks={setListOfTasks}
+          setLoginStep={setLoginStep}
+          setCurrentArea={setCurrentArea}
+          setIsUserLogedIn={setIsUserLogedIn}
+          setErrorStatus={setErrorStatus}
+          setUserData={setUserData}
+          setHotelNumber={setHotelNumber}
+        />
+      )}
     </div>
   );
 }
