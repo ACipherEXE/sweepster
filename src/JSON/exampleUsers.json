@@ -1,50 +1,54 @@
 [
-    {
-      "user_id": "583c3ac3f38e84297c002546",
-      "pass": "dce3cfd9eca4f16e32beda1e40b46d0c298cab660deaf59da60f4073ca9421768da645c3186523cf99957cda60848b4e877e936a8cd049216ef5b1dae2d6c82e",
-      "staff_id": "abc000",
-      "email": "test@test.com",
-      "name": "test@test.com",
-      "given_name": "UCTest",
-      "nickname": "test",
-      "logins_count": 15,
-      "Hotel_Number": "Thisisatest",
-      "Permission": "user"
-    },
-    {
-      "user_id": "583c5484cb79a5fe593425a9",
-      "pass": "706613378c5b819859a19d2f980714fd8e4178604d2ee2903d7113677c8e713791631a941107d399895d93dca20579e13c0d7f00264298b8a9971fd8a80b9f46",
-      "staff_id": "abc111",
-      "email": "test1@test.com",
-      "name": "test1@test.com",
-      "given_name": "UCTest1",
-      "nickname": "test1",
-      "logins_count": 1,
-      "Hotel_Number": "exp000",
-      "Permission": "user"
-    },
-    {
-      "user_id": "583c57672c7686377d2f66c9",
-      "pass": "85df831a04a93e7b8a131555a141a718a7118358138ba18c1c3e02fa3d0a87ed82184dab7377826addf36e9e99f310a977b64581bb4ba60a0b06726261203f7b",
-      "staff_id": "abc222",
-      "email": "aaa@aaa.com",
-      "name": "aaa@aaa.com",
-      "given_name": "John",
-      "nickname": "aaa",
-      "logins_count": 2,
-      "Hotel_Number": "abc69",
-      "Permission": "admin"
-    },
-    {
-      "user_id": "5840b954da0529cd293d76fe",
-      "pass": "0f3fe1651e992a241501979338b39cac87cb32b18130810e2b4aeec645af8af6d6289b3ac70aa526da02a57e31a40879b7e7f2e80a08c8d0e796206e3f0f4aba",
-      "staff_id": "abc444",
-      "email": "a@a.com",
-      "name": "a@a.com",
-      "given_name": "Jane",
-      "nickname": "a",
-      "logins_count": 3,
-      "Hotel_Number": "abc69",
-      "Permission": "manager"
-    }
-  ]
+  {
+    "user_id": "583c3ac3f38e84297c002546",
+    "pass": "dce3cfd9eca4f16e32beda1e40b46d0c298cab660deaf59da60f4073ca9421768da645c3186523cf99957cda60848b4e877e936a8cd049216ef5b1dae2d6c82e",
+    "staff_id": "abc000",
+    "email": "test@test.com",
+    "given_name": "UCTest",
+    "first_name": "UCTest",
+    "last_name": "UCTest",
+    "nickname": "test",
+    "logins_count": 15,
+    "Hotel_Number": "Thisisatest",
+    "permission": "user"
+  },
+  {
+    "user_id": "583c5484cb79a5fe593425a9",
+    "pass": "706613378c5b819859a19d2f980714fd8e4178604d2ee2903d7113677c8e713791631a941107d399895d93dca20579e13c0d7f00264298b8a9971fd8a80b9f46",
+    "staff_id": "abc111",
+    "email": "test1@test.com",
+    "first_name": "Chris",
+    "last_name": "Negron",
+    "given_name": "UCTest1",
+    "nickname": "test1",
+    "logins_count": 1,
+    "Hotel_Number": "exp000",
+    "permission": "user"
+  },
+  {
+    "user_id": "583c57672c7686377d2f66c9",
+    "pass": "85df831a04a93e7b8a131555a141a718a7118358138ba18c1c3e02fa3d0a87ed82184dab7377826addf36e9e99f310a977b64581bb4ba60a0b06726261203f7b",
+    "staff_id": "abc222",
+    "email": "aaa@aaa.com",
+    "first_name": "aaa",
+    "last_name": "aaa",
+    "given_name": "John",
+    "nickname": "aaa",
+    "logins_count": 2,
+    "Hotel_Number": "abc69",
+    "permission": "admin"
+  },
+  {
+    "user_id": "5840b954da0529cd293d76fe",
+    "pass": "0f3fe1651e992a241501979338b39cac87cb32b18130810e2b4aeec645af8af6d6289b3ac70aa526da02a57e31a40879b7e7f2e80a08c8d0e796206e3f0f4aba",
+    "staff_id": "abc444",
+    "email": "a@a.com",
+    "first_name": "Jane",
+    "last_name": "a",
+    "given_name": "Jane",
+    "nickname": "a",
+    "logins_count": 3,
+    "Hotel_Number": "abc69",
+    "permission": "manager"
+  }
+]

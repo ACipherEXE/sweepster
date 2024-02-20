@@ -16,8 +16,8 @@
 
 .App-header {
   background-color: #1a1a1a;
-  min-height: 75vh;
-  max-height: 75vh;
+  min-height: 69vh;
+  max-height: 69vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +38,7 @@
 }
 
 .App-login {
-  background-color: #282c34;
+  background-color: hsl(0, 0%, 10%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -46,6 +46,9 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+.base {
+  background-color: #1a1a1a;
 }
 
 .App-link {
@@ -62,5 +65,5 @@
 }
 
 .main-area-container {
-  overflow: hidden;
+  overflow: auto;
 }
