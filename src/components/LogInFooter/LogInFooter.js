@@ -29,6 +29,7 @@ function LogInFooter(props) {
   } = props;
 
   const [isVisible, setIsVisible] = useState(false);
+  // eslint-disable-next-line
   const [data, setData] = useState([]);
   useEffect(() => {
     console.log("SCEAAAAA");

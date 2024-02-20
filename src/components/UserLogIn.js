@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./UserLogIn.css";
 import { PageType } from "../Tools/Types";
 import LogInFooter from "./LogInFooter/LogInFooter";
+// eslint-disable-next-line
 import NewWorkspacePage from "./NewWorkspacePage/NewWorkspacePage";
+// eslint-disable-next-line
 import TaskAddBox from "./TaskAddBox/TaskAddBox";
 import TaskAddBoxCard from "./TaskAddBox/TaskAddBoxCard";
 function UserLogIn(props) {

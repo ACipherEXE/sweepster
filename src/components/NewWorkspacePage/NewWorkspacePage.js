@@ -4,12 +4,14 @@ import TaskAddBox from "../TaskAddBox/TaskAddBox";
 import LogInFooter from "../LogInFooter/LogInFooter";
 function NewWorkspacePage(props) {
   var {
+    // eslint-disable-next-line
     loginStep,
     confirmPassword,
     passwordInput,
     emailInput,
     userData,
     inputValue,
+    // eslint-disable-next-line
     setLoginStep,
     setCurrentArea,
     setIsUserLogedIn,

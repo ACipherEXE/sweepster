@@ -11,6 +11,7 @@ function AddTaskOverlay(props) {
     currentArea,
     userRequest,
     hotelNumber,
+    // eslint-disable-next-line
     data,
     // eslint-disable-next-line
     setCurrentArea,
