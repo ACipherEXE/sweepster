@@ -29,8 +29,9 @@ function UserLogIn(props) {
       // Check if the email exists in the users object
       if (bcrypt.compareSync(password, users[email])) {
         // Compare the entered password with the hashed password
-        setCurrentArea(PageType.floor);
-        setIsUserLogedIn(true);
+        // setCurrentArea(PageType.floor);
+        // setIsUserLogedIn(true);
+        console.log("Valid password");
       } else {
         alert("Invalid password");
       }
@@ -79,26 +80,15 @@ function UserLogIn(props) {
     <div className="user-login-container">
       <div className="login-image" />
       <div className="default-text">Sweepster</div>
-      {/* Add fields for email and password */}
-      <input
-        type="email"
-        placeholder="Enter your email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Enter your password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+
       {loginStep === "login" && (
         <>
           <button
             className="login-button"
             onClick={() => {
-              setCurrentArea(PageType.floor);
-              setIsUserLogedIn(true);
+              // setCurrentArea(PageType.floor);
+              // setIsUserLogedIn(true);
+              setLoginStep("log-in");
             }}
           >
             Sign in with Email
@@ -110,6 +100,26 @@ function UserLogIn(props) {
             }}
           >
             Create a account
+          </button>
+        </>
+      )}
+      {loginStep === "log-in" && (
+        <>
+          {/* Add fields for email and password */}
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className="login-button" onClick={handleLogin}>
+            Sign in with Email
           </button>
         </>
       )}

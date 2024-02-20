@@ -9,7 +9,6 @@
   min-height: 100vh;
   text-align: center;
 }
-
 .default-text {
   color: #ffffff;
   font-size: 36px;
@@ -70,19 +69,6 @@
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-}
-
-/* Add styles for email and password fields */
-input[type="email"],
-input[type="password"] {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
 }
 .email-input {
   top: 296px;
