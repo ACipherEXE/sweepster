@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./UserLogIn.css";
 import { PageType } from "../Tools/Types";
 import LogInFooter from "./LogInFooter/LogInFooter";
 import NewWorkspacePage from "./NewWorkspacePage/NewWorkspacePage";
-
+import TaskAddBox from "./TaskAddBox/TaskAddBox";
+import TaskAddBoxCard from "./TaskAddBox/TaskAddBoxCard";
 function UserLogIn(props) {
   // eslint-disable-next-line
   var { setCurrentArea, setUserRequest, setIsUserLogedIn, setHotelNumber } =
@@ -17,6 +18,20 @@ function UserLogIn(props) {
   const [errorStatus, setErrorStatus] = useState(null);
   const [userData, setUserData] = useState(null);
 
+  // eslint-disable-next-line
+  const [hasInputNumberOfRooms, setHasInputNumberOfRooms] = useState(false);
+  const [listOfTasks, setListOfTasks] = useState([]);
+
+  const [roomValue, setRoomValue] = useState("");
+  const roomInputChange = (e) => {
+    const newValue = e.target.value.replace(/\D/g, "");
+    setRoomValue(newValue);
+  };
+  const [floorInput, setFloorInput] = useState("");
+  const floorInputChange = (e) => {
+    const newValue = e.target.value.replace(/\D/g, "");
+    setFloorInput(newValue);
+  };
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
@@ -29,6 +44,7 @@ function UserLogIn(props) {
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
   };
+
   return (
     <div className="user-login-container">
       <div className="login-image" />
@@ -125,10 +141,60 @@ function UserLogIn(props) {
 
       {loginStep === "workspace-create" && (
         <>
-          <NewWorkspacePage />
+          <>
+            <div className="text">
+              How many floors require schedueled cleaning?
+            </div>
+            <input
+              className="password-input"
+              type="text"
+              placeholder="Enter Number"
+              value={floorInput}
+              onChange={floorInputChange}
+            />
+          </>
         </>
       )}
-
+      {loginStep === "number-of-floors" && (
+        <>
+          <div className="text">
+            How many floors require schedueled cleaning?
+          </div>
+          <input
+            className="password-input"
+            type="text"
+            placeholder="Enter Number"
+            value={floorInput}
+            onChange={floorInputChange}
+          />
+        </>
+      )}
+      {loginStep === "number-of-rooms" && (
+        <>
+          <>
+            <div className="text">How many rooms are on eatch floor</div>
+            <input
+              className="password-input"
+              type="text"
+              placeholder="Enter Number"
+              value={roomValue}
+              onChange={roomInputChange}
+            />
+          </>
+        </>
+      )}
+      {loginStep === "tasks-for-all-rooms" && (
+        <>
+          <div className="text">
+            What tasks would you like to add to all rooms?
+          </div>
+          <div className="task-box">
+            {listOfTasks?.map((task) => (
+              <TaskAddBoxCard taskName={task.task} />
+            ))}
+          </div>
+        </>
+      )}
       {loginStep !== "login" && loginStep !== "workspace-options" && (
         <LogInFooter
           loginStep={loginStep}
@@ -137,6 +203,10 @@ function UserLogIn(props) {
           emailInput={emailInput}
           inputValue={inputValue}
           userData={userData}
+          numberOfFloors={floorInput}
+          numberOfRooms={roomValue}
+          listOfTasks={listOfTasks}
+          setListOfTasks={setListOfTasks}
           setLoginStep={setLoginStep}
           setCurrentArea={setCurrentArea}
           setIsUserLogedIn={setIsUserLogedIn}

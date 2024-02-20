@@ -1,20 +1,34 @@
 .task-box {
   display: flex;
-  top: 376px;
-  left: 70px;
-  width: 235px;
-  height: 200px;
-  padding: 0px 8px;
-  border: 0;
-  box-sizing: border-box;
-  border-radius: 25px;
-  background-color: #1e90ff;
-  color: #ffffff;
-  font-size: 14px;
-  font-family: "Inter";
-  font-weight: 700;
-  line-height: 16px;
-  outline: none;
-  margin-top: 15px;
-  margin-bottom: 50px;
+  flex-direction: column; /* Ensure the cards stack vertically */
+  align-items: center; /* Center items horizontally */
+  margin-top: 15px; /* Add some margin at the top */
+  max-height: 205px;
+  overflow-y: auto;
+}
+
+.TaskAddBoxCard-container {
+  cursor: pointer;
+  width: 100%; /* Ensure the card takes up the full width of its container */
+  height: 50px; /* Adjust height as needed */
+  /* Add some margin between cards */
+  background-color: #000000;
+  border: 1px solid #1e90ff;
+  border-radius: 5px;
+  display: flex; /* Ensure flexbox layout */
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Space items evenly */
+}
+
+.task-card-grid {
+  display: flex;
+  align-items: center;
+}
+
+.task-card-item {
+  margin-left: 5px; /* Adjust spacing between item and radio button */
+}
+
+.task-card-radio {
+  margin-right: 10px; /* Adjust spacing between radio button and right edge */
 }

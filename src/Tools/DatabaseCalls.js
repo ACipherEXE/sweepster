@@ -63,6 +63,38 @@ export const updateHotelData = async (hotelData) => {
     throw error;
   }
 };
+/**
+ * Sends the new json to the API
+ * @param {JSON} hotelData = The updated Hotel Data you want to push.
+ */
+export const createHotelData = async (hotelData) => {
+  console.warn(
+    apiType === ApiType.prod ? "You are in PROD" : "You are in LOCAL"
+  );
+  var myHeaders = new Headers();
+  myHeaders.append("x-master-key", "your_master_key");
+  myHeaders.append("Content-Type", "application/json");
+
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: JSON.stringify(hotelData),
+    redirect: "follow",
+  };
+
+  try {
+    const response = await fetch(`${apiType}/api/hotels`, requestOptions);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json(); // Parse the JSON response
+
+    return data; // Return the parsed response data
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
 
 export const fetchUserData = async () => {
   console.warn(

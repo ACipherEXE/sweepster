@@ -11,10 +11,14 @@ function AddTaskOverlay(props) {
     currentArea,
     userRequest,
     hotelNumber,
+    data,
     // eslint-disable-next-line
     setCurrentArea,
+    listOfTasks,
     setIsVisible,
     setData,
+    variant = false,
+    setListOfTasks,
   } = props;
 
   const [inputValue, setInputValue] = useState("");
@@ -26,49 +30,62 @@ function AddTaskOverlay(props) {
   };
 
   function addNewTask() {
-    if (inputValue) {
-      fetchDataInRender(hotelNumber)
-        .then((pulledData) => {
-          var listOfLatestTasks = getSpecificRoomTasks(
-            pulledData,
-            userRequest.floor,
-            userRequest.room
-          );
-          const task = listOfLatestTasks.find((t) => t.task === inputValue);
+    if (variant) {
+      const task = listOfTasks?.find((t) => t.task === inputValue);
 
-          // To avoid making mutiple tasks of the same name
-          if (!task) {
-            // Then add it to the list if its not in it
-            listOfLatestTasks.push({ task: inputValue, isDone: false });
-            console.log(listOfLatestTasks);
-            const floorIndex = pulledData.hotel_data.floors.findIndex(
-              (floor) => floor.floor === userRequest.floor
-            );
-            /**Find the room */
-            const roomIndex = pulledData.hotel_data.floors[
-              floorIndex
-            ].rooms.findIndex((room) => room.room === userRequest.room);
-            /**Put the new task list in the correct room and floor */
-            pulledData.hotel_data.floors[floorIndex].rooms[roomIndex].tasks =
-              listOfLatestTasks;
-            // Set it as new data in the app
-            setData(pulledData);
-            // Remove overlay
-            setIsVisible(false);
-            // Update data in the API
-            updateHotelData(pulledData, hotelNumber).catch((error) => {
-              console.error("Error:", error);
-            });
-            /**Bloated part but works :) */
-          } else {
-            setErrorMessage("Task already exists");
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+      // To avoid making mutiple tasks of the same name
+      if (!task) {
+        // listOfTasks?.push({ task: inputValue, isDone: false });
+        setListOfTasks([...listOfTasks, { task: inputValue, isDone: false }]);
+        console.log(listOfTasks);
+      }
+      // Remove overlay
+      setIsVisible(false);
     } else {
-      setErrorMessage("Type a task in the box");
+      if (inputValue) {
+        fetchDataInRender(hotelNumber)
+          .then((pulledData) => {
+            var listOfLatestTasks = getSpecificRoomTasks(
+              pulledData,
+              userRequest.floor,
+              userRequest.room
+            );
+            const task = listOfLatestTasks.find((t) => t.task === inputValue);
+
+            // To avoid making mutiple tasks of the same name
+            if (!task) {
+              // Then add it to the list if its not in it
+              listOfLatestTasks.push({ task: inputValue, isDone: false });
+              console.log(listOfLatestTasks);
+              const floorIndex = pulledData.hotel_data.floors.findIndex(
+                (floor) => floor.floor === userRequest.floor
+              );
+              /**Find the room */
+              const roomIndex = pulledData.hotel_data.floors[
+                floorIndex
+              ].rooms.findIndex((room) => room.room === userRequest.room);
+              /**Put the new task list in the correct room and floor */
+              pulledData.hotel_data.floors[floorIndex].rooms[roomIndex].tasks =
+                listOfLatestTasks;
+              // Set it as new data in the app
+              setData(pulledData);
+              // Remove overlay
+              setIsVisible(false);
+              // Update data in the API
+              updateHotelData(pulledData, hotelNumber).catch((error) => {
+                console.error("Error:", error);
+              });
+              /**Bloated part but works :) */
+            } else {
+              setErrorMessage("Task already exists");
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      } else {
+        setErrorMessage("Type a task in the box");
+      }
     }
   }
 
