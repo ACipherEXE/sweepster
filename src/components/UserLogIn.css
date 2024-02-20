@@ -1,5 +1,13 @@
 :root {
-  --image-size: 300px;
+  --image-size: 200px;
+}
+.user-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
 }
 
 .default-text {
@@ -8,8 +16,8 @@
   font-family: "Inter";
   font-weight: 700;
   line-height: 42px;
-  margin-bottom: 50px;
-  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .login-button {
@@ -32,12 +40,31 @@
   outline: none;
   margin-bottom: 50px;
 }
+.sign-up-button {
+  cursor: pointer;
+  top: 419px;
+  left: 27px;
+  width: 321px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 1px solid #4f4f4f;
+  box-sizing: border-box;
+  border-radius: 37px;
+  box-shadow: 0px 4px 20px rgba(3, 3, 3, 0.1);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+}
 
 .login-image {
-  width: var(--image-size); /* Use the variable for the width */
-  height: var(--image-size);
-  max-width: 100%; /* Ensure the image doesn't exceed the viewport width */
-  max-height: 100%;
+  top: 14px;
+  left: 39px;
+  width: 298px;
+  height: 234px;
   border-radius: 8px;
   background-image: url("https://images.unsplash.com/photo-1517840901100-8179e982acb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wyMDUzMDJ8MHwxfHNlYXJjaHwyfHxIb3RlbHxlbnwxfHx8fDE2OTY5NDc3NDV8MA&ixlib=rb-4.0.3&q=80&w=1080");
   background-position: center center;
@@ -46,7 +73,8 @@
 }
 
 /* Add styles for email and password fields */
-input[type="email"], input[type="password"] {
+input[type="email"],
+input[type="password"] {
   display: block;
   width: 100%;
   padding: 10px;
@@ -55,4 +83,108 @@ input[type="email"], input[type="password"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+.email-input {
+  top: 296px;
+  left: 83px;
+  width: 209px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #4f4f4f;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin: 20px;
+  text-align: center;
+}
+.password-input {
+  top: 296px;
+  left: 83px;
+  width: 209px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #4f4f4f;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin: 10px;
+  text-align: center;
+}
+.password-confirm-input {
+  top: 296px;
+  left: 83px;
+  width: 209px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #4f4f4f;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin: 10px;
+  text-align: center;
+}
+.create-workspace-button {
+  top: 296px;
+  left: 83px;
+  width: 209px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin: 10px;
+  text-align: center;
+}
+
+.join-workspace-button {
+  top: 296px;
+  left: 83px;
+  width: 209px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  margin: 10px;
+  text-align: center;
+}
+.text {
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  line-height: 16px;
+  text-align: center;
+  width: 220px;
 }

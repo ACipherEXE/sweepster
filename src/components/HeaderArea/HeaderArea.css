@@ -18,27 +18,3 @@
   padding: 20px;
   text-align: center;
 }
-
-.header-button {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 29px;
-  left: 20px;
-  width: 37px;
-  height: 37px;
-  border: 1px solid #4f4f4f;
-  box-sizing: border-box;
-  border-radius: 12px;
-  color: #ffffff;
-  background-color: #1e90ff;
-  outline: none;
-}
-.header-icon {
-  color: #ffffff;
-  fill: #ffffff;
-  width: 14px;
-  height: 14px;
-  font-size: 14px;
-}

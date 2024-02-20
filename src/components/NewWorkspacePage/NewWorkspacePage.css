@@ -1,0 +1,46 @@
+.task-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  gap: 20px;
+}
+.task-card-item {
+  text-align: center;
+  padding: 15px;
+}
+.task-card-radio {
+  text-align: center;
+  padding: 12px;
+  padding-left: 45px;
+}
+.TaskAddBoxCard-container {
+  cursor: pointer;
+  top: 455px;
+  left: 78px;
+  width: 209px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #333333;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  text-align: left;
+  outline: none;
+  margin-top: 20px;
+}
+.radio {
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background-color: rgba(30, 144, 255, 1);
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

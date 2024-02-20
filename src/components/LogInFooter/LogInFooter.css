@@ -1,0 +1,53 @@
+.log-in-footer-container {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr; /* Three equal-width columns */
+  grid-gap: 20px; /* Gap between grid items */
+}
+
+.login-back-step-button,
+.new-multi-task-button,
+.login-next-step-button {
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+}
+
+.login-back-step-button {
+  margin-left: auto; /* Move to the right */
+}
+
+.new-multi-task-button-login {
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  top: 607px;
+  left: 171px;
+  width: 33px;
+  height: 33px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 30px;
+  color: #ffffff;
+  background-color: #1e90ff;
+  outline: none;
+  margin-left: 40px;
+}
+
+.login-next-step-button {
+  margin-right: auto; /* Move to the left */
+}
