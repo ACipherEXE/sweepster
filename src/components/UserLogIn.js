@@ -32,6 +32,13 @@ function UserLogIn(props) {
         // setCurrentArea(PageType.floor);
         // setIsUserLogedIn(true);
         console.log("Valid password");
+        bcrypt.hash(password, 0, function (err, hash) {
+          // Store hash in your password DB.
+          console.log(hash);
+          if (bcrypt.compareSync(password, hash)) {
+            console.log("Valid password1");
+          }
+        });
       } else {
         alert("Invalid password");
       }
