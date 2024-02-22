@@ -98,9 +98,9 @@ function LogInFooter(props) {
       }
     }
     if (loginStep === "workspace-join") {
-      userData.hotelID = inputValue;
-
-      fetchDataInRender(userData.hotelID)
+      userData.hotelId = inputValue;
+      console.log("USERDATA: " + JSON.stringify(userData));
+      fetchDataInRender(userData.hotelId)
         .then((data) => {
           if (data) {
             updateUserData(userData)
@@ -108,7 +108,7 @@ function LogInFooter(props) {
                 if (data) {
                   setCurrentArea(PageType.floor);
                   setIsUserLogedIn(true);
-                  setHotelNumber(data.hotelID);
+                  setHotelNumber(data.hotelId);
                 }
               })
               .catch((error) => {

@@ -16,7 +16,20 @@ function UserLogIn(props) {
   // Add state for email and password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginStep, setLoginStep] = useState("login");
+  const [inputValue, setInputValue] = useState("");
+  const [emailInput, setEmailInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  // eslint-disable-next-line
+  const [errorStatus, setErrorStatus] = useState(null);
+  const [userData, setUserData] = useState(null);
 
+  // eslint-disable-next-line
+  const [hasInputNumberOfRooms, setHasInputNumberOfRooms] = useState(false);
+  const [listOfTasks, setListOfTasks] = useState([]);
+
+  const [roomValue, setRoomValue] = useState("");
   // Sample user accounts
   const users = {
     "user1@example.com":
@@ -32,8 +45,17 @@ function UserLogIn(props) {
         email,
         bcrypt.hashSync(password, "$2a$10$abcdefghijklmnopqrstuu")
       ).then((data) => {
+        setUserData(data);
         if (data.userId) {
           console.log(data);
+          if (data.hotelId === null) {
+            console.log("NO HOTEL ID");
+            setLoginStep("workspace-options");
+          } else {
+            setCurrentArea(PageType.floor);
+            setIsUserLogedIn(true);
+            setHotelNumber(data.hotelId);
+          }
         } else {
           alert("Email and/or password not found");
         }
@@ -62,20 +84,6 @@ function UserLogIn(props) {
     // }
   };
 
-  const [loginStep, setLoginStep] = useState("login");
-  const [inputValue, setInputValue] = useState("");
-  const [emailInput, setEmailInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  // eslint-disable-next-line
-  const [errorStatus, setErrorStatus] = useState(null);
-  const [userData, setUserData] = useState(null);
-
-  // eslint-disable-next-line
-  const [hasInputNumberOfRooms, setHasInputNumberOfRooms] = useState(false);
-  const [listOfTasks, setListOfTasks] = useState([]);
-
-  const [roomValue, setRoomValue] = useState("");
   const roomInputChange = (e) => {
     const newValue = e.target.value.replace(/\D/g, "");
     setRoomValue(newValue);

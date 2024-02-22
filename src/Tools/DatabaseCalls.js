@@ -173,7 +173,7 @@ export const updateUserData = async (userData) => {
 
   try {
     const response = await fetch(
-      `${apiType}/api/users/${userData.id}`,
+      `${apiType}/api/users/${userData.userId}`,
       requestOptions
     );
     if (!response.ok) {
