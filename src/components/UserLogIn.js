@@ -8,6 +8,7 @@ import NewWorkspacePage from "./NewWorkspacePage/NewWorkspacePage";
 // eslint-disable-next-line
 import TaskAddBox from "./TaskAddBox/TaskAddBox";
 import TaskAddBoxCard from "./TaskAddBox/TaskAddBoxCard";
+import { userLogIn } from "../Tools/DatabaseCalls";
 function UserLogIn(props) {
   var { setCurrentArea, setUserRequest, setIsUserLogedIn, setHotelNumber } =
     props;
@@ -19,32 +20,46 @@ function UserLogIn(props) {
   // Sample user accounts
   const users = {
     "user1@example.com":
-      "$2a$10$lgmb1VMFn43V3WqojJgG9uO9tk9Urd.pF2AvTs4OS9zuZ9DBV5ysG", //Password is Test321
+      "$2a$10$abcdefghijklmnopqrstuuYM7o1imBU7mkUzbM6NuCUs0Y1ieI2YC", //Password is Test321
     "user2@example.com":
       "$2a$10$Hd33/vB0XDilIIZrzGK80OtOmpMuJ0JlL6ed5oeo3M6htMB2WNJi6", //Password is Test123
   };
 
   const handleLogin = () => {
-    if (users[email]) {
-      // Check if the email exists in the users object
-      if (bcrypt.compareSync(password, users[email])) {
-        // Compare the entered password with the hashed password
-        // setCurrentArea(PageType.floor);
-        // setIsUserLogedIn(true);
-        console.log("Valid password");
-        bcrypt.hash(password, 0, function (err, hash) {
-          // Store hash in your password DB.
-          console.log(hash);
-          if (bcrypt.compareSync(password, hash)) {
-            console.log("Valid password1");
-          }
-        });
-      } else {
-        alert("Invalid password");
-      }
-    } else {
-      alert("Email not found");
+    console.log(bcrypt.hashSync(password, "$2a$10$abcdefghijklmnopqrstuu"));
+    if (password && email) {
+      userLogIn(
+        email,
+        bcrypt.hashSync(password, "$2a$10$abcdefghijklmnopqrstuu")
+      ).then((data) => {
+        if (data.userId) {
+          console.log(data);
+        } else {
+          alert("Email and/or password not found");
+        }
+      });
     }
+    // DO not delete!
+    // if (users[email]) {
+    //   // Check if the email exists in the users object
+    //   if (bcrypt.compareSync(password, users[email])) {
+    //     // Compare the entered password with the hashed password
+    //     // setCurrentArea(PageType.floor);
+    //     // setIsUserLogedIn(true);
+    //     console.log("Valid password");
+    //     bcrypt.hash(password, 0, function (err, hash) {
+    //       // Store hash in your password DB.
+
+    //       if (bcrypt.compareSync(password, hash)) {
+    //         console.log("Valid password1");
+    //       }
+    //     });
+    //   } else {
+    //     alert("Invalid password");
+    //   }
+    // } else {
+    //   alert("Email not found");
+    // }
   };
 
   const [loginStep, setLoginStep] = useState("login");
