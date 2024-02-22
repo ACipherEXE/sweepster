@@ -1,15 +1,13 @@
 .log-in-footer-container {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: flex; /* Use flexbox for easier centering */
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  gap: 20px; /* Gap between items */
   background-color: #1a1a1a;
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr; /* Three equal-width columns */
-  grid-gap: 20px; /* Gap between grid items */
 }
 
 .login-back-step-button,
-.new-multi-task-button,
+.new-multi-task-button-login,
 .login-next-step-button {
   cursor: pointer;
   width: 48px;
@@ -25,29 +23,12 @@
   font-weight: 700;
   line-height: 16px;
   outline: none;
-}
-
-.login-back-step-button {
-  margin-left: auto; /* Move to the right */
+  margin: 0 auto; /* Center the button within its container */
 }
 
 .new-multi-task-button-login {
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  top: 607px;
-  left: 171px;
   width: 33px;
   height: 33px;
-  border: 0;
-  box-sizing: border-box;
   border-radius: 30px;
-  color: #ffffff;
-  background-color: #1e90ff;
-  outline: none;
-  margin-left: 40px;
-}
-
-.login-next-step-button {
-  margin-right: auto; /* Move to the left */
+  margin-left: 0; /* Remove the left margin */
 }
