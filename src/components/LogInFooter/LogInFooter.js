@@ -106,6 +106,7 @@ function LogInFooter(props) {
             updateUserData(userData)
               .then((data) => {
                 if (data) {
+                  console.log(data);
                   setCurrentArea(PageType.floor);
                   setIsUserLogedIn(true);
                   setHotelNumber(data.hotelId);
