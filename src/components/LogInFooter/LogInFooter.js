@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./LogInFooter.css";
+import bcrypt from "bcryptjs";
 import { PageType } from "../../Tools/Types";
 import {
   fetchDataInRender,
@@ -8,6 +9,7 @@ import {
   createHotelData,
 } from "../../Tools/DatabaseCalls";
 import AddTaskOverlay from "../AddTaskOverlay/AddTaskOverlay";
+
 function LogInFooter(props) {
   var {
     loginStep,
@@ -88,7 +90,7 @@ function LogInFooter(props) {
         postUserData({
           email: emailInput,
           userName: "PlaceHolder",
-          pass: passwordInput,
+          pass: bcrypt.hashSync(passwordInput, "$2a$10$abcdefghijklmnopqrstuu"),
           hotelID: null,
         }).then((response) => {
           console.log(response);
