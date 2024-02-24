@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./LogInFooter.css";
+import bcrypt from "bcryptjs";
 import { PageType } from "../../Tools/Types";
 import {
   fetchDataInRender,
@@ -8,6 +9,7 @@ import {
   createHotelData,
 } from "../../Tools/DatabaseCalls";
 import AddTaskOverlay from "../AddTaskOverlay/AddTaskOverlay";
+
 function LogInFooter(props) {
   var {
     loginStep,
@@ -88,7 +90,7 @@ function LogInFooter(props) {
         postUserData({
           email: emailInput,
           userName: "PlaceHolder",
-          pass: passwordInput,
+          pass: bcrypt.hashSync(passwordInput, "$2a$10$abcdefghijklmnopqrstuu"),
           hotelID: null,
         }).then((response) => {
           console.log(response);
@@ -98,17 +100,18 @@ function LogInFooter(props) {
       }
     }
     if (loginStep === "workspace-join") {
-      userData.hotelID = inputValue;
-
-      fetchDataInRender(userData.hotelID)
+      userData.hotelId = inputValue;
+      console.log("USERDATA: " + JSON.stringify(userData));
+      fetchDataInRender(userData.hotelId)
         .then((data) => {
           if (data) {
             updateUserData(userData)
               .then((data) => {
                 if (data) {
+                  console.log(data);
                   setCurrentArea(PageType.floor);
                   setIsUserLogedIn(true);
-                  setHotelNumber(data.hotelID);
+                  setHotelNumber(data.hotelId);
                 }
               })
               .catch((error) => {
