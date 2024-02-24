@@ -10,6 +10,7 @@ import TaskAddBox from "./TaskAddBox/TaskAddBox";
 import TaskAddBoxCard from "./TaskAddBox/TaskAddBoxCard";
 import { userLogIn } from "../Tools/DatabaseCalls";
 function UserLogIn(props) {
+  // eslint-disable-next-line
   var { setCurrentArea, setUserRequest, setIsUserLogedIn, setHotelNumber } =
     props;
 
@@ -31,6 +32,7 @@ function UserLogIn(props) {
 
   const [roomValue, setRoomValue] = useState("");
   // Sample user accounts
+  // eslint-disable-next-line
   const users = {
     "user1@example.com":
       "$2a$10$abcdefghijklmnopqrstuuYM7o1imBU7mkUzbM6NuCUs0Y1ieI2YC", //Password is Test321

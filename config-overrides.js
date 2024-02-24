@@ -1,12 +1,9 @@
-const path = require("path");
-
-const { override, resolve } = require("customize-cra");
+const { override, addWebpackResolve } = require("customize-cra");
 
 module.exports = override(
-  // Add resolve fallback configuration
-  resolve({
+  addWebpackResolve({
     fallback: {
-      crypto: false,
+      crypto: false, // Use an empty module for 'crypto'
     },
   })
 );
