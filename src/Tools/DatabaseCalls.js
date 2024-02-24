@@ -173,7 +173,7 @@ export const updateUserData = async (userData) => {
 
   try {
     const response = await fetch(
-      `${apiType}/api/users/${userData.id}`,
+      `${apiType}/api/users/${userData.userId ? userData.userId : userData.id}`,
       requestOptions
     );
     if (!response.ok) {
@@ -184,5 +184,36 @@ export const updateUserData = async (userData) => {
   } catch (error) {
     console.error("Error:", error);
     throw error;
+  }
+};
+
+export const userLogIn = async (email, password) => {
+  console.warn(
+    apiType === ApiType.prod ? "You are in PROD" : "You are in LOCAL"
+  );
+  var myHeaders = new Headers();
+  myHeaders.append("x-master-key", "your_master_key");
+  myHeaders.append("Content-Type", "application/json");
+
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: JSON.stringify({
+      email: email,
+      password: password,
+    }),
+    redirect: "follow",
+  };
+
+  try {
+    const response = await fetch(`${apiType}/api/login`, requestOptions);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Error:", error);
+    return error;
   }
 };

@@ -20,7 +20,7 @@ function FloorsPage(props) {
 
   return (
     <>
-      {hotelFloors.map((floor) => {
+      {hotelFloors?.map((floor) => {
         return (
           <div>
             <FloorDropdown
