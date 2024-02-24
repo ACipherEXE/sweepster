@@ -188,9 +188,6 @@ function UserLogIn(props) {
       )}
       {loginStep === "workspace-options" && (
         <>
-          <div className="text">
-            Joining and existing workspace? Or creating a new one?
-          </div>
           <button
             className="create-workspace-button"
             onClick={() => {
