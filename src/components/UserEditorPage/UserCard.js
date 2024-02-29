@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from "react";
 
 function UserCard(props) {
-  var { firstName, lastName, permission, editMode } = props;
+  var {
+    firstName,
+    lastName,
+    permission,
+    editMode,
+    setRemoveUser,
+    setUserRequest,
+    userId,
+  } = props;
+
   const [isOpen, setIsOpen] = useState(false);
   // eslint-disable-next-line
   const [selectedItem, setSelectedItem] = useState(null);
+
   const toggleDropdown = () => {
     if (editMode) {
       setIsOpen(!isOpen);
     }
   };
+
   // eslint-disable-next-line
   const selectItem = (item) => {
     setSelectedItem(item);
@@ -20,6 +31,7 @@ function UserCard(props) {
   useEffect(() => {
     setIsOpen(false);
   }, [editMode]);
+  //setUserRequest({{id: userId,role: "user" }})
 
   return (
     <div className="user-card-container" onClick={toggleDropdown}>
@@ -40,10 +52,31 @@ function UserCard(props) {
         <>
           {isOpen && (
             <div class="user-card-buttons-container">
-              <button className="user-card-button">User</button>
-              <button className="user-card-button">Manager</button>
-              <button className="user-card-button">Admin</button>
-              <button className="user-card-button-warning">Delete</button>
+              <button
+                className="user-card-button"
+                onClick={() => setUserRequest({ id: userId, role: "user" })}
+              >
+                User
+              </button>
+
+              <button
+                className="user-card-button"
+                onClick={() => setUserRequest({ id: userId, role: "Manager" })}
+              >
+                Manager
+              </button>
+              <button
+                className="user-card-button"
+                onClick={() => setUserRequest({ id: userId, role: "Admin" })}
+              >
+                Admin
+              </button>
+              <button
+                className="user-card-button-warning"
+                onClick={() => setRemoveUser({ id: userId })}
+              >
+                Delete
+              </button>
             </div>
           )}
         </>

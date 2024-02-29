@@ -108,6 +108,7 @@ function App() {
                 {currentArea === PageType.userEditor && (
                   <UserEditorPage
                     userData={data.Staff_List}
+                    setData={setData}
                     editMode={editMode}
                   />
                 )}
