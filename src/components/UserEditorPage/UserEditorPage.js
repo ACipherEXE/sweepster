@@ -1,41 +1,71 @@
 import React, { useState, useEffect } from "react";
 import UserCard from "./UserCard";
+import { fetchDataInRender, updateHotelData } from "../../Tools/DatabaseCalls";
 import "./UserEditorPage.css";
 
 function UserEditorPage(props) {
-  var { userData, setData, editMode } = props;
-  console.log(userData);
+  var { userData, data, setData, editMode, hotelNumber } = props;
+
   const [userRequest, setUserRequest] = useState(null);
   const [removeUser, setRemoveUser] = useState(null);
-  
-  function editPermission(userId, newPermission) {
-    // Find the index of the user with the given ID
-    const userIndex = userData.findIndex((user) => user.id === userId);
 
-    // If user with given ID exists
-    if (userIndex !== -1) {
-      // Update the permission
-      userData[userIndex].permission = newPermission;
-      console.log(
-        `Permission for user with ID ${userId} updated to ${newPermission}`
-      );
-    } else {
-      console.log(`User with ID ${userId} not found`);
-    }
+  function editPermission(userId, newPermission) {
+    console.log(hotelNumber);
+    fetchDataInRender(hotelNumber)
+      .then((data) => {
+        //Avoid using api while test and building
+        // Find the index of the user with the given ID
+        const userIndex = data.Staff_List.findIndex(
+          (user) => user.id === userId
+        );
+
+        // If user with given ID exists
+        if (userIndex !== -1) {
+          // Update the permission
+          data.Staff_List[userIndex].permission = newPermission;
+          console.log(data.Staff_List);
+          setData(data);
+          updateHotelData(data, hotelNumber).catch((error) => {
+            console.error("Error:", error);
+          });
+          console.log(
+            `Permission for user with ID ${userId} updated to ${newPermission}`
+          );
+        } else {
+          console.log(`User with ID ${userId} not found`);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
   function removeUserById(userId) {
-    // Find the index of the user with the given ID
-    const userIndex = userData.findIndex((user) => user.id === userId);
+    fetchDataInRender(hotelNumber)
+      .then((data) => {
+        //Avoid using api while test and building
+        // Find the index of the user with the given ID
+        const userIndex = data.Staff_List.findIndex(
+          (user) => user.id === userId
+        );
 
-    // If user with given ID exists
-    if (userIndex !== -1) {
-      // Remove the user from the array
-      userData.splice(userIndex, 1);
-      console.log(`User with ID ${userId} removed successfully`);
-    } else {
-      console.log(`User with ID ${userId} not found`);
-    }
+        // If user with given ID exists
+        if (userIndex !== -1) {
+          // Remove the user from the array
+          data.Staff_List.splice(userIndex, 1);
+          setData(data);
+          updateHotelData(data, hotelNumber).catch((error) => {
+            console.error("Error:", error);
+          });
+          console.log(`User with ID ${userId} removed successfully`);
+        } else {
+          console.log(`User with ID ${userId} not found`);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    // Find the index of the user with the given ID
   }
 
   useEffect(() => {
@@ -58,10 +88,10 @@ function UserEditorPage(props) {
             firstName={user.userName}
             lastName={""}
             permission={user.permission}
-            userid={user.id}
+            userId={user.id}
             editMode={editMode}
             setRemoveUser={setRemoveUser}
-            setUserRequest={setRemoveUser}
+            setUserRequest={setUserRequest}
           />
         );
       })}

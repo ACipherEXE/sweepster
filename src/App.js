@@ -107,7 +107,9 @@ function App() {
 
                 {currentArea === PageType.userEditor && (
                   <UserEditorPage
+                    hotelNumber={hotelNumber}
                     userData={data.Staff_List}
+                    data={data}
                     setData={setData}
                     editMode={editMode}
                   />
