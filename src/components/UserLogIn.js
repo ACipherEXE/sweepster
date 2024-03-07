@@ -202,7 +202,7 @@ function UserLogIn(props) {
               setLoginStep("workspace-join");
             }}
           >
-            Join Exsisting Workspace
+            Join Existing Workspace
           </button>
         </>
       )}
