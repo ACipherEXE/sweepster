@@ -198,7 +198,7 @@ function UserLogIn(props) {
           <button
             className="create-workspace-button"
             onClick={() => {
-              setLoginStep("workspace-create");
+              setLoginStep("number-of-floors");
             }}
           >
             Create New Workspace
@@ -228,7 +228,7 @@ function UserLogIn(props) {
         </>
       )}
 
-      {loginStep === "workspace-create" && (
+      {/* {loginStep === "workspace-create" && (
         <>
           <>
             <div className="text">
@@ -243,7 +243,7 @@ function UserLogIn(props) {
             />
           </>
         </>
-      )}
+      )} */}
       {loginStep === "number-of-floors" && (
         <>
           <div className="text">
