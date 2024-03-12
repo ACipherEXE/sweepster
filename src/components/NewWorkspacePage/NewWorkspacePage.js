@@ -51,7 +51,7 @@ function NewWorkspacePage(props) {
       {createStep === "number-of-rooms" && (
         <>
           <>
-            <div className="text">How many rooms are on each floor</div>
+            <div className="text">How many rooms are on each floor?</div>
             <input
               className="password-input"
               type="text"

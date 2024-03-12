@@ -225,7 +225,7 @@ function UserLogIn(props) {
         <>
           <>
             <div className="text">
-              How many floors require schedueled cleaning?
+              How many floors require scheduled cleaning?
             </div>
             <input
               className="password-input"
@@ -240,7 +240,7 @@ function UserLogIn(props) {
       {loginStep === "number-of-floors" && (
         <>
           <div className="text">
-            How many floors require schedueled cleaning?
+            How many floors require scheduled cleaning?
           </div>
           <input
             className="password-input"
@@ -254,7 +254,7 @@ function UserLogIn(props) {
       {loginStep === "number-of-rooms" && (
         <>
           <>
-            <div className="text">How many rooms are on eatch floor</div>
+            <div className="text">How many rooms are on each floor?</div>
             <input
               className="password-input"
               type="text"
