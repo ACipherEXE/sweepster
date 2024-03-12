@@ -27,6 +27,8 @@ function App() {
   // User request is set in the floors component
   const [userRequest, setUserRequest] = useState(null);
   const [data, setData] = useState(null);
+  const [userPermissions, setUserPermissions] = useState(null);
+  const [userID, setUserID] = useState(null);
   // eslint-disable-next-line
   const [hotelNumber, setHotelNumber] = useState("c3a7");
   // To handle when changes happen
@@ -52,6 +54,36 @@ function App() {
     // eslint-disable-next-line
   }, [isUserLogedIn, enviroment]);
 
+  useEffect(() => {
+    if (isUserLogedIn) {
+      if (data.Staff_List) {
+        const userIndex = data.Staff_List.findIndex(
+          (user) => user.id === userID
+        );
+        if (userIndex !== -1) {
+          if (data.Staff_List[userIndex].permission === "Undefined") {
+            console.log("USER MUST BE AUTHORIZED");
+            return;
+          }
+          console.log("SAMPLE");
+          console.log(data.Staff_List[userIndex].permission);
+          setUserPermissions(data.Staff_List[userIndex].permission);
+        }
+      }
+    }
+
+    // eslint-disable-next-line
+  }, [data]);
+  useEffect(() => {
+    if (isUserLogedIn) {
+      if (currentArea === PageType.floor) {
+        setUserRequest(null);
+      }
+    }
+
+    // eslint-disable-next-line
+  }, [currentArea]);
+
   return (
     <div className="App">
       {currentArea === PageType.login && (
@@ -61,6 +93,7 @@ function App() {
             setIsUserLogedIn={setIsUserLogedIn}
             setUserRequest={setUserRequest}
             setHotelNumber={setHotelNumber}
+            setUserID={setUserID}
           />
         </header>
       )}
@@ -74,15 +107,34 @@ function App() {
                   : currentArea
               }
               setCurrentArea={setCurrentArea}
+              userPermissions={userPermissions}
             />
-            <EditorTool
-              currentArea={currentArea}
-              editMode={editMode}
-              hotelNumber={hotelNumber}
-              userRequest={userRequest}
-              setEditMode={setEditMode}
-              setData={setData}
-            />
+            {currentArea === PageType.room && userPermissions === "Admin" ? (
+              <EditorTool
+                currentArea={currentArea}
+                editMode={editMode}
+                hotelNumber={hotelNumber}
+                userRequest={userRequest}
+                setEditMode={setEditMode}
+                setData={setData}
+                userPermissions={userPermissions}
+              />
+            ) : (
+              <>
+                <div style={{ opacity: "0", visibility: "hidden" }}>
+                  <EditorTool
+                    currentArea={currentArea}
+                    editMode={editMode}
+                    hotelNumber={hotelNumber}
+                    userRequest={userRequest}
+                    setEditMode={setEditMode}
+                    setData={setData}
+                    userPermissions={userPermissions}
+                  />
+                </div>
+              </>
+            )}
+
             <div className="main-area-container">
               <header className="App-header">
                 {currentArea === PageType.floor && (
@@ -121,6 +173,7 @@ function App() {
                 hotelNumber={hotelNumber}
                 currentArea={currentArea}
                 userRequest={userRequest}
+                userPermissions={userPermissions}
                 editMode={editMode}
                 setCurrentArea={setCurrentArea}
                 setData={setData}

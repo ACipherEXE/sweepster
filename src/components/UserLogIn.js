@@ -11,8 +11,13 @@ import TaskAddBoxCard from "./TaskAddBox/TaskAddBoxCard";
 import { userLogIn } from "../Tools/DatabaseCalls";
 function UserLogIn(props) {
   // eslint-disable-next-line
-  var { setCurrentArea, setUserRequest, setIsUserLogedIn, setHotelNumber } =
-    props;
+  var {
+    setCurrentArea,
+    setUserRequest,
+    setIsUserLogedIn,
+    setHotelNumber,
+    setUserID,
+  } = props;
 
   // Add state for email and password
   const [email, setEmail] = useState("");
@@ -51,12 +56,14 @@ function UserLogIn(props) {
         if (data.userId) {
           console.log(data);
           if (data.hotelId === null) {
+            setUserID(data.userId);
             console.log("NO HOTEL ID");
             setLoginStep("workspace-options");
           } else {
             setCurrentArea(PageType.floor);
             setIsUserLogedIn(true);
             setHotelNumber(data.hotelId);
+            setUserID(data.userId);
           }
         } else {
           alert("Email and/or password not found");

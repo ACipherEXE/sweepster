@@ -54,7 +54,7 @@ function UserCard(props) {
             <div class="user-card-buttons-container">
               <button
                 className="user-card-button"
-                onClick={() => setUserRequest({ id: userId, role: "user" })}
+                onClick={() => setUserRequest({ id: userId, role: "User" })}
               >
                 User
               </button>

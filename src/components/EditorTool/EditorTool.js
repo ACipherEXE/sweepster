@@ -18,6 +18,7 @@ function EditorTool(props) {
     userRequest,
     setEditMode,
     setData,
+    userPermissions,
   } = props;
   const [isHotelNumberVisible, setIsHotelNumberVisible] = useState(false);
   useEffect(() => {
@@ -69,6 +70,7 @@ function EditorTool(props) {
       {/**
        * Expand here the rooms you want this component to appear
        */}
+
       <div className="editor-tool-center-container">
         <div class="editor-tool-container">
           <div class="editor-tool-item">
