@@ -33,12 +33,17 @@ function LogInFooter(props) {
   const [isVisible, setIsVisible] = useState(false);
   // eslint-disable-next-line
   const [data, setData] = useState([]);
-  useEffect(() => {
-    console.log("SCEAAAAA");
-  }, [listOfTasks]);
+
   function generateHotelJson(numFloors, roomsPerFloor, tasksList) {
     let hotelData = {
-      Staff_List: [],
+      Staff_List: [
+        {
+          userName: userData.email,
+          hotelId: null,
+          id: userData.id,
+          permission: "Admin",
+        },
+      ],
       hotel_data: {
         floors: [],
       },
