@@ -17,6 +17,7 @@ function UserLogIn(props) {
     setIsUserLogedIn,
     setHotelNumber,
     setUserID,
+    setUserName,
   } = props;
 
   // Add state for email and password
@@ -55,7 +56,7 @@ function UserLogIn(props) {
         setUserData(data);
         if (data.userId) {
           console.log(data);
-          if (data.hotelId === null) {
+          if (data.hotelId === null || !data.hotelId) {
             setUserID(data.userId);
             console.log("NO HOTEL ID");
             setLoginStep("workspace-options");
@@ -64,6 +65,7 @@ function UserLogIn(props) {
             setIsUserLogedIn(true);
             setHotelNumber(data.hotelId);
             setUserID(data.userId);
+            setUserName(data.email);
           }
         } else {
           alert("Email and/or password not found");
@@ -302,6 +304,7 @@ function UserLogIn(props) {
           setErrorStatus={setErrorStatus}
           setUserData={setUserData}
           setHotelNumber={setHotelNumber}
+          setUserName={setUserName}
         />
       )}
     </div>

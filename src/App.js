@@ -11,7 +11,7 @@ import RoomPage from "./components/RoomPage/RoomPage";
 import HeaderArea from "./components/HeaderArea/HeaderArea";
 import FooterArea from "./components/FooterArea/FooterArea";
 import { PageType } from "./Tools/Types";
-import { fetchDataInRender } from "./Tools/DatabaseCalls";
+import { fetchDataInRender, updateHotelData } from "./Tools/DatabaseCalls";
 import EditorTool from "./components/EditorTool/EditorTool";
 import UserEditorPage from "./components/UserEditorPage/UserEditorPage";
 function App() {
@@ -29,6 +29,8 @@ function App() {
   const [data, setData] = useState(null);
   const [userPermissions, setUserPermissions] = useState(null);
   const [userID, setUserID] = useState(null);
+  const [userName, setUserName] = useState(null);
+
   // eslint-disable-next-line
   const [hotelNumber, setHotelNumber] = useState("c3a7");
   // To handle when changes happen
@@ -56,24 +58,40 @@ function App() {
 
   useEffect(() => {
     if (isUserLogedIn) {
-      if (data.Staff_List) {
-        const userIndex = data.Staff_List.findIndex(
-          (user) => user.id === userID
-        );
-        if (userIndex !== -1) {
-          if (data.Staff_List[userIndex].permission === "Undefined") {
-            console.log("USER MUST BE AUTHORIZED");
-            return;
+      if (data) {
+        if (data.Staff_List) {
+          const userIndex = data.Staff_List.findIndex(
+            (user) => user.id === userID
+          );
+          if (userIndex !== -1) {
+            if (data.Staff_List[userIndex].permission === "Undefined") {
+              console.log("USER MUST BE AUTHORIZED");
+              return;
+            }
+            console.log("SAMPLE");
+            console.log(data.Staff_List[userIndex].permission);
+            setUserPermissions(data.Staff_List[userIndex].permission);
+          } else {
+            data.Staff_List = [
+              ...data.Staff_List,
+              {
+                userName: userName,
+                id: userID,
+                permission: "Undefined",
+              },
+            ];
+            console.log(data.Staff_List);
+            updateHotelData(data, hotelNumber).then((data) => {
+              setData(data);
+            });
           }
-          console.log("SAMPLE");
-          console.log(data.Staff_List[userIndex].permission);
-          setUserPermissions(data.Staff_List[userIndex].permission);
         }
       }
     }
 
     // eslint-disable-next-line
   }, [data]);
+
   useEffect(() => {
     if (isUserLogedIn) {
       if (currentArea === PageType.floor) {
@@ -94,6 +112,7 @@ function App() {
             setUserRequest={setUserRequest}
             setHotelNumber={setHotelNumber}
             setUserID={setUserID}
+            setUserName={setUserName}
           />
         </header>
       )}

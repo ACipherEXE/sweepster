@@ -7,6 +7,7 @@ import {
   postUserData,
   updateUserData,
   createHotelData,
+  updateHotelData,
 } from "../../Tools/DatabaseCalls";
 import AddTaskOverlay from "../AddTaskOverlay/AddTaskOverlay";
 
@@ -28,6 +29,7 @@ function LogInFooter(props) {
     setErrorStatus,
     setUserData,
     setHotelNumber,
+    setUserName,
   } = props;
 
   const [isVisible, setIsVisible] = useState(false);
@@ -35,12 +37,12 @@ function LogInFooter(props) {
   const [data, setData] = useState([]);
 
   function generateHotelJson(numFloors, roomsPerFloor, tasksList) {
+    console.log(userData);
     let hotelData = {
       Staff_List: [
         {
           userName: userData.email,
-          hotelId: null,
-          id: userData.id,
+          id: userData.userId,
           permission: "Admin",
         },
       ],
@@ -96,7 +98,7 @@ function LogInFooter(props) {
           email: emailInput,
           userName: "PlaceHolder",
           pass: bcrypt.hashSync(passwordInput, "$2a$10$abcdefghijklmnopqrstuu"),
-          hotelID: null,
+          hotelId: null,
         }).then((response) => {
           console.log(response);
           setUserData(response);
@@ -117,6 +119,7 @@ function LogInFooter(props) {
                   setCurrentArea(PageType.floor);
                   setIsUserLogedIn(true);
                   setHotelNumber(data.hotelId);
+                  setUserName(data.email);
                 }
               })
               .catch((error) => {
@@ -145,14 +148,15 @@ function LogInFooter(props) {
       ).then((data) => {
         console.log(data);
         if (data) {
-          userData.hotelID = data.id;
+          userData.hotelId = data.id;
 
           updateUserData(userData)
             .then((data) => {
               if (data) {
                 setCurrentArea(PageType.floor);
                 setIsUserLogedIn(true);
-                setHotelNumber(data.hotelID);
+                setHotelNumber(data.hotelId);
+                setUserName(data.email);
               }
             })
             .catch((error) => {
