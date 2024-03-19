@@ -11,8 +11,14 @@ import TaskAddBoxCard from "./TaskAddBox/TaskAddBoxCard";
 import { userLogIn } from "../Tools/DatabaseCalls";
 function UserLogIn(props) {
   // eslint-disable-next-line
-  var { setCurrentArea, setUserRequest, setIsUserLogedIn, setHotelNumber } =
-    props;
+  var {
+    setCurrentArea,
+    setUserRequest,
+    setIsUserLogedIn,
+    setHotelNumber,
+    setUserID,
+    setUserName,
+  } = props;
 
   // Add state for email and password
   const [email, setEmail] = useState("");
@@ -50,13 +56,16 @@ function UserLogIn(props) {
         setUserData(data);
         if (data.userId) {
           console.log(data);
-          if (data.hotelId === null) {
+          if (data.hotelId === null || !data.hotelId) {
+            setUserID(data.userId);
             console.log("NO HOTEL ID");
             setLoginStep("workspace-options");
           } else {
             setCurrentArea(PageType.floor);
             setIsUserLogedIn(true);
             setHotelNumber(data.hotelId);
+            setUserID(data.userId);
+            setUserName(data.email);
           }
         } else {
           alert("Email and/or password not found");
@@ -191,7 +200,7 @@ function UserLogIn(props) {
           <button
             className="create-workspace-button"
             onClick={() => {
-              setLoginStep("workspace-create");
+              setLoginStep("number-of-floors");
             }}
           >
             Create New Workspace
@@ -221,7 +230,7 @@ function UserLogIn(props) {
         </>
       )}
 
-      {loginStep === "workspace-create" && (
+      {/* {loginStep === "workspace-create" && (
         <>
           <>
             <div className="text">
@@ -236,7 +245,7 @@ function UserLogIn(props) {
             />
           </>
         </>
-      )}
+      )} */}
       {loginStep === "number-of-floors" && (
         <>
           <div className="text">
@@ -295,6 +304,7 @@ function UserLogIn(props) {
           setErrorStatus={setErrorStatus}
           setUserData={setUserData}
           setHotelNumber={setHotelNumber}
+          setUserName={setUserName}
         />
       )}
     </div>
