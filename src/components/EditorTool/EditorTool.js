@@ -74,6 +74,7 @@ function EditorTool(props) {
 
       <div className="editor-tool-center-container">
         <div class="editor-tool-container">
+        {currentArea !== PageType.floor && (
           <div class="editor-tool-item">
             {editMode ? (
               <button
@@ -91,6 +92,7 @@ function EditorTool(props) {
               </button>
             )}
           </div>
+        )}
           {/**
            * TODO: Make this change when we are in the  user management page
            * TODO: Implement visible and invisible logo.
@@ -108,6 +110,7 @@ function EditorTool(props) {
             </div>
           ) : (
             <div>
+               {currentArea !== PageType.floor && (
               <div class="editor-tool-item">
                 <button
                   className="editor-reset-button"
@@ -116,6 +119,7 @@ function EditorTool(props) {
                   Reset All Tasks
                 </button>
               </div>
+               )}
             </div>
           )}
         </div>

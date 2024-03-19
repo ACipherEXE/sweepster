@@ -105,7 +105,7 @@ function AddTaskOverlay(props) {
         }}
       >
         <div className="add-task-question">
-          What task you would like to add?
+          What task would you like to add?
         </div>
         <input
           className="add-task-input"
