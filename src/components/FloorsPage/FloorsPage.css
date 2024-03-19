@@ -26,14 +26,13 @@
   position: relative; /* Changed to relative */
   top: 0; /* Changed to 0, you can adjust as needed */
   width: 321px;
-  height: 57px;
+  height: auto; /* Changed to auto */
 
   display: flex;
   align-items: center;
   padding: 0 10px;
   margin-bottom: 10px; /* Added margin-bottom to create space between stacked cards */
 }
-
 .floor-button {
   cursor: pointer;
   display: flex;
@@ -110,3 +109,9 @@
   justify-content: center; /* Center horizontally */
   margin: 5px;
 }
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+

@@ -4,6 +4,7 @@
   min-height: 12.5vh;
   top: 0;
 }
+
 .header-container {
   flex-direction: column;
   align-items: center;
@@ -15,6 +16,16 @@
 }
 
 .header-item {
-  padding: 20px;
+  padding: 15px;
   text-align: center;
+}
+
+/* Add styles for hotel name */
+.hotel-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff; /* Adjust color as needed */
+  text-align: center; /* Center the text */
+  padding: 5px; /* Add some padding */
+  grid-column: 1 / span 3; /* Span the full width of the grid */
 }

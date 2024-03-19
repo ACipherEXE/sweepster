@@ -12,6 +12,7 @@ function FooterArea(props) {
     userRequest,
     editMode,
     setData,
+    userPermissions,
   } = props;
   const [isVisible, setIsVisible] = useState(false);
 
@@ -65,9 +66,11 @@ function FooterArea(props) {
       </div>
 
       <div className="footer-item">
-        <button onClick={() => setCurrentArea(PageType.userEditor)}>
-          User Editor
-        </button>
+        {currentArea !== PageType.userEditor && userPermissions === "Admin" && (
+          <button onClick={() => setCurrentArea(PageType.userEditor)}>
+            User Editor
+          </button>
+        )}
       </div>
     </div>
   );

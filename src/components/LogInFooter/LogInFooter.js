@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./LogInFooter.css";
+import bcrypt from "bcryptjs";
 import { PageType } from "../../Tools/Types";
 import {
   fetchDataInRender,
   postUserData,
   updateUserData,
   createHotelData,
+  // eslint-disable-next-line
+  updateHotelData,
 } from "../../Tools/DatabaseCalls";
 import AddTaskOverlay from "../AddTaskOverlay/AddTaskOverlay";
+
 function LogInFooter(props) {
   var {
     loginStep,
@@ -26,17 +30,23 @@ function LogInFooter(props) {
     setErrorStatus,
     setUserData,
     setHotelNumber,
+    setUserName,
   } = props;
 
   const [isVisible, setIsVisible] = useState(false);
   // eslint-disable-next-line
   const [data, setData] = useState([]);
-  useEffect(() => {
-    console.log("SCEAAAAA");
-  }, [listOfTasks]);
+
   function generateHotelJson(numFloors, roomsPerFloor, tasksList) {
+    console.log(userData);
     let hotelData = {
-      Staff_List: [],
+      Staff_List: [
+        {
+          userName: userData.email,
+          id: userData.userId,
+          permission: "Admin",
+        },
+      ],
       hotel_data: {
         floors: [],
       },
@@ -88,8 +98,8 @@ function LogInFooter(props) {
         postUserData({
           email: emailInput,
           userName: "PlaceHolder",
-          pass: passwordInput,
-          hotelID: null,
+          pass: bcrypt.hashSync(passwordInput, "$2a$10$abcdefghijklmnopqrstuu"),
+          hotelId: null,
         }).then((response) => {
           console.log(response);
           setUserData(response);
@@ -98,17 +108,19 @@ function LogInFooter(props) {
       }
     }
     if (loginStep === "workspace-join") {
-      userData.hotelID = inputValue;
-
-      fetchDataInRender(userData.hotelID)
+      userData.hotelId = inputValue;
+      console.log("USERDATA: " + JSON.stringify(userData));
+      fetchDataInRender(userData.hotelId)
         .then((data) => {
           if (data) {
             updateUserData(userData)
               .then((data) => {
                 if (data) {
+                  console.log(data);
                   setCurrentArea(PageType.floor);
                   setIsUserLogedIn(true);
-                  setHotelNumber(data.hotelID);
+                  setHotelNumber(data.hotelId);
+                  setUserName(data.email);
                 }
               })
               .catch((error) => {
@@ -123,7 +135,7 @@ function LogInFooter(props) {
           console.error("Error:", error);
         });
     }
-    if (loginStep === "workspace-create") {
+    if (loginStep === "number-of-floors") {
       setErrorStatus(null);
       setLoginStep("number-of-rooms");
     }
@@ -137,14 +149,15 @@ function LogInFooter(props) {
       ).then((data) => {
         console.log(data);
         if (data) {
-          userData.hotelID = data.id;
+          userData.hotelId = data.id;
 
           updateUserData(userData)
             .then((data) => {
               if (data) {
                 setCurrentArea(PageType.floor);
                 setIsUserLogedIn(true);
-                setHotelNumber(data.hotelID);
+                setHotelNumber(data.hotelId);
+                setUserName(data.email);
               }
             })
             .catch((error) => {
@@ -158,7 +171,7 @@ function LogInFooter(props) {
   function goAStepBack() {
     console.log(loginStep);
     if (loginStep === "sign-up-username") {
-      setLoginStep("login");
+      setLoginStep("log-in");
     }
     if (loginStep === "sign-up-password") {
       setLoginStep("sign-up-username");
@@ -180,24 +193,31 @@ function LogInFooter(props) {
       setLoginStep("workspace-options");
     }
   }
+
   return (
     <div className="log-in-footer-container">
-      <button
-        className="login-back-step-button"
-        onClick={() => {
-          goAStepBack();
-        }}
-      >
-        Back
-      </button>
+      {loginStep !== "log-in" && (
+        <button
+          className="login-back-step-button"
+          onClick={() => {
+            goAStepBack();
+          }}
+        >
+          Back
+        </button>
+      )}
       <button
         className="new-multi-task-button-login"
         onClick={() => setIsVisible(true)}
+        style={{
+          display: loginStep === "tasks-for-all-rooms" ? "block" : "none",
+        }}
       >
         <svg className="new-multi-task-button-icon" viewBox="0 0 448 512">
           <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
         </svg>
       </button>
+
       {isVisible && (
         <div>
           <AddTaskOverlay
@@ -208,14 +228,16 @@ function LogInFooter(props) {
           />
         </div>
       )}
-      <button
-        className="login-next-step-button"
-        onClick={() => {
-          goAStepFront();
-        }}
-      >
-        Next
-      </button>
+      {loginStep !== "log-in" && (
+        <button
+          className="login-next-step-button"
+          onClick={() => {
+            goAStepFront();
+          }}
+        >
+          Next
+        </button>
+      )}
     </div>
   );
 }
