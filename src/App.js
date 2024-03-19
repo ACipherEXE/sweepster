@@ -63,15 +63,7 @@ function App() {
           const userIndex = data.Staff_List.findIndex(
             (user) => user.id === userID
           );
-          if (userIndex !== -1) {
-            if (data.Staff_List[userIndex].permission === "Undefined") {
-              console.log("USER MUST BE AUTHORIZED");
-              return;
-            }
-            console.log("SAMPLE");
-            console.log(data.Staff_List[userIndex].permission);
-            setUserPermissions(data.Staff_List[userIndex].permission);
-          } else {
+          if (userIndex === -1) {
             data.Staff_List = [
               ...data.Staff_List,
               {
@@ -84,6 +76,14 @@ function App() {
             updateHotelData(data, hotelNumber).then((data) => {
               setData(data);
             });
+          } else {
+            if (data.Staff_List[userIndex].permission === "Undefined") {
+              console.log("USER MUST BE AUTHORIZED");
+              return;
+            }
+            console.log("SAMPLE");
+            console.log(data.Staff_List[userIndex].permission);
+            setUserPermissions(data.Staff_List[userIndex].permission);
           }
         }
       }
@@ -95,7 +95,7 @@ function App() {
   useEffect(() => {
     if (isUserLogedIn) {
       if (currentArea === PageType.floor) {
-        setUserRequest(null);
+        // setUserRequest(null);
       }
     }
 
@@ -128,7 +128,10 @@ function App() {
               setCurrentArea={setCurrentArea}
               userPermissions={userPermissions}
             />
-            {currentArea === PageType.room && userPermissions === "Admin" ? (
+            {console.log(userPermissions)}
+            {(currentArea === PageType.room ||
+              currentArea === PageType.userEditor) &&
+            userPermissions === "Admin" ? (
               <EditorTool
                 currentArea={currentArea}
                 editMode={editMode}
