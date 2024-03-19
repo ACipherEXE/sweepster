@@ -4,6 +4,7 @@ import { fetchDataInRender, updateHotelData } from "../../Tools/DatabaseCalls";
 import "./UserEditorPage.css";
 
 function UserEditorPage(props) {
+  // eslint-disable-next-line
   var { userData, data, setData, editMode, hotelNumber } = props;
 
   const [userRequest, setUserRequest] = useState(null);
@@ -72,12 +73,14 @@ function UserEditorPage(props) {
     if (userRequest !== null) {
       editPermission(userRequest.id, userRequest.role);
     }
+    // eslint-disable-next-line
   }, [userRequest]);
 
   useEffect(() => {
     if (removeUser !== null) {
       removeUserById(removeUser.id);
     }
+    // eslint-disable-next-line
   }, [removeUser]);
 
   return (

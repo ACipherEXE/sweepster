@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./LogInFooter.css";
 import bcrypt from "bcryptjs";
 import { PageType } from "../../Tools/Types";
@@ -7,6 +7,7 @@ import {
   postUserData,
   updateUserData,
   createHotelData,
+  // eslint-disable-next-line
   updateHotelData,
 } from "../../Tools/DatabaseCalls";
 import AddTaskOverlay from "../AddTaskOverlay/AddTaskOverlay";

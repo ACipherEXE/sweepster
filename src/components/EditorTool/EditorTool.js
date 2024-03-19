@@ -18,6 +18,7 @@ function EditorTool(props) {
     userRequest,
     setEditMode,
     setData,
+    // eslint-disable-next-line
     userPermissions,
   } = props;
   const [isHotelNumberVisible, setIsHotelNumberVisible] = useState(false);

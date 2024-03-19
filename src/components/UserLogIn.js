@@ -13,6 +13,7 @@ function UserLogIn(props) {
   // eslint-disable-next-line
   var {
     setCurrentArea,
+    // eslint-disable-next-line
     setUserRequest,
     setIsUserLogedIn,
     setHotelNumber,
