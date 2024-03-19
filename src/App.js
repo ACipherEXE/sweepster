@@ -63,28 +63,27 @@ function App() {
           const userIndex = data.Staff_List.findIndex(
             (user) => user.id === userID
           );
-          if (userIndex === -1) {
-            data.Staff_List = [
-              ...data.Staff_List,
-              {
-                userName: userName,
-                id: userID,
-                permission: "Undefined",
-              },
-            ];
-            console.log(data.Staff_List);
-            updateHotelData(data, hotelNumber).then((data) => {
-              setData(data);
-            });
-          } else {
-            if (data.Staff_List[userIndex].permission === "Undefined") {
-              console.log("USER MUST BE AUTHORIZED");
-              return;
-            }
-            console.log("SAMPLE");
-            console.log(data.Staff_List[userIndex].permission);
-            setUserPermissions(data.Staff_List[userIndex].permission);
-          }
+          // if (userIndex === -1) {
+          //   data.Staff_List = [
+          //     ...data.Staff_List,
+          //     {
+          //       userName: userName,
+          //       id: userID,
+          //       permission: "Undefined",
+          //     },
+          //   ];
+          //   console.log(data.Staff_List);
+          //   updateHotelData(data, hotelNumber).then((data) => {
+          //     setData(data);
+          //   });
+          // } else {
+          //   if (data.Staff_List[userIndex].permission === "Undefined") {
+          //     console.log("USER MUST BE AUTHORIZED");
+          //     return;
+          //   }
+          //   console.log(data.Staff_List[userIndex].permission);
+          setUserPermissions(data.Staff_List[userIndex].permission);
+          // }
         }
       }
     }

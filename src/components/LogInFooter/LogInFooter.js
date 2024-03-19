@@ -43,7 +43,7 @@ function LogInFooter(props) {
       Staff_List: [
         {
           userName: userData.email,
-          id: userData.userId,
+          id: userData.id,
           permission: "Admin",
         },
       ],
@@ -150,7 +150,7 @@ function LogInFooter(props) {
         console.log(data);
         if (data) {
           userData.hotelId = data.id;
-
+          console.log(data);
           updateUserData(userData)
             .then((data) => {
               if (data) {
