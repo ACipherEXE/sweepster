@@ -11,6 +11,7 @@ import RoomPage from "./components/RoomPage/RoomPage";
 import HeaderArea from "./components/HeaderArea/HeaderArea";
 import FooterArea from "./components/FooterArea/FooterArea";
 import { PageType } from "./Tools/Types";
+// eslint-disable-next-line
 import { fetchDataInRender, updateHotelData } from "./Tools/DatabaseCalls";
 import EditorTool from "./components/EditorTool/EditorTool";
 import UserEditorPage from "./components/UserEditorPage/UserEditorPage";
@@ -29,6 +30,7 @@ function App() {
   const [data, setData] = useState(null);
   const [userPermissions, setUserPermissions] = useState(null);
   const [userID, setUserID] = useState(null);
+  // eslint-disable-next-line
   const [userName, setUserName] = useState(null);
 
   // eslint-disable-next-line
