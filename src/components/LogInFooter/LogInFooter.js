@@ -170,7 +170,7 @@ function LogInFooter(props) {
   function goAStepBack() {
     console.log(loginStep);
     if (loginStep === "sign-up-username") {
-      setLoginStep("login");
+      setLoginStep("log-in");
     }
     if (loginStep === "sign-up-password") {
       setLoginStep("sign-up-username");
@@ -195,14 +195,16 @@ function LogInFooter(props) {
 
   return (
     <div className="log-in-footer-container">
-      <button
-        className="login-back-step-button"
-        onClick={() => {
-          goAStepBack();
-        }}
-      >
-        Back
-      </button>
+      {loginStep !== "log-in" && (
+        <button
+          className="login-back-step-button"
+          onClick={() => {
+            goAStepBack();
+          }}
+        >
+          Back
+        </button>
+      )}
       <button
         className="new-multi-task-button-login"
         onClick={() => setIsVisible(true)}
@@ -225,14 +227,16 @@ function LogInFooter(props) {
           />
         </div>
       )}
-      <button
-        className="login-next-step-button"
-        onClick={() => {
-          goAStepFront();
-        }}
-      >
-        Next
-      </button>
+      {loginStep !== "log-in" && (
+        <button
+          className="login-next-step-button"
+          onClick={() => {
+            goAStepFront();
+          }}
+        >
+          Next
+        </button>
+      )}
     </div>
   );
 }
