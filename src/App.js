@@ -62,6 +62,7 @@ function App() {
     if (isUserLogedIn) {
       if (data) {
         if (data.Staff_List) {
+          // eslint-disable-next-line
           const userIndex = data.Staff_List.findIndex(
             (user) => user.id === userID
           );
