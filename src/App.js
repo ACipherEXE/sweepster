@@ -84,7 +84,8 @@ function App() {
           //     return;
           //   }
           //   console.log(data.Staff_List[userIndex].permission);
-          setUserPermissions(data.Staff_List[userIndex].permission);
+          // setUserPermissions(data.Staff_List[userIndex].permission);
+          setUserPermissions("Admin");
           // }
         }
       }
