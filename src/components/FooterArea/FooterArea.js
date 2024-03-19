@@ -64,7 +64,7 @@ function FooterArea(props) {
           <div></div>
         )}
       </div>
-
+      {console.log(userPermissions)}
       <div className="footer-item">
         {currentArea !== PageType.userEditor && userPermissions === "Admin" && (
           <button onClick={() => setCurrentArea(PageType.userEditor)}>
