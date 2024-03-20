@@ -146,7 +146,7 @@ function App() {
             {console.log(userPermissions)}
             {(currentArea === PageType.room ||
               currentArea === PageType.userEditor) &&
-            userPermissions === "Admin" ? (
+            (userPermissions === "Admin" || userPermissions === "Manager") ? (
               <EditorTool
                 currentArea={currentArea}
                 editMode={editMode}
