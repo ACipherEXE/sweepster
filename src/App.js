@@ -28,7 +28,7 @@ function App() {
   // User request is set in the floors component
   const [userRequest, setUserRequest] = useState(null);
   const [data, setData] = useState(null);
-  const [userPermissions, setUserPermissions] = useState(null);
+  const [userPermissions, setUserPermissions] = useState("Undefined");
   const [userID, setUserID] = useState(null);
   // eslint-disable-next-line
   const [userName, setUserName] = useState(null);
@@ -62,30 +62,33 @@ function App() {
     if (isUserLogedIn) {
       if (data) {
         if (data.Staff_List) {
+          // eslint-disable-next-line
           const userIndex = data.Staff_List.findIndex(
             (user) => user.id === userID
           );
-          // if (userIndex === -1) {
-          //   data.Staff_List = [
-          //     ...data.Staff_List,
-          //     {
-          //       userName: userName,
-          //       id: userID,
-          //       permission: "Undefined",
-          //     },
-          //   ];
-          //   console.log(data.Staff_List);
-          //   updateHotelData(data, hotelNumber).then((data) => {
-          //     setData(data);
-          //   });
-          // } else {
-          //   if (data.Staff_List[userIndex].permission === "Undefined") {
-          //     console.log("USER MUST BE AUTHORIZED");
-          //     return;
-          //   }
-          //   console.log(data.Staff_List[userIndex].permission);
-          setUserPermissions(data.Staff_List[userIndex].permission);
-          // }
+
+          console.log(userID);
+          if (userIndex === -1) {
+            data.Staff_List = [
+              ...data.Staff_List,
+              {
+                userName: userName,
+                id: userID,
+                permission: "Undefined",
+              },
+            ];
+            console.log(data.Staff_List);
+            updateHotelData(data, hotelNumber).then(() => {
+              setData(data);
+            });
+          } else {
+            if (data.Staff_List[userIndex].permission === "Undefined") {
+              console.log("USER MUST BE AUTHORIZED");
+            }
+            //   console.log(data.Staff_List[userIndex].permission);
+            setUserPermissions(data.Staff_List[userIndex].permission);
+            // setUserPermissions("Admin");
+          }
         }
       }
     }
@@ -102,7 +105,17 @@ function App() {
 
     // eslint-disable-next-line
   }, [currentArea]);
-
+  function refresh() {
+    fetchDataInRender(hotelNumber)
+      .then((data) => {
+        //Avoid using api while test and building
+        console.log("UPDATE");
+        setData(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
   return (
     <div className="App">
       {currentArea === PageType.login && (
@@ -118,7 +131,7 @@ function App() {
         </header>
       )}
       {isUserLogedIn &&
-        (data !== null ? (
+        (data !== null && userPermissions !== "Undefined" ? (
           <div className="base">
             <HeaderArea
               currentArea={
@@ -129,6 +142,7 @@ function App() {
               setCurrentArea={setCurrentArea}
               userPermissions={userPermissions}
             />
+
             {console.log(userPermissions)}
             {(currentArea === PageType.room ||
               currentArea === PageType.userEditor) &&
@@ -157,7 +171,6 @@ function App() {
                 </div>
               </>
             )}
-
             <div className="main-area-container">
               <header className="App-header">
                 {currentArea === PageType.floor && (
@@ -205,7 +218,17 @@ function App() {
           </div>
         ) : (
           <header className="loading-header">
-            <div>now loading</div>
+            <div>
+              {userPermissions !== "Undefined"
+                ? "now loading"
+                : "Ask Admin for permissions"}
+            </div>
+            {console.log(userPermissions)}
+            {userPermissions === "Undefined" && (
+              <div>
+                <button onClick={refresh}>Refresh</button>
+              </div>
+            )}
           </header>
         ))}
     </div>

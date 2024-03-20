@@ -31,6 +31,7 @@ function LogInFooter(props) {
     setUserData,
     setHotelNumber,
     setUserName,
+    setUserID,
   } = props;
 
   const [isVisible, setIsVisible] = useState(false);
@@ -121,6 +122,7 @@ function LogInFooter(props) {
                   setIsUserLogedIn(true);
                   setHotelNumber(data.hotelId);
                   setUserName(data.email);
+                  setUserID(userData.id);
                 }
               })
               .catch((error) => {
@@ -158,6 +160,7 @@ function LogInFooter(props) {
                 setIsUserLogedIn(true);
                 setHotelNumber(data.hotelId);
                 setUserName(data.email);
+                setUserID(userData.id);
               }
             })
             .catch((error) => {

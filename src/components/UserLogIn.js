@@ -306,6 +306,7 @@ function UserLogIn(props) {
           setUserData={setUserData}
           setHotelNumber={setHotelNumber}
           setUserName={setUserName}
+          setUserID={setUserID}
         />
       )}
     </div>
