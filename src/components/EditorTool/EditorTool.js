@@ -65,6 +65,17 @@ function EditorTool(props) {
         console.error("Error:", error);
       });
   }
+  function refresh() {
+    fetchDataInRender(hotelNumber)
+      .then((data) => {
+        //Avoid using api while test and building
+        console.log("UPDATE");
+        setData(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
 
   return (
     <div>
@@ -73,32 +84,35 @@ function EditorTool(props) {
        */}
 
       <div className="editor-tool-center-container">
-        <div class="editor-tool-container">
-        {currentArea !== PageType.floor && (
-          <div class="editor-tool-item">
-            {editMode ? (
-              <button
-                className="editor-edit-button-active"
-                onClick={() => setEditMode(!editMode)}
-              >
-                <div className="editor-edit-button-active-text">End Edit</div>
-              </button>
-            ) : (
-              <button
-                className="editor-edit-button"
-                onClick={() => setEditMode(!editMode)}
-              >
-                <div className="editor-edit-button-active-text">Edit</div>
-              </button>
-            )}
-          </div>
-        )}
+        <div class="editor-tool-container-2 ">
+          {currentArea !== PageType.floor && (
+            <div class="editor-tool-item">
+              {editMode ? (
+                <button
+                  className="editor-edit-button-active"
+                  onClick={() => setEditMode(!editMode)}
+                >
+                  <div className="editor-edit-button-active-text">End Edit</div>
+                </button>
+              ) : (
+                <button
+                  className="editor-edit-button"
+                  onClick={() => setEditMode(!editMode)}
+                >
+                  <div className="editor-edit-button-active-text">Edit</div>
+                </button>
+              )}
+            </div>
+          )}
           {/**
            * TODO: Make this change when we are in the  user management page
            * TODO: Implement visible and invisible logo.
            */}
           {currentArea === PageType.userEditor ? (
             <div className="hotel-id-container">
+              <div>
+                <button onClick={refresh}>Refresh</button>
+              </div>
               <div
                 className="editor-tool-item"
                 onClick={() => setIsHotelNumberVisible(!isHotelNumberVisible)}
@@ -110,16 +124,16 @@ function EditorTool(props) {
             </div>
           ) : (
             <div>
-               {currentArea !== PageType.floor && (
-              <div class="editor-tool-item">
-                <button
-                  className="editor-reset-button"
-                  onClick={() => resetAllTasks()}
-                >
-                  Reset All Tasks
-                </button>
-              </div>
-               )}
+              {currentArea !== PageType.floor && (
+                <div class="editor-tool-item">
+                  <button
+                    className="editor-reset-button"
+                    onClick={() => resetAllTasks()}
+                  >
+                    Reset All Tasks
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>
