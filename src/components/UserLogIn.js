@@ -165,6 +165,12 @@ function UserLogIn(props) {
           <button className="login-button" onClick={handleLogin}>
             Sign in with Username
           </button>
+          <button className="back-button" onClick={() => {
+              setLoginStep("login");
+            }}
+            >
+              Go back to Landing Page
+          </button>
         </>
       )}
       {loginStep === "sign-up-username" && (
