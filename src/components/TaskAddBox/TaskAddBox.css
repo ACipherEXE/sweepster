@@ -24,11 +24,3 @@
   display: flex;
   align-items: center;
 }
-
-.task-card-item {
-  margin-left: 5px; /* Adjust spacing between item and radio button */
-}
-
-.task-card-radio {
-  margin-right: 10px; /* Adjust spacing between radio button and right edge */
-}

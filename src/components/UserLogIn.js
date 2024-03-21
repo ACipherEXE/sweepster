@@ -133,7 +133,7 @@ function UserLogIn(props) {
               setLoginStep("log-in");
             }}
           >
-            Sign in with Email
+            Sign in with Username
           </button>
           <button
             className="sign-up-button"
@@ -141,33 +141,35 @@ function UserLogIn(props) {
               setLoginStep("sign-up-username");
             }}
           >
-            Create a account
+            Create an account
           </button>
         </>
       )}
       {loginStep === "log-in" && (
         <>
           {/* Add fields for email and password */}
-          <input
-            type="email"
-            placeholder="Enter your email"
+            <input
+              className="email-input"
+              type="text"
+              placeholder="Enter your username..."
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            type="password"
-            placeholder="Enter your password"
+            className="password-input"
+            type="text"
+            placeholder="Enter your password..."
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className="login-button" onClick={handleLogin}>
-            Sign in with Email
+            Sign in with Username
           </button>
         </>
       )}
       {loginStep === "sign-up-username" && (
         <>
-          <div className="text">What is your email?</div>
+          <div className="text">What is your username?</div>
           <input
             className="email-input"
             type="text"

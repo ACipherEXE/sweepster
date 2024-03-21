@@ -22,9 +22,9 @@
 
 /* Add styles for hotel name */
 .hotel-name {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
-  color: #ffffff; /* Adjust color as needed */
+  color: #1e90ff; /* Adjust color as needed */
   text-align: center; /* Center the text */
   padding: 5px; /* Add some padding */
   grid-column: 1 / span 3; /* Span the full width of the grid */
